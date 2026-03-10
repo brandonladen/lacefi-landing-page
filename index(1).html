@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lacefi</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Syne+Mono&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #080810;
+    --accent: #c8f545;
+    --text: #f0f0f0;
+    --muted: #33334a;
+    --muted2: #555577;
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    font-family: 'Syne', sans-serif;
+    color: var(--text);
+  }
+
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(to bottom, rgba(8,8,16,0.95) 0%, transparent 100%);
+    opacity: 0; transform: translateY(-10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  nav.visible { opacity: 1; transform: translateY(0); }
+
+  .nav-logo {
+    font-family: 'Syne Mono', monospace;
+    font-size: 1rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--accent);
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Syne Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted2);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    font-family: 'Syne Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--bg);
+    background: var(--accent); padding: 0.5rem 1.1rem;
+    border-radius: 2px; text-decoration: none; transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  canvas { position: fixed; inset: 0; width: 100%; height: 100%; }
+
+  #stage {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    pointer-events: none; gap: 0.7rem;
+  }
+
+  #eyebrow {
+    font-family: 'Syne Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--muted2);
+    opacity: 0; transform: translateY(6px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  #eyebrow.visible { opacity: 1; transform: translateY(0); }
+
+  #tagline {
+    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+    font-weight: 800; letter-spacing: -0.03em;
+    text-align: center; line-height: 1.15;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s;
+    max-width: 700px; padding: 0 2rem;
+  }
+  #tagline.visible { opacity: 1; transform: translateY(0); }
+  #tagline span { color: var(--accent); }
+
+  #sub {
+    font-family: 'Syne Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--muted2);
+    opacity: 0; transition: opacity 0.8s ease 0.3s;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  #sub.visible { opacity: 1; }
+  .dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; display: inline-block; }
+
+  footer {
+    position: fixed; bottom: 1.5rem; left: 0; right: 0;
+    text-align: center;
+    font-family: 'Syne Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted);
+    opacity: 0; transition: opacity 1s ease 0.6s; z-index: 200;
+  }
+  footer.visible { opacity: 1; }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">Lacefi</div>
+  <ul class="nav-links">
+    <li><a href="#">Work</a></li>
+    <li><a href="#">Tools</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <a href="mailto:hello@lacefi.co.ke" class="nav-cta">Say Hello</a>
+</nav>
+
+<canvas id="c"></canvas>
+
+<div id="stage">
+  <div id="eyebrow">— lacefi studio —</div>
+  <div id="tagline">Building <span>useful things</span><br>for the web</div>
+  <div id="sub"><span class="dot"></span> hello@lacefi.co.ke <span class="dot"></span></div>
+</div>
+
+<footer id="footer">© 2025 Lacefi &nbsp;·&nbsp; Nairobi, Kenya</footer>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', () => { resize(); computeFinalPositions(); });
+
+const ACCENT = '#c8f545';
+const BG = '#080810';
+const MUTED = '#1e1e30';
+
+const WORDS = ['Building', 'useful', 'things', 'for', 'the', 'web'];
+
+let words = [];
+
+function initWords() {
+  words = WORDS.map((w, i) => ({
+    w, x: W * 0.1 + Math.random() * W * 0.8,
+    y: H * 0.15 + Math.random() * H * 0.7,
+    vx: (Math.random() - 0.5) * 1.4,
+    vy: (Math.random() - 0.5) * 1.4,
+    size: 20 + Math.random() * 22,
+    opacity: 0.1 + Math.random() * 0.22,
+    collected: false,
+    finalX: 0, finalY: 0, finalSize: 0,
+    orbitAngle: (i / WORDS.length) * Math.PI * 2,
+  }));
+}
+
+function computeFinalPositions() {
+  const fontSize = Math.min(W / 10, 52);
+  ctx.font = `800 ${fontSize}px Syne`;
+  const lines = [['Building', 'useful', 'things'], ['for', 'the', 'web']];
+  const lineH = fontSize * 1.3;
+  const totalH = lines.length * lineH;
+  const startY = H / 2 - totalH / 2 + fontSize;
+
+  // Reset finals first
+  words.forEach(w => { w.finalX = 0; w.finalY = 0; });
+
+  lines.forEach((line, li) => {
+    const lineStr = line.join(' ');
+    const lw = ctx.measureText(lineStr).width;
+    let cx = W / 2 - lw / 2;
+    const cy = startY + li * lineH;
+    line.forEach(wrd => {
+      const obj = words.find(o => o.w === wrd && o.finalX === 0);
+      if (obj) {
+        obj.finalX = cx;
+        obj.finalY = cy;
+        obj.finalSize = fontSize;
+        cx += ctx.measureText(wrd + ' ').width;
+      }
+    });
+  });
+}
+
+const fig = {
+  x: -60, y: 0, speed: 8,
+  legAngle: 0, armAngle: 0, facing: 1, trail: [],
+};
+
+let currentTarget = null;
+let phase = 0, phaseTimer = 0;
+const SCATTER_FRAMES = 50;
+const ASSEMBLE_FRAMES = 50;
+let frame = 0;
+
+function pickTarget() {
+  const avail = words.filter(w => !w.collected);
+  if (!avail.length) return null;
+  let best = null, bd = Infinity;
+  avail.forEach(w => {
+    const d = Math.hypot(w.x - fig.x, w.y - fig.y);
+    if (d < bd) { bd = d; best = w; }
+  });
+  return best;
+}
+
+function tick() {
+  requestAnimationFrame(tick);
+  frame++; phaseTimer++;
+
+  ctx.fillStyle = BG;
+  ctx.fillRect(0, 0, W, H);
+
+  // Grid
+  ctx.strokeStyle = MUTED; ctx.lineWidth = 0.3;
+  const gs = 55;
+  for (let x = 0; x < W; x += gs) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for (let y = 0; y < H; y += gs) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+  // Corner accents
+  ctx.strokeStyle = 'rgba(200,245,69,0.07)'; ctx.lineWidth = 1;
+  [[0,0,100,0],[0,0,0,100],[W,0,W-100,0],[W,0,W,100],
+   [0,H,100,H],[0,H,0,H-100],[W,H,W-100,H],[W,H,W,H-100]
+  ].forEach(([x1,y1,x2,y2])=>{ ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); });
+
+  // Phase transitions
+  if (phase === 0 && phaseTimer >= SCATTER_FRAMES) {
+    phase = 1; phaseTimer = 0;
+    fig.x = -60; fig.y = H / 2 + 20;
+    computeFinalPositions();
+    currentTarget = pickTarget();
+  }
+  if (phase === 1 && words.every(w => w.collected)) {
+    phase = 2; phaseTimer = 0;
+  }
+  if (phase === 2 && phaseTimer >= ASSEMBLE_FRAMES) {
+    phase = 3; phaseTimer = 0;
+    ['tagline','eyebrow','sub','nav','footer'].forEach(id => {
+      document.getElementById(id).classList.add('visible');
+    });
+  }
+
+  // Phase 0 — scatter
+  if (phase === 0) {
+    words.forEach(w => {
+      w.x += w.vx; w.y += w.vy;
+      if (w.x < -100) w.x = W + 50;
+      if (w.x > W + 100) w.x = -50;
+      if (w.y < -50) w.y = H + 30;
+      if (w.y > H + 50) w.y = -30;
+      drawWord(w, w.opacity, w.size);
+    });
+  }
+
+  // Phase 1 — collect
+  if (phase === 1) {
+    words.forEach(w => {
+      if (!w.collected) {
+        w.x += w.vx * 0.15; w.y += w.vy * 0.15;
+        w.x = Math.max(30, Math.min(W-30, w.x));
+        w.y = Math.max(50, Math.min(H-50, w.y));
+        drawWord(w, w.opacity, w.size);
+      }
+    });
+
+    if (currentTarget) {
+      const dx = currentTarget.x - fig.x;
+      const dy = currentTarget.y - fig.y;
+      const dist = Math.hypot(dx, dy);
+      fig.facing = dx > 0 ? 1 : -1;
+      if (dist > 12) {
+        fig.x += (dx / dist) * fig.speed;
+        fig.y += (dy / dist) * fig.speed;
+        fig.legAngle = Math.sin(frame * 0.38) * 0.55;
+        fig.armAngle = Math.sin(frame * 0.38 + Math.PI) * 0.45;
+      } else {
+        currentTarget.collected = true;
+        currentTarget = pickTarget();
+      }
+    }
+
+    const collected = words.filter(w => w.collected);
+    collected.forEach((w, i) => {
+      w.orbitAngle += 0.07;
+      const r = 30 + collected.length * 6;
+      w.x = fig.x + Math.cos(w.orbitAngle) * r;
+      w.y = fig.y + Math.sin(w.orbitAngle) * r - 10;
+      drawWord(w, 0.8, 13);
+    });
+
+    fig.trail.push({ x: fig.x, y: fig.y });
+    if (fig.trail.length > 10) fig.trail.shift();
+    fig.trail.forEach((t, i) => {
+      ctx.beginPath(); ctx.arc(t.x, t.y+14, 2, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(200,245,69,${(i/fig.trail.length)*0.1})`;
+      ctx.fill();
+    });
+
+    drawFigure(fig.x, fig.y, fig.legAngle, fig.armAngle, fig.facing);
+  }
+
+  // Phase 2 — assemble
+  if (phase === 2) {
+    const p = phaseTimer / ASSEMBLE_FRAMES;
+    words.forEach((w, i) => {
+      const delay = (i / words.length) * 0.4;
+      const t = Math.max(0, Math.min(1, (p - delay) / 0.7));
+      const ease = t < 0.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1;
+      w.x += (w.finalX - w.x) * (0.15 + ease * 0.2);
+      w.y += (w.finalY - w.y) * (0.15 + ease * 0.2);
+      const sz = w.size + (w.finalSize - w.size) * ease;
+      drawWord(w, 0.3 + ease * 0.65, sz);
+    });
+    const figOp = Math.max(0, 1 - p * 5);
+    if (figOp > 0.01) drawFigure(fig.x, fig.y, 0, 0, fig.facing, figOp);
+  }
+
+  // Phase 3 — fade canvas text out (CSS text takes over)
+  if (phase === 3) {
+    const fade = Math.max(0, 1 - phaseTimer * 0.025);
+    words.forEach(w => {
+      w.x += (w.finalX - w.x) * 0.12;
+      w.y += (w.finalY - w.y) * 0.12;
+      drawWord(w, fade * 0.9, w.finalSize);
+    });
+  }
+}
+
+function drawWord(w, opacity, size) {
+  if (opacity <= 0) return;
+  ctx.save();
+  ctx.font = `800 ${size}px Syne`;
+  ctx.fillStyle = `rgba(200,245,69,${opacity})`;
+  ctx.fillText(w.w, w.x, w.y);
+  ctx.restore();
+}
+
+function drawFigure(x, y, legA, armA, facing, opacity=1) {
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(facing, 1);
+  ctx.globalAlpha = opacity;
+  ctx.strokeStyle = ACCENT; ctx.fillStyle = ACCENT;
+  ctx.lineCap = 'round'; ctx.lineWidth = 2.5;
+
+  ctx.beginPath(); ctx.arc(0, -24, 5.5, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(0,-18); ctx.lineTo(0,-4); ctx.stroke();
+
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(0,-14); ctx.lineTo(-9*Math.cos(armA),-14+9*Math.sin(armA)); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0,-14); ctx.lineTo(9*Math.cos(armA),-14-9*Math.sin(armA)); ctx.stroke();
+
+  ctx.beginPath(); ctx.moveTo(0,-4);
+  ctx.lineTo(-7*Math.cos(legA+0.3), 6+7*Math.sin(legA));
+  ctx.lineTo(-5*Math.cos(legA), 14+4*Math.sin(legA)); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0,-4);
+  ctx.lineTo(7*Math.cos(legA+0.3), 6-7*Math.sin(legA));
+  ctx.lineTo(5*Math.cos(legA), 14-4*Math.sin(legA)); ctx.stroke();
+
+  ctx.restore();
+}
+
+initWords();
+tick();
+</script>
+</body>
+</html>
