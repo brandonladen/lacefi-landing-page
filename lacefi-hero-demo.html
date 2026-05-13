@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaceFi Hero Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #0f0f18;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    /* ─────────────────────────────────────────
+       SHELL
+    ───────────────────────────────────────── */
+    .demo-shell {
+      width: 420px;
+      height: 580px;
+      background: #1e1e2e;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.06);
+
+      /* Shell fades in at start */
+      opacity: 0;
+      animation: shell-fadein 0.5s ease forwards;
+      animation-delay: 0.05s;
+    }
+
+    @keyframes shell-fadein {
+      to { opacity: 1; }
+    }
+
+    /* ─────────────────────────────────────────
+       BROWSER CHROME  (Stage 1: 0.0–0.8s)
+    ───────────────────────────────────────── */
+    .demo-chrome {
+      width: 100%;
+      background: #2a2a3e;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      flex-shrink: 0;
+
+      opacity: 0;
+      transform: translateY(-6px);
+      animation: chrome-in 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+    }
+
+    @keyframes chrome-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .demo-chrome-dots {
+      display: flex;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .demo-chrome-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .demo-chrome-dots span:nth-child(1) { background: #ff5f56; }
+    .demo-chrome-dots span:nth-child(2) { background: #ffbd2e; }
+    .demo-chrome-dots span:nth-child(3) { background: #27c93f; }
+
+    .demo-url-bar {
+      flex: 1;
+      background: #1e1e2e;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-family: ui-monospace, 'SF Mono', monospace;
+      font-size: 11px;
+      color: #8b8ba7;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .demo-url-bar-lock {
+      color: #27c93f;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────
+       PAGE CONTENT  (Stage 1 continued)
+    ───────────────────────────────────────── */
+    .demo-page {
+      background: #f5f5f0;
+      height: calc(100% - 41px);
+      padding: 22px 20px 20px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Course breadcrumb */
+    .demo-breadcrumb {
+      font-size: 10px;
+      color: #6b7280;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+
+      opacity: 0;
+      transform: translateY(8px);
+      animation: page-item-in 0.4s ease 0.25s forwards;
+    }
+
+    .demo-breadcrumb span { color: #2563eb; }
+
+    /* Question title block */
+    .demo-qtitle {
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: page-item-in 0.4s ease 0.35s forwards;
+    }
+
+    .demo-qtitle-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    /* Blurred text bars — varying widths */
+    .demo-textbar {
+      height: 10px;
+      border-radius: 4px;
+      background: #d1d5db;
+      margin-bottom: 6px;
+    }
+
+    .demo-textbar:nth-child(1) { width: 100%; }
+    .demo-textbar:nth-child(2) { width: 85%; }
+    .demo-textbar:nth-child(3) { width: 62%; }
+
+    /* Options list */
+    .demo-opts {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+
+      opacity: 0;
+      transform: translateY(10px);
+      animation: page-item-in 0.4s ease 0.5s forwards;
+    }
+
+    .demo-opt {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 12px 14px;
+      border-bottom: 1px solid #f3f4f6;
+      position: relative;
+      background: #fff;
+      transition: background 0.2s;
+    }
+
+    .demo-opt:last-child {
+      border-bottom: none;
+    }
+
+    .demo-opt-letter {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #f3f4f6;
+      border: 1.5px solid #d1d5db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #374151;
+      flex-shrink: 0;
+      font-family: system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .demo-opt-text {
+      flex: 1;
+    }
+
+    .demo-opt-textbar {
+      height: 9px;
+      border-radius: 3px;
+      background: #e5e7eb;
+    }
+
+    /* Varying widths per option */
+    .demo-a .demo-opt-textbar { width: 78%; }
+    .demo-b .demo-opt-textbar { width: 92%; }
+    .demo-c .demo-opt-textbar { width: 65%; }
+    .demo-d .demo-opt-textbar { width: 83%; }
+
+    @keyframes page-item-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─────────────────────────────────────────
+       ANSWER BANNERS  (Stage 4: 3.2–5.0s)
+       Each slides up + fades in staggered 0.35s
+    ───────────────────────────────────────── */
+    .demo-answer-banner {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 10px 0 12px;
+      background: #dcfce7;
+      border-left: 4px solid #16a34a;
+      border-radius: 0 4px 4px 0;
+
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+    }
+
+    .demo-answer-text {
+      font-family: ui-monospace, 'SF Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #15803d;
+      flex: 1;
+    }
+
+    .demo-answer-conf {
+      font-family: ui-monospace, 'SF Mono', monospace;
+      font-size: 10px;
+      color: #a3a3a3;
+      flex-shrink: 0;
+    }
+
+    /* Stagger banner appearances 3.2s, 3.55s, 3.9s, 4.25s */
+    /* Each animates IN for 0.3s, holds, then fades OUT at 7.5s */
+
+    .demo-a .demo-answer-banner {
+      animation:
+        banner-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) 3.2s forwards,
+        banner-out 0.6s ease 7.5s forwards;
+    }
+
+    .demo-b .demo-answer-banner {
+      animation:
+        banner-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) 3.55s forwards,
+        banner-out 0.6s ease 7.5s forwards;
+    }
+
+    .demo-c .demo-answer-banner {
+      animation:
+        banner-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) 3.9s forwards,
+        banner-out 0.6s ease 7.5s forwards;
+    }
+
+    .demo-d .demo-answer-banner {
+      animation:
+        banner-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) 4.25s forwards,
+        banner-out 0.6s ease 7.5s forwards;
+    }
+
+    @keyframes banner-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes banner-out {
+      to { opacity: 0; transform: translateY(6px); }
+    }
+
+    /* Spinner on Q1 — appears 2.6s, disappears 3.2s */
+    .demo-spinner-wrap {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      z-index: 5;
+      animation:
+        spinner-in 0.2s ease 2.6s forwards,
+        spinner-out 0.15s ease 3.15s forwards;
+    }
+
+    .demo-spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid #d1fae5;
+      border-top-color: #16a34a;
+      border-radius: 50%;
+      animation: spin 0.7s linear 2.6s infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes spinner-in {
+      to { opacity: 1; }
+    }
+
+    @keyframes spinner-out {
+      to { opacity: 0; }
+    }
+
+    /* ─────────────────────────────────────────
+       LIGHTBULB BUTTON  (Stage 2: 0.8–1.8s)
+    ───────────────────────────────────────── */
+    .demo-lb {
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+      width: 44px;
+      height: 44px;
+      background: #facc15;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(250, 204, 21, 0.45);
+      cursor: pointer;
+      z-index: 20;
+
+      opacity: 0;
+      transform: scale(0.4) translateY(8px);
+      /* bounce in at 0.8s, pulse at 1.3s, click-shrink at 2.6s, exit at 7.5s */
+      animation:
+        lb-bounce-in  0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards,
+        lb-pulse       0.4s ease-in-out 1.35s,
+        lb-click       0.25s ease 2.6s forwards,
+        lb-out         0.5s ease 7.5s forwards;
+    }
+
+    @keyframes lb-bounce-in {
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    @keyframes lb-pulse {
+      0%   { box-shadow: 0 4px 14px rgba(250, 204, 21, 0.45); }
+      50%  { box-shadow: 0 4px 28px rgba(250, 204, 21, 0.75), 0 0 0 8px rgba(250, 204, 21, 0.12); }
+      100% { box-shadow: 0 4px 14px rgba(250, 204, 21, 0.45); }
+    }
+
+    @keyframes lb-click {
+      0%   { transform: scale(1); }
+      40%  { transform: scale(0.88); }
+      100% { transform: scale(0.88); }
+    }
+
+    @keyframes lb-out {
+      to { opacity: 0; transform: scale(0.7) translateY(4px); }
+    }
+
+    /* Lightbulb SVG icon */
+    .demo-lb svg {
+      width: 22px;
+      height: 22px;
+      color: #1a1a1a;
+    }
+
+    /* ─────────────────────────────────────────
+       EXTENSION PANEL  (Stage 3: 1.8–2.6s)
+    ───────────────────────────────────────── */
+    .demo-panel {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      width: 220px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06);
+      overflow: hidden;
+      z-index: 30;
+
+      opacity: 0;
+      transform: translateY(16px);
+      /* Slide up at 1.8s, hold, slide down at 2.6s */
+      animation:
+        panel-in  0.4s cubic-bezier(0.4, 0, 0.2, 1) 1.8s forwards,
+        panel-out 0.35s cubic-bezier(0.4, 0, 1, 1) 2.62s forwards;
+    }
+
+    @keyframes panel-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes panel-out {
+      to { opacity: 0; transform: translateY(14px); }
+    }
+
+    .demo-panel-header {
+      padding: 13px 14px 11px;
+      border-bottom: 1px solid #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .demo-panel-title {
+      font-family: 'Syne Mono', ui-monospace, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1f2937;
+      letter-spacing: -0.01em;
+    }
+
+    .demo-panel-badge {
+      font-family: ui-monospace, 'SF Mono', monospace;
+      font-size: 9px;
+      background: #dcfce7;
+      color: #15803d;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .demo-panel-body {
+      padding: 12px 14px;
+    }
+
+    .demo-credits-box {
+      background: #eff6ff;
+      border-radius: 7px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 11px;
+    }
+
+    .demo-credits-label {
+      font-family: ui-monospace, 'SF Mono', monospace;
+      font-size: 10px;
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .demo-credits-value {
+      font-family: 'Syne Mono', ui-monospace, monospace;
+      font-size: 22px;
+      font-weight: 700;
+      color: #2563eb;
+      line-height: 1;
+    }
+
+    .demo-credits-sub {
+      font-family: ui-monospace, 'SF Mono', monospace;
+      font-size: 9px;
+      color: #93c5fd;
+      margin-top: 1px;
+    }
+
+    .demo-start-btn {
+      width: 100%;
+      background: #16a34a;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      padding: 9px 12px;
+      font-family: 'Syne Mono', ui-monospace, monospace;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      letter-spacing: 0.01em;
+      position: relative;
+      overflow: hidden;
+
+      /* Pressed state at 2.55s */
+      animation: btn-press 0.25s ease 2.55s forwards;
+    }
+
+    @keyframes btn-press {
+      0%   { background: #16a34a; transform: scale(1); }
+      50%  { background: #15803d; transform: scale(0.97); }
+      100% { background: #15803d; transform: scale(0.97); }
+    }
+
+    /* ─────────────────────────────────────────
+       TOAST  (Stage 5: 5.0–7.5s)
+    ───────────────────────────────────────── */
+    .demo-toast {
+      position: absolute;
+      top: 52px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      background: #16a34a;
+      color: #fff;
+      font-family: ui-monospace, 'SF Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(22, 163, 74, 0.4);
+      z-index: 40;
+      pointer-events: none;
+
+      opacity: 0;
+      animation:
+        toast-in  0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 5.0s forwards,
+        toast-out 0.4s ease 7.5s forwards;
+    }
+
+    @keyframes toast-in {
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    @keyframes toast-out {
+      to { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+    }
+
+    /* ─────────────────────────────────────────
+       LOOP OVERLAY  (Stage 8: 7.5–9.0s)
+       Dark fade-to-black then snap clear
+    ───────────────────────────────────────── */
+    .demo-loop-overlay {
+      position: absolute;
+      inset: 0;
+      background: #1e1e2e;
+      z-index: 50;
+      pointer-events: none;
+
+      opacity: 0;
+      animation: loop-fade 1.5s ease 7.5s forwards;
+    }
+
+    @keyframes loop-fade {
+      0%   { opacity: 0; }
+      40%  { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    /* The shell fades in once at page load; child animations handle the looping. */
+
+    /* ─────────────────────────────────────────
+       LOOPING CHILDREN
+       All animated children use animation-iteration-count: infinite
+       with 9s total duration. The keyframe % values map to:
+         0%  = 0.0s, 8.9% = 0.8s, 20% = 1.8s, 29% = 2.6s,
+         35.5% = 3.2s, 55.5% = 5.0s, 66.6% = 6.0s,
+         83.3% = 7.5s, 94.4% = 8.5s, 100% = 9.0s
+    ───────────────────────────────────────── */
+
+    /* Override all animations to be infinite loops with 9s duration */
+
+    /* Chrome */
+    .demo-chrome {
+      animation: chrome-loop 9s linear 0s infinite;
+    }
+
+    @keyframes chrome-loop {
+      0%    { opacity: 0; transform: translateY(-6px); }
+      1.1%  { opacity: 1; transform: translateY(0); }    /* 0.1s */
+      83.3% { opacity: 1; transform: translateY(0); }    /* 7.5s */
+      95%   { opacity: 0; transform: translateY(-4px); } /* 8.55s */
+      100%  { opacity: 0; transform: translateY(-6px); }
+    }
+
+    /* Breadcrumb */
+    .demo-breadcrumb {
+      animation: breadcrumb-loop 9s linear 0s infinite;
+    }
+
+    @keyframes breadcrumb-loop {
+      0%    { opacity: 0; transform: translateY(8px); }
+      2.8%  { opacity: 0; transform: translateY(8px); } /* 0.25s */
+      7.2%  { opacity: 1; transform: translateY(0); }   /* 0.65s */
+      83.3% { opacity: 1; transform: translateY(0); }
+      87.8% { opacity: 0; transform: translateY(4px); }
+      100%  { opacity: 0; transform: translateY(8px); }
+    }
+
+    /* Question title */
+    .demo-qtitle {
+      animation: qtitle-loop 9s linear 0s infinite;
+    }
+
+    @keyframes qtitle-loop {
+      0%    { opacity: 0; transform: translateY(10px); }
+      3.9%  { opacity: 0; transform: translateY(10px); } /* 0.35s */
+      8.9%  { opacity: 1; transform: translateY(0); }    /* 0.8s */
+      83.3% { opacity: 1; transform: translateY(0); }
+      87.8% { opacity: 0; transform: translateY(5px); }
+      100%  { opacity: 0; transform: translateY(10px); }
+    }
+
+    /* Options list */
+    .demo-opts {
+      animation: opts-loop 9s linear 0s infinite;
+    }
+
+    @keyframes opts-loop {
+      0%    { opacity: 0; transform: translateY(10px); }
+      5.6%  { opacity: 0; transform: translateY(10px); } /* 0.5s */
+      10.6% { opacity: 1; transform: translateY(0); }    /* 0.95s */
+      83.3% { opacity: 1; transform: translateY(0); }
+      87.8% { opacity: 0; transform: translateY(5px); }
+      100%  { opacity: 0; transform: translateY(10px); }
+    }
+
+    /* Lightbulb */
+    .demo-lb {
+      animation: lb-loop 9s cubic-bezier(0.34, 1.56, 0.64, 1) 0s infinite;
+    }
+
+    @keyframes lb-loop {
+      /* 0–0.8s: hidden */
+      0%    { opacity: 0; transform: scale(0.4) translateY(8px);
+              box-shadow: 0 4px 14px rgba(250, 204, 21, 0.45); }
+      /* 0.8–1.35s: bounce in */
+      8.9%  { opacity: 0; transform: scale(0.4) translateY(8px);
+              box-shadow: 0 4px 14px rgba(250, 204, 21, 0.45); }
+      15%   { opacity: 1; transform: scale(1) translateY(0);
+              box-shadow: 0 4px 14px rgba(250, 204, 21, 0.45); }
+      /* 1.35–1.75s: pulse */
+      15.6% { box-shadow: 0 4px 14px rgba(250, 204, 21, 0.45); }
+      17.8% { box-shadow: 0 4px 28px rgba(250, 204, 21, 0.75), 0 0 0 8px rgba(250, 204, 21, 0.12); }
+      19.4% { box-shadow: 0 4px 14px rgba(250, 204, 21, 0.45); opacity: 1; transform: scale(1) translateY(0); }
+      /* 2.6s: click shrink */
+      28.9% { opacity: 1; transform: scale(1) translateY(0); }
+      31.1% { opacity: 1; transform: scale(0.88) translateY(0); }
+      /* hold clicked */
+      83.3% { opacity: 1; transform: scale(0.88) translateY(0); }
+      /* 7.5s: fade out */
+      87.8% { opacity: 0; transform: scale(0.7) translateY(4px); }
+      100%  { opacity: 0; transform: scale(0.4) translateY(8px); }
+    }
+
+    /* Panel */
+    .demo-panel {
+      animation: panel-loop 9s ease 0s infinite;
+    }
+
+    @keyframes panel-loop {
+      /* 0–1.8s: hidden */
+      0%    { opacity: 0; transform: translateY(16px); }
+      19.9% { opacity: 0; transform: translateY(16px); }
+      /* 1.8–2.2s: slide in */
+      24.4% { opacity: 1; transform: translateY(0); }
+      /* 2.6s: start sliding out */
+      28.9% { opacity: 1; transform: translateY(0); }
+      /* out by 2.95s */
+      32.8% { opacity: 0; transform: translateY(14px); }
+      100%  { opacity: 0; transform: translateY(16px); }
+    }
+
+    /* Start button press */
+    .demo-start-btn {
+      animation: btn-loop 9s ease 0s infinite;
+    }
+
+    @keyframes btn-loop {
+      0%    { background: #16a34a; transform: scale(1); }
+      28.3% { background: #16a34a; transform: scale(1); }  /* 2.55s */
+      30%   { background: #15803d; transform: scale(0.97); }
+      100%  { background: #16a34a; transform: scale(1); }
+    }
+
+    /* Spinner */
+    .demo-spinner-wrap {
+      animation: spinner-wrap-loop 9s ease 0s infinite;
+    }
+
+    @keyframes spinner-wrap-loop {
+      0%    { opacity: 0; }
+      28.9% { opacity: 0; }  /* 2.6s */
+      31.1% { opacity: 1; }  /* 2.8s */
+      35.5% { opacity: 1; }  /* 3.2s */
+      36.7% { opacity: 0; }  /* 3.3s */
+      100%  { opacity: 0; }
+    }
+
+    .demo-spinner {
+      animation: spin-loop 0.7s linear 0s infinite;
+    }
+
+    @keyframes spin-loop {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Answer banners — looping */
+    .demo-a .demo-answer-banner {
+      animation: banner-a-loop 9s ease 0s infinite;
+    }
+
+    .demo-b .demo-answer-banner {
+      animation: banner-b-loop 9s ease 0s infinite;
+    }
+
+    .demo-c .demo-answer-banner {
+      animation: banner-c-loop 9s ease 0s infinite;
+    }
+
+    .demo-d .demo-answer-banner {
+      animation: banner-d-loop 9s ease 0s infinite;
+    }
+
+    @keyframes banner-a-loop {
+      0%    { opacity: 0; transform: translateY(8px); }
+      35.5% { opacity: 0; transform: translateY(8px); }  /* 3.2s */
+      38.8% { opacity: 1; transform: translateY(0); }    /* 3.5s */
+      83.3% { opacity: 1; transform: translateY(0); }    /* 7.5s */
+      87.8% { opacity: 0; transform: translateY(6px); }
+      100%  { opacity: 0; transform: translateY(8px); }
+    }
+
+    @keyframes banner-b-loop {
+      0%    { opacity: 0; transform: translateY(8px); }
+      39.4% { opacity: 0; transform: translateY(8px); }  /* 3.55s */
+      42.8% { opacity: 1; transform: translateY(0); }    /* 3.85s */
+      83.3% { opacity: 1; transform: translateY(0); }
+      87.8% { opacity: 0; transform: translateY(6px); }
+      100%  { opacity: 0; transform: translateY(8px); }
+    }
+
+    @keyframes banner-c-loop {
+      0%    { opacity: 0; transform: translateY(8px); }
+      43.3% { opacity: 0; transform: translateY(8px); }  /* 3.9s */
+      46.7% { opacity: 1; transform: translateY(0); }    /* 4.2s */
+      83.3% { opacity: 1; transform: translateY(0); }
+      87.8% { opacity: 0; transform: translateY(6px); }
+      100%  { opacity: 0; transform: translateY(8px); }
+    }
+
+    @keyframes banner-d-loop {
+      0%    { opacity: 0; transform: translateY(8px); }
+      47.2% { opacity: 0; transform: translateY(8px); }  /* 4.25s */
+      50.6% { opacity: 1; transform: translateY(0); }    /* 4.55s */
+      83.3% { opacity: 1; transform: translateY(0); }
+      87.8% { opacity: 0; transform: translateY(6px); }
+      100%  { opacity: 0; transform: translateY(8px); }
+    }
+
+    /* Toast — looping */
+    .demo-toast {
+      animation: toast-loop 9s cubic-bezier(0.34, 1.56, 0.64, 1) 0s infinite;
+    }
+
+    @keyframes toast-loop {
+      0%    { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+      55.5% { opacity: 0; transform: translateX(-50%) translateY(-8px); }  /* 5.0s */
+      59.4% { opacity: 1; transform: translateX(-50%) translateY(0); }     /* 5.35s */
+      83.3% { opacity: 1; transform: translateX(-50%) translateY(0); }     /* 7.5s */
+      87.8% { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+      100%  { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+    }
+
+    /* Loop overlay — looping */
+    .demo-loop-overlay {
+      animation: overlay-loop 9s ease 0s infinite;
+    }
+
+    @keyframes overlay-loop {
+      0%    { opacity: 1; }   /* start opaque — brief dark moment */
+      3.3%  { opacity: 0; }   /* 0.3s: fade away, content appears */
+      83.3% { opacity: 0; }   /* 7.5s */
+      91.1% { opacity: 1; }   /* 8.2s: fade in dark */
+      100%  { opacity: 1; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="demo-shell">
+
+    <!-- Browser chrome -->
+    <div class="demo-chrome">
+      <div class="demo-chrome-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="demo-url-bar">
+        <span class="demo-url-bar-lock">&#9679;</span>
+        lms.university.ac.ke/quiz/attempt.php
+      </div>
+    </div>
+
+    <!-- LMS page content -->
+    <div class="demo-page">
+
+      <!-- Breadcrumb -->
+      <div class="demo-breadcrumb">
+        <span>BIOL 301</span>
+        &rsaquo; Quiz 4 &rsaquo; Attempt 1
+      </div>
+
+      <!-- Question title -->
+      <div class="demo-qtitle">
+        <div class="demo-qtitle-label">Question 1 of 4</div>
+        <div class="demo-textbar" style="width:100%;"></div>
+        <div class="demo-textbar" style="width:85%;"></div>
+        <div class="demo-textbar" style="width:62%;"></div>
+      </div>
+
+      <!-- Answer options -->
+      <div class="demo-opts">
+
+        <div class="demo-opt demo-a">
+          <div class="demo-opt-letter">A</div>
+          <div class="demo-opt-text">
+            <div class="demo-opt-textbar"></div>
+          </div>
+          <!-- Answer banner for Q1 -->
+          <div class="demo-answer-banner">
+            <span class="demo-answer-text">Answer: C</span>
+            <span class="demo-answer-conf">97%</span>
+          </div>
+          <!-- Spinner overlays the row while fetching -->
+          <div class="demo-spinner-wrap">
+            <div class="demo-spinner"></div>
+          </div>
+        </div>
+
+        <div class="demo-opt demo-b">
+          <div class="demo-opt-letter">B</div>
+          <div class="demo-opt-text">
+            <div class="demo-opt-textbar"></div>
+          </div>
+          <div class="demo-answer-banner">
+            <span class="demo-answer-text">Answer: A</span>
+            <span class="demo-answer-conf">91%</span>
+          </div>
+        </div>
+
+        <div class="demo-opt demo-c">
+          <div class="demo-opt-letter">C</div>
+          <div class="demo-opt-text">
+            <div class="demo-opt-textbar"></div>
+          </div>
+          <div class="demo-answer-banner">
+            <span class="demo-answer-text">Answer: D</span>
+            <span class="demo-answer-conf">88%</span>
+          </div>
+        </div>
+
+        <div class="demo-opt demo-d">
+          <div class="demo-opt-letter">D</div>
+          <div class="demo-opt-text">
+            <div class="demo-opt-textbar"></div>
+          </div>
+          <div class="demo-answer-banner">
+            <span class="demo-answer-text">Answer: B</span>
+            <span class="demo-answer-conf">94%</span>
+          </div>
+        </div>
+
+      </div><!-- /.demo-opts -->
+
+    </div><!-- /.demo-page -->
+
+    <!-- Yellow lightbulb trigger button -->
+    <div class="demo-lb">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 21h6v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17a1 1 0 001 1h6a1 1 0 001-1v-2.26C17.81 13.47 19 11.38 19 9c0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 017 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>
+      </svg>
+    </div>
+
+    <!-- Extension panel -->
+    <div class="demo-panel">
+      <div class="demo-panel-header">
+        <span class="demo-panel-title">LaceFi Autofill</span>
+        <span class="demo-panel-badge">ACTIVE</span>
+      </div>
+      <div class="demo-panel-body">
+        <div class="demo-credits-box">
+          <div>
+            <div class="demo-credits-label">Credits</div>
+            <div class="demo-credits-sub">remaining</div>
+          </div>
+          <div class="demo-credits-value">12</div>
+        </div>
+        <button class="demo-start-btn">
+          Start Autofill &#9654;
+        </button>
+      </div>
+    </div>
+
+    <!-- Success toast -->
+    <div class="demo-toast">&#10003; 4 answers filled</div>
+
+    <!-- Loop overlay (brief dark moment between loops) -->
+    <div class="demo-loop-overlay"></div>
+
+  </div><!-- /.demo-shell -->
+
+</body>
+</html>
+<!-- INTEGRATION: drop .demo-shell into .h-inner in #hero, add CSS to style.css -->

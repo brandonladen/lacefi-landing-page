@@ -1,0 +1,257 @@
+<!--
+  LACEFI — BRIEFS 2 & 3 (DARK MODE)
+  ==================================
+  Brief 2: Process section step icons (Install / Scan / Deliver)
+  Brief 3: Hero section floating notification card
+
+  Color tokens used throughout:
+    Page bg:          #0f0f18
+    Card/widget bg:   #17172a
+    Placeholder fill: rgba(255,255,255,0.10)
+    Borders:          rgba(255,255,255,0.12)
+    Primary text:     #e0e0ee
+    Muted text:       #636378
+    Accent green:     #04AA6D  (unchanged)
+
+  Each section is delimited by /* === BRIEF X: SECTION === */ comments.
+  All class names prefixed (s1-, s2-, s3-, h-) to prevent collisions.
+  Requires Syne Mono. Pure CSS, no JS.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lacefi — Briefs 2 & 3 (dark mode)</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+<style>
+  /* Preview-only page styles — remove on site integration */
+  body { margin: 0; background: #0f0f18; min-height: 100vh; padding: 60px 24px; font-family: 'Syne Mono', monospace; color: #e0e0ee; }
+  .preview-section { max-width: 720px; margin: 0 auto 80px; }
+  .preview-section h3 { font-size: 11px; color: #636378; letter-spacing: 1px; text-transform: uppercase; margin: 0 0 24px; font-weight: 400; }
+  .step-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  /* ===================================================
+     BRIEF 2 — STEP 01: Install (puzzle-piece variant)
+     Container: 200 × 80px, transparent background
+     Drop into the first .step card, above the .sn label
+     =================================================== */
+  .s1 { width: 200px; height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font-family: 'Syne Mono', ui-monospace, monospace; }
+  .s1-svg { width: 40px; height: 40px; animation: s1-show 3.8s ease-out infinite; }
+  .s1-pp { fill: #04AA6D; fill-opacity: 0; stroke: rgba(255, 255, 255, 0.55); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 120; stroke-dashoffset: 120; animation: s1-draw 3.8s ease-out infinite, s1-fill 3.8s ease-out infinite; }
+  .s1-text { font-size: 9px; color: #636378; letter-spacing: 0.5px; opacity: 0; animation: s1-text 3.8s ease-out infinite; }
+  @keyframes s1-show {
+    0% { opacity: 0; }
+    5%, 86.84% { opacity: 1; }
+    94.74%, 100% { opacity: 0; }
+  }
+  @keyframes s1-draw {
+    0%, 7.89% { stroke-dashoffset: 120; }
+    28.95%, 100% { stroke-dashoffset: 0; }
+  }
+  @keyframes s1-fill {
+    0%, 36.84% { fill-opacity: 0; }
+    44.74%, 100% { fill-opacity: 1; }
+  }
+  @keyframes s1-text {
+    0%, 52.63% { opacity: 0; }
+    60.53%, 86.84% { opacity: 1; }
+    94.74%, 100% { opacity: 0; }
+  }
+
+  /* ===================================================
+     BRIEF 2 — STEP 02: Scan
+     Container: 200 × 100px, transparent background
+     =================================================== */
+  .s2 { position: relative; width: 200px; height: 100px; font-family: 'Syne Mono', ui-monospace, monospace; }
+  .s2-bar { position: absolute; left: 0; height: 8px; background: rgba(255, 255, 255, 0.10); opacity: 0; }
+  .s2-b1 { top: 14px; width: 100%; animation: s2-b1 3.4s ease-out infinite; }
+  .s2-b2 { top: 32px; width: 88%; animation: s2-b2 3.4s ease-out infinite; }
+  .s2-b3 { top: 50px; width: 100%; animation: s2-b3 3.4s ease-out infinite; }
+  .s2-b4 { top: 68px; width: 65%; animation: s2-b4 3.4s ease-out infinite; }
+  .s2-scan { position: absolute; left: 0; right: 0; top: 14px; height: 1px; background: #04AA6D; opacity: 0; animation: s2-scan 3.4s linear infinite; }
+  .s2-arr { position: absolute; left: 140px; top: 62px; font-size: 14px; color: #04AA6D; opacity: 0; line-height: 1; animation: s2-arr 3.4s ease-out infinite; }
+  @keyframes s2-b1 {
+    0% { opacity: 0; transform: translateY(6px); background: rgba(255,255,255,0.10); }
+    5.88% { opacity: 1; transform: translateY(0); }
+    19.12%, 21% { background: rgba(4, 170, 109, 0.4); }
+    29% { background: rgba(255,255,255,0.10); }
+    78.53% { opacity: 1; background: rgba(255,255,255,0.10); }
+    90.29%, 100% { opacity: 0; }
+  }
+  @keyframes s2-b2 {
+    0%, 2.06% { opacity: 0; transform: translateY(6px); }
+    7.94% { opacity: 1; transform: translateY(0); }
+    24.41%, 26.5% { background: rgba(4, 170, 109, 0.4); }
+    34% { background: rgba(255,255,255,0.10); }
+    78.53% { opacity: 1; }
+    90.29%, 100% { opacity: 0; }
+  }
+  @keyframes s2-b3 {
+    0%, 4.12% { opacity: 0; transform: translateY(6px); }
+    10% { opacity: 1; transform: translateY(0); }
+    29.71%, 32% { background: rgba(4, 170, 109, 0.4); }
+    40% { background: rgba(255,255,255,0.10); }
+    78.53% { opacity: 1; }
+    90.29%, 100% { opacity: 0; }
+  }
+  @keyframes s2-b4 {
+    0%, 6.18% { opacity: 0; transform: translateY(6px); }
+    12.06% { opacity: 1; transform: translateY(0); }
+    35%, 37% { background: rgba(4, 170, 109, 0.4); }
+    45% { background: rgba(255,255,255,0.10); }
+    78.53% { opacity: 1; }
+    90.29%, 100% { opacity: 0; }
+  }
+  @keyframes s2-scan {
+    0%, 16.18% { opacity: 0; top: 14px; }
+    17.5% { opacity: 1; top: 14px; }
+    41.18% { opacity: 1; top: 80px; }
+    44% { opacity: 0; top: 80px; }
+    100% { opacity: 0; }
+  }
+  @keyframes s2-arr { 0%, 42.65% { opacity: 0; transform: translateX(-5px); } 49.12%, 78.53% { opacity: 1; transform: translateX(0); } 90.29%, 100% { opacity: 0; } }
+
+  /* ===================================================
+     BRIEF 2 — STEP 03: Deliver
+     Container: 200 × 120px, transparent background
+     =================================================== */
+  .s3 { position: relative; width: 200px; height: 120px; font-family: 'Syne Mono', ui-monospace, monospace; }
+  .s3-opt { position: absolute; left: 14px; right: 0; height: 28px; display: flex; align-items: center; gap: 10px; padding: 0 10px; border: 1px solid rgba(255, 255, 255, 0.12); background: #17172a; opacity: 0; transform: translateY(8px); overflow: hidden; box-sizing: border-box; }
+  .s3-opt .l { font-size: 9px; color: #e0e0ee; width: 10px; flex: none; position: relative; z-index: 2; font-family: 'Syne Mono', ui-monospace, monospace; }
+  .s3-opt .tx { flex: 1; height: 4px; background: rgba(255, 255, 255, 0.10); position: relative; z-index: 2; }
+  .s3-a { top: 0; animation: s3-a 4s ease-out infinite; }
+  .s3-b { top: 32px; animation: s3-b 4s ease-out infinite; }
+  .s3-c { top: 64px; animation: s3-c 4s ease-out infinite; }
+  .s3-d { top: 96px; animation: s3-d 4s ease-out infinite; }
+  .s3-cbg { position: absolute; inset: 0; background: rgba(4, 170, 109, 0.2); transform: scaleX(0); transform-origin: left; animation: s3-cbg 4s ease-out infinite; z-index: 1; }
+  .s3-ck { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; }
+  .s3-ck path { stroke-dasharray: 15; stroke-dashoffset: 15; animation: s3-draw 4s ease-out infinite; }
+  .s3-cur { position: absolute; left: 0; top: 5px; font-size: 10px; color: #636378; opacity: 0; line-height: 1; animation: s3-cur 4s ease-out infinite; }
+  .s3-lbl { position: absolute; right: 0; top: 98px; font-size: 8px; color: #04AA6D; letter-spacing: 0.5px; opacity: 0; animation: s3-lbl 4s ease-out infinite; }
+  @keyframes s3-a { 0% { opacity: 0; transform: translateY(8px); } 15%, 75% { opacity: 1; transform: translateY(0); } 87.5%, 100% { opacity: 0; } }
+  @keyframes s3-b { 0%, 1.5% { opacity: 0; transform: translateY(8px); } 16.5%, 75% { opacity: 1; transform: translateY(0); } 87.5%, 100% { opacity: 0; } }
+  @keyframes s3-c {
+    0%, 3% { opacity: 0; transform: translateY(8px); border-color: rgba(255, 255, 255, 0.12); }
+    18%, 25% { opacity: 1; transform: translateY(0); border-color: rgba(255, 255, 255, 0.12); }
+    27.5%, 75% { opacity: 1; border-color: #04AA6D; }
+    87.5%, 100% { opacity: 0; border-color: rgba(255, 255, 255, 0.12); }
+  }
+  @keyframes s3-d { 0%, 4.5% { opacity: 0; transform: translateY(8px); } 19.5%, 75% { opacity: 1; transform: translateY(0); } 87.5%, 100% { opacity: 0; } }
+  @keyframes s3-cbg { 0%, 25% { transform: scaleX(0); } 32.5%, 75% { transform: scaleX(1); } 87.5%, 100% { transform: scaleX(0); } }
+  @keyframes s3-draw { 0%, 27.5% { stroke-dashoffset: 15; } 33.75%, 75% { stroke-dashoffset: 0; } 87.5%, 100% { stroke-dashoffset: 15; } }
+  @keyframes s3-cur {
+    0%, 15% { opacity: 0; transform: translateY(0); }
+    18.75% { opacity: 1; }
+    31.25% { opacity: 1; transform: translateY(46px); }
+    38.75% { opacity: 0; transform: translateY(46px); }
+    100% { opacity: 0; }
+  }
+  @keyframes s3-lbl { 0%, 36.25% { opacity: 0; } 42.5%, 75% { opacity: 1; } 87.5%, 100% { opacity: 0; } }
+
+  /* ===================================================
+     BRIEF 3 — Hero floating notification card
+     Container: 280 × 130px, #17172a bg with soft shadow lift
+     Place absolute in #hero, bottom-right of .h-inner (desktop)
+     Mobile: below CTA button, centered
+     =================================================== */
+  .h-card { width: 280px; height: 130px; background: #17172a; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45); font-family: 'Syne Mono', ui-monospace, monospace; position: relative; padding: 14px 14px 12px; box-sizing: border-box; opacity: 0; animation: h-card 5s infinite; }
+  .h-top { display: flex; align-items: center; gap: 7px; margin-bottom: 10px; }
+  .h-dot { width: 6px; height: 6px; border-radius: 50%; background: #04AA6D; animation: h-pulse 5s ease-out infinite; }
+  .h-name { font-size: 10px; color: #e0e0ee; text-transform: uppercase; letter-spacing: 0.7px; }
+  .h-act { margin-left: auto; font-size: 9px; color: #636378; letter-spacing: 0.4px; }
+  .h-div { height: 1px; background: rgba(255, 255, 255, 0.12); margin-bottom: 10px; }
+  .h-qb { height: 8px; background: rgba(255, 255, 255, 0.10); margin-bottom: 4px; transform: scaleX(0); transform-origin: left; animation: h-qb1 5s ease-out infinite; }
+  .h-qb2 { width: 70%; animation: h-qb2 5s ease-out infinite; }
+  .h-ans { display: inline-block; background: #04AA6D; padding: 3px 8px; margin-top: 8px; color: #fff; font-size: 10px; letter-spacing: 0.5px; clip-path: inset(0 100% 0 0); animation: h-ans 5s ease-out infinite; }
+  .h-cbox { margin-top: 8px; display: flex; align-items: center; gap: 8px; }
+  .h-conf { flex: 1; height: 3px; background: rgba(255, 255, 255, 0.10); overflow: hidden; }
+  .h-cfill { height: 100%; background: #04AA6D; transform: scaleX(0); transform-origin: left; animation: h-conf 5s ease-out infinite; }
+  .h-clbl { font-size: 8px; color: #04AA6D; letter-spacing: 0.5px; opacity: 0; animation: h-clbl 5s linear infinite; white-space: nowrap; }
+  @keyframes h-card {
+    0% { opacity: 0; transform: translateX(70px); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+    8% { opacity: 1; transform: translateX(0); animation-timing-function: linear; }
+    77% { opacity: 1; transform: translateX(0); animation-timing-function: ease-in; }
+    85% { opacity: 0; transform: translateX(80px); }
+    100% { opacity: 0; transform: translateX(80px); }
+  }
+  @keyframes h-pulse { 0%, 19% { transform: scale(1); } 22% { transform: scale(1.6); } 25%, 100% { transform: scale(1); } }
+  @keyframes h-qb1 { 0%, 10% { transform: scaleX(0); } 16%, 77% { transform: scaleX(1); } 85%, 100% { transform: scaleX(0); } }
+  @keyframes h-qb2 { 0%, 11.6% { transform: scaleX(0); } 17.6%, 77% { transform: scaleX(1); } 85%, 100% { transform: scaleX(0); } }
+  @keyframes h-ans { 0%, 24% { clip-path: inset(0 100% 0 0); } 31%, 77% { clip-path: inset(0 0 0 0); } 85%, 100% { clip-path: inset(0 100% 0 0); } }
+  @keyframes h-conf { 0%, 30% { transform: scaleX(0); } 41%, 77% { transform: scaleX(0.94); } 85%, 100% { transform: scaleX(0); } }
+  @keyframes h-clbl { 0%, 38% { opacity: 0; } 43%, 77% { opacity: 1; } 85%, 100% { opacity: 0; } }
+</style>
+</head>
+<body>
+
+<!-- ===================================================
+     BRIEF 2 — Process section step icons
+     =================================================== -->
+<div class="preview-section">
+<h3>Brief 2 — Process section</h3>
+<div class="step-row">
+
+<!-- STEP 01 — Install (puzzle-piece variant) -->
+<div class="s1">
+  <svg class="s1-svg" viewBox="0 0 40 40" aria-hidden="true">
+    <path class="s1-pp" d="M 6 10 L 16 10 A 4 4 0 0 0 24 10 L 34 10 L 34 18 A 4 4 0 0 0 34 26 L 34 36 L 6 36 Z"/>
+  </svg>
+  <div class="s1-text">Added to browser</div>
+</div>
+
+<!-- STEP 02 — Scan -->
+<div class="s2">
+  <div class="s2-bar s2-b1"></div>
+  <div class="s2-bar s2-b2"></div>
+  <div class="s2-bar s2-b3"></div>
+  <div class="s2-bar s2-b4"></div>
+  <div class="s2-scan"></div>
+  <div class="s2-arr">›</div>
+</div>
+
+<!-- STEP 03 — Deliver -->
+<div class="s3">
+  <div class="s3-cur">▶</div>
+  <div class="s3-opt s3-a"><div class="l">A</div><div class="tx"></div></div>
+  <div class="s3-opt s3-b"><div class="l">B</div><div class="tx"></div></div>
+  <div class="s3-opt s3-c">
+    <div class="s3-cbg"></div>
+    <div class="l">C</div>
+    <div class="tx"></div>
+    <svg class="s3-ck" viewBox="0 0 10 10" width="8" height="8" aria-hidden="true">
+      <path d="M2 5 L4 7 L8 3" fill="none" stroke="#04AA6D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="s3-opt s3-d"><div class="l">D</div><div class="tx"></div></div>
+  <div class="s3-lbl">98%</div>
+</div>
+
+</div>
+</div>
+
+<!-- ===================================================
+     BRIEF 3 — Hero floating notification card
+     =================================================== -->
+<div class="preview-section">
+<h3>Brief 3 — Hero notification card</h3>
+
+<div class="h-card">
+  <div class="h-top">
+    <div class="h-dot"></div>
+    <div class="h-name">Lacefi</div>
+    <div class="h-act">Active</div>
+  </div>
+  <div class="h-div"></div>
+  <div class="h-qb"></div>
+  <div class="h-qb h-qb2"></div>
+  <div class="h-ans">Answer: C</div>
+  <div class="h-cbox">
+    <div class="h-conf"><div class="h-cfill"></div></div>
+    <div class="h-clbl">94% confidence</div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!--
+  LACEFI — BRIEF 1: Product section autofill demo widget
+  -------------------------------------------------------
+  Drop the .lf-w block into your .p-img container (replacing the <img>).
+  Include the <style> block once on the page (or move to your stylesheet).
+  All class names are prefixed lf- to avoid collisions.
+
+  Spec: 420 × 520, 4:5 aspect, 5.8s seamless loop.
+  Requires Syne Mono font (already loaded on site). Pure CSS, no JS.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lacefi — Autofill demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+<style>
+  /* Page styles — for preview only, remove on site integration */
+  body { margin: 0; background: #1a1a1f; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px; }
+  .p-img { width: 100%; max-width: 420px; aspect-ratio: 4/5; }
+
+  /* ============================================
+     LACEFI WIDGET — copy from here to end-marker
+     ============================================ */
+  .lf-w { width: 100%; height: 100%; background: #f5f4ef; position: relative; font-family: 'Syne Mono', ui-monospace, monospace; overflow: hidden; }
+  .lf-chrome { height: 28px; background: #ecece6; border-bottom: 1px solid #dddcd4; display: flex; align-items: center; padding: 0 12px; gap: 6px; opacity: 0; animation: lf-fade 5.8s linear infinite; }
+  .lf-cd { width: 8px; height: 8px; border-radius: 50%; background: #dddcd4; flex: none; }
+  .lf-url { margin-left: auto; font-size: 9px; color: #9a9aaa; letter-spacing: 0.5px; }
+  .lf-body { padding: 30px 24px 20px; position: relative; }
+  .lf-qb1 { height: 12px; background: #dddcd4; margin-bottom: 8px; opacity: 0; transform: translateY(8px); animation: lf-q1 5.8s ease-out infinite; }
+  .lf-qb2 { height: 8px; width: 80%; background: #dddcd4; margin-bottom: 24px; opacity: 0; transform: translateY(8px); animation: lf-q2 5.8s ease-out infinite; }
+  .lf-opt { display: flex; align-items: center; gap: 12px; padding: 0 14px; height: 40px; border: 1px solid #dddcd4; margin-bottom: 7px; opacity: 0; transform: translateY(10px); position: relative; overflow: hidden; background: #f5f4ef; }
+  .lf-letter { font-size: 11px; color: #0d0d12; width: 14px; flex: none; position: relative; z-index: 2; }
+  .lf-tx { flex: 1; height: 6px; background: #dddcd4; position: relative; z-index: 2; }
+  .lf-a { animation: lf-row-a 5.8s ease-out infinite; }
+  .lf-b { animation: lf-row-b 5.8s ease-out infinite; }
+  .lf-c { animation: lf-row-c 5.8s ease-out infinite; }
+  .lf-d { animation: lf-row-d 5.8s ease-out infinite; }
+  .lf-cbg { position: absolute; inset: 0; background: rgba(4,170,109,0.13); transform: scaleX(0); transform-origin: left; animation: lf-cbg 5.8s ease-out infinite; z-index: 1; }
+  .lf-check { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); z-index: 2; }
+  .lf-check path { stroke-dasharray: 20; stroke-dashoffset: 20; animation: lf-check 5.8s ease-out infinite; }
+  .lf-conf { margin-top: 14px; height: 4px; background: #dddcd4; position: relative; opacity: 0; animation: lf-conf-show 5.8s linear infinite; }
+  .lf-conf-fill { height: 100%; width: 98%; background: #04AA6D; transform: scaleX(0); transform-origin: left; animation: lf-conf-fill 5.8s ease-out infinite; }
+  .lf-conf-lbl { position: absolute; right: 0; top: 8px; font-size: 9px; color: #04AA6D; opacity: 0; animation: lf-conf-lbl 5.8s linear infinite; letter-spacing: 0.5px; }
+  .lf-badge { position: absolute; top: 48px; right: 18px; background: #0d0d12; padding: 6px 10px; display: flex; align-items: center; gap: 6px; opacity: 0; transform: translateX(50px); animation: lf-badge 5.8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+  .lf-dot { width: 6px; height: 6px; border-radius: 2px; background: #04AA6D; animation: lf-pulse 5.8s ease-out infinite; }
+  .lf-name { color: #fff; font-size: 10px; letter-spacing: 0.5px; }
+
+  @keyframes lf-fade { 0% { opacity: 0; } 5.17%, 81.03% { opacity: 1; } 87.93%, 100% { opacity: 0; } }
+  @keyframes lf-q1 { 0%, 5.17% { opacity: 0; transform: translateY(8px); } 10.34%, 81.03% { opacity: 1; transform: translateY(0); } 87.93%, 100% { opacity: 0; transform: translateY(-4px); } }
+  @keyframes lf-q2 { 0%, 6.55% { opacity: 0; transform: translateY(8px); } 11.72%, 81.03% { opacity: 1; transform: translateY(0); } 87.93%, 100% { opacity: 0; transform: translateY(-4px); } }
+  @keyframes lf-row-a { 0%, 12.07% { opacity: 0; transform: translateY(10px); } 16.38%, 81.03% { opacity: 1; transform: translateY(0); } 87.93%, 100% { opacity: 0; } }
+  @keyframes lf-row-b { 0%, 13.62% { opacity: 0; transform: translateY(10px); } 17.93%, 81.03% { opacity: 1; transform: translateY(0); } 87.93%, 100% { opacity: 0; } }
+  @keyframes lf-row-c {
+    0%, 15.17% { opacity: 0; transform: translateY(10px); border-color: #dddcd4; }
+    19.48%, 34.48% { opacity: 1; transform: translateY(0); border-color: #dddcd4; }
+    35.34%, 81.03% { opacity: 1; border-color: #04AA6D; }
+    87.93%, 100% { opacity: 0; border-color: #dddcd4; }
+  }
+  @keyframes lf-row-d { 0%, 16.72% { opacity: 0; transform: translateY(10px); } 21.03%, 81.03% { opacity: 1; transform: translateY(0); } 87.93%, 100% { opacity: 0; } }
+  @keyframes lf-cbg { 0%, 31.9% { transform: scaleX(0); } 37.41%, 81.03% { transform: scaleX(1); } 87.93%, 100% { transform: scaleX(0); } }
+  @keyframes lf-check { 0%, 35.34% { stroke-dashoffset: 20; } 40.17%, 81.03% { stroke-dashoffset: 0; } 87.93%, 100% { stroke-dashoffset: 20; } }
+  @keyframes lf-conf-show { 0%, 39.66% { opacity: 0; } 43%, 81.03% { opacity: 1; } 87.93%, 100% { opacity: 0; } }
+  @keyframes lf-conf-fill { 0%, 39.66% { transform: scaleX(0); } 50%, 81.03% { transform: scaleX(1); } 87.93%, 100% { transform: scaleX(0); } }
+  @keyframes lf-conf-lbl { 0%, 44.83% { opacity: 0; } 50%, 81.03% { opacity: 1; } 87.93%, 100% { opacity: 0; } }
+  @keyframes lf-badge { 0%, 24.14% { opacity: 0; transform: translateX(50px); } 30.17%, 81.03% { opacity: 1; transform: translateX(0); } 87.93%, 100% { opacity: 0; transform: translateX(20px); } }
+  @keyframes lf-pulse { 0%, 27.59% { transform: scale(1); } 29.74% { transform: scale(1.5); } 31.9%, 100% { transform: scale(1); } }
+  /* end of widget styles */
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     PASTE THIS BLOCK INTO YOUR .p-img CONTAINER
+     ============================================ -->
+<div class="p-img">
+  <div class="lf-w">
+    <div class="lf-chrome">
+      <div class="lf-cd"></div><div class="lf-cd"></div><div class="lf-cd"></div>
+      <div class="lf-url">lms.university.ac.ke</div>
+    </div>
+    <div class="lf-body">
+      <div class="lf-qb1"></div>
+      <div class="lf-qb2"></div>
+      <div class="lf-opt lf-a"><div class="lf-letter">A</div><div class="lf-tx"></div></div>
+      <div class="lf-opt lf-b"><div class="lf-letter">B</div><div class="lf-tx"></div></div>
+      <div class="lf-opt lf-c">
+        <div class="lf-cbg"></div>
+        <div class="lf-letter">C</div>
+        <div class="lf-tx"></div>
+        <svg class="lf-check" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+          <path d="M3 8 L7 12 L13 4" fill="none" stroke="#04AA6D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="lf-opt lf-d"><div class="lf-letter">D</div><div class="lf-tx"></div></div>
+      <div class="lf-conf">
+        <div class="lf-conf-fill"></div>
+        <div class="lf-conf-lbl">98%</div>
+      </div>
+    </div>
+    <div class="lf-badge">
+      <div class="lf-dot"></div>
+      <div class="lf-name">Lacefi</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
