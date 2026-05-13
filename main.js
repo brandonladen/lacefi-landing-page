@@ -87,35 +87,11 @@ gsap.to('#bimg',{
   y:'-18%', ease:'none',
 });
 
-/* ── GALLERY scroll-driven (desktop) ─────── */
-if(window.innerWidth>768){
-  const gtrack = document.getElementById('gtrak');
-  gsap.to(gtrack,{
-    scrollTrigger:{ trigger:'#gallery', start:'top 55%', end:'bottom 0%', scrub:1.5 },
-    x:()=>-(gtrack.scrollWidth - window.innerWidth * .85),
-    ease:'none',
-  });
-}
-
-/* ── REVIEWS drag + wheel scroll ───────── */
-const ro = document.getElementById('rev-outer');
-let isDown=false, startX, scrollLeft;
-ro.addEventListener('mousedown',e=>{
-  isDown=true; ro.classList.add('dragging');
-  startX=e.pageX-ro.offsetLeft; scrollLeft=ro.scrollLeft;
+/* ── REVIEWS stagger reveal ─────────── */
+gsap.to('.r-card',{
+  scrollTrigger:{ trigger:'.rev-grid', start:'top 82%', toggleActions:'play none none none' },
+  y:0, opacity:1, duration:.7, stagger:.08, ease:'power2.out',
 });
-ro.addEventListener('mouseleave',()=>{ isDown=false; ro.classList.remove('dragging'); });
-ro.addEventListener('mouseup',()=>{ isDown=false; ro.classList.remove('dragging'); });
-ro.addEventListener('mousemove',e=>{
-  if(!isDown) return; e.preventDefault();
-  const x=e.pageX-ro.offsetLeft;
-  ro.scrollLeft=scrollLeft-(x-startX)*1.5;
-});
-ro.addEventListener('wheel',e=>{
-  if(Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-  e.preventDefault();
-  ro.scrollLeft += e.deltaY * 1.4;
-},{ passive:false });
 
 /* ── MANIFESTO parallax ─────────────────── */
 (function(){
