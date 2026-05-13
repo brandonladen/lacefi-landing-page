@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lacefi — Intelligence Engineered for the Academic Field</title>
+<title>Lacefi - Intelligence Engineered for the Academic Field</title>
 <meta name="description" content="Digital tools precision-crafted for the academic world. Built in Nairobi.">
 <link rel="canonical" href="https://lacefi.co.ke/" />
 <meta name="google-site-verification" content="0caBqUpGTrCRnl18_9s6ijyTphaZDAA6n0xJyyWCiLU" />
@@ -22,33 +22,46 @@
   --muted:   #636378;
   --dim:     #2a2a3e;
   --accent:  #04AA6D;
+  --wa:      #25D366;
 }
 html { scroll-behavior:smooth; }
 body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; overflow-x:hidden; }
 
-/* grain overlay */
 body::after { content:''; position:fixed; inset:0; z-index:9998; pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
   opacity:.5; }
 
-/* ── CURSOR ─────────────────────── */
+/* ── CURSOR (desktop only) ────────── */
 #cur      { position:fixed; width:7px; height:7px; border-radius:50%; background:var(--accent); pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .25s,height .25s; }
 #cur-ring { position:fixed; width:34px; height:34px; border-radius:50%; border:1px solid rgba(4,170,109,.3); pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .3s,height .3s; }
 @media(hover:none){ #cur,#cur-ring{ display:none; } }
 
-/* ── NAV ────────────────────────── */
-#nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.8rem 4rem; transition:background .4s,padding .4s,border-color .4s; border-bottom:1px solid transparent; }
-#nav.scrolled { background:rgba(7,7,15,.9); backdrop-filter:blur(14px); padding:1rem 4rem; border-bottom-color:var(--border); }
-.n-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.05rem; text-decoration:none; color:#fff; letter-spacing:.04em; }
+/* ── WHATSAPP FAB ─────────────────── */
+#wa-fab {
+  position:fixed; bottom:1.5rem; right:1.5rem; z-index:998;
+  width:54px; height:54px; border-radius:50%;
+  background:var(--wa);
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none;
+  box-shadow:0 4px 24px rgba(37,211,102,.35);
+  transition:transform .2s, box-shadow .2s;
+}
+#wa-fab:hover { transform:scale(1.1); box-shadow:0 6px 32px rgba(37,211,102,.5); }
+#wa-fab svg { width:26px; height:26px; fill:#fff; }
+
+/* ── NAV ──────────────────────────── */
+#nav { position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; padding:1.6rem 4rem; transition:background .4s,padding .4s,border-color .4s; border-bottom:1px solid transparent; }
+#nav.scrolled { background:rgba(7,7,15,.92); backdrop-filter:blur(14px); padding:.9rem 4rem; border-bottom-color:var(--border); }
+.n-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.1rem; text-decoration:none; color:#fff; letter-spacing:.04em; }
 .n-logo em { font-style:normal; color:var(--accent); }
 .n-links { display:flex; gap:2.5rem; list-style:none; }
 .n-links a { font-family:'Syne Mono',monospace; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
 .n-links a:hover { color:#fff; }
 .n-pill { font-family:'Syne Mono',monospace; font-size:.67rem; letter-spacing:.13em; text-transform:uppercase; color:#07070f; background:var(--accent); padding:.52rem 1.3rem; text-decoration:none; transition:opacity .2s; }
 .n-pill:hover { opacity:.82; }
-@media(max-width:768px){ #nav,#nav.scrolled{ padding:1rem 1.5rem; } .n-links{ display:none; } }
+@media(max-width:768px){ #nav,#nav.scrolled{ padding:.9rem 1.5rem; } .n-links{ display:none; } }
 
-/* ── HERO ───────────────────────── */
+/* ── HERO ─────────────────────────── */
 #hero { min-height:100dvh; display:flex; flex-direction:column; justify-content:flex-end; padding:0 4rem 5.5rem; position:relative; overflow:hidden; }
 .h-grid { position:absolute; inset:0; z-index:0;
   background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
@@ -60,27 +73,27 @@ body::after { content:''; position:fixed; inset:0; z-index:9998; pointer-events:
 .h-inner { position:relative; z-index:1; }
 
 .h-eye { font-family:'Syne Mono',monospace; font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; color:var(--accent); margin-bottom:2rem; display:block; overflow:hidden; }
-.h-eye span { display:block; transform:translateY(110%); }
+.h-eye-inner { display:block; }
 
-.h-title { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(3.2rem,9.8vw,9.8rem); line-height:.92; letter-spacing:-.04em; margin-bottom:3.5rem; max-width:14ch; }
-.h-title .ln { overflow:hidden; display:block; }
-.h-title .ln > span { display:block; transform:translateY(115%); }
-.h-title .acc { color:var(--accent); }
+.h-title { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(3rem,9.5vw,9.5rem); line-height:.92; letter-spacing:-.04em; margin-bottom:3.5rem; max-width:14ch; }
+.h-ln { overflow:hidden; display:block; }
+.h-ln > span { display:block; }
+.h-acc { color:var(--accent); }
 
 .h-bot { display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
-.h-sub { font-size:clamp(.85rem,1.4vw,.97rem); font-weight:300; line-height:1.8; color:var(--muted); max-width:40ch; opacity:0; }
+.h-sub { font-size:clamp(.85rem,1.4vw,.97rem); font-weight:300; line-height:1.8; color:var(--muted); max-width:40ch; }
 .h-right { display:flex; flex-direction:column; align-items:flex-end; gap:1.2rem; }
-.btn-fill { font-family:'Syne Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:#07070f; background:var(--accent); padding:.9rem 2rem; text-decoration:none; transition:opacity .2s; white-space:nowrap; }
+.btn-fill { font-family:'Syne Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:#07070f; background:var(--accent); padding:.9rem 2rem; text-decoration:none; transition:opacity .2s; white-space:nowrap; display:inline-block; min-height:44px; display:inline-flex; align-items:center; }
 .btn-fill:hover { opacity:.82; }
-.btn-ghost { font-family:'Syne Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:#fff; border:1px solid var(--dim); padding:.9rem 2rem; text-decoration:none; transition:border-color .2s,color .2s; white-space:nowrap; display:inline-block; }
+.btn-ghost { font-family:'Syne Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:#fff; border:1px solid var(--dim); padding:.9rem 2rem; text-decoration:none; transition:border-color .2s,color .2s; white-space:nowrap; display:inline-flex; align-items:center; min-height:44px; }
 .btn-ghost:hover { border-color:var(--accent); color:var(--accent); }
-.h-scroll-hint { font-family:'Syne Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); display:flex; align-items:center; gap:.7rem; opacity:0; }
+.h-scroll-hint { font-family:'Syne Mono',monospace; font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--dim); display:flex; align-items:center; gap:.7rem; }
 .h-scroll-hint::before { content:''; display:block; width:1px; height:36px; background:var(--dim); animation:sline 2s ease-in-out infinite; }
 @keyframes sline { 0%,100%{opacity:.2;transform:scaleY(1)} 50%{opacity:.65;transform:scaleY(1.3)} }
 @media(max-width:768px){ #hero{ padding:0 1.5rem 4rem; } .h-bot{ flex-direction:column; align-items:flex-start; } .h-right{ align-items:flex-start; } }
 
-/* ── TICKER ─────────────────────── */
-.ticker-outer { overflow:hidden; padding:.85rem 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--surface); }
+/* ── TICKER ───────────────────────── */
+.ticker-outer { overflow:hidden; padding:.82rem 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--surface); }
 .ticker-row { display:flex; width:max-content; }
 .ticker-row.fwd { animation:tickfwd 32s linear infinite; }
 .ticker-row.rev { animation:tickrev 28s linear infinite; }
@@ -89,49 +102,46 @@ body::after { content:''; position:fixed; inset:0; z-index:9998; pointer-events:
 @keyframes tickfwd { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @keyframes tickrev { from{transform:translateX(-50%)} to{transform:translateX(0)} }
 
-/* ── WORD ART ───────────────────── */
+/* ── WORD ART ─────────────────────── */
 #wordart { padding:6rem 4rem; overflow:hidden; border-top:1px solid var(--border); }
-.wa-stage { position:relative; display:flex; flex-wrap:wrap; align-items:center; gap:.2rem .8rem; line-height:1; }
-.wa-word { font-family:'Syne',sans-serif; font-weight:800; letter-spacing:-.03em; display:inline-block; }
-.wa-xl  { font-size:clamp(4rem,10vw,10rem); }
-.wa-lg  { font-size:clamp(2.5rem,6vw,6rem); }
-.wa-md  { font-size:clamp(1.6rem,3.5vw,3.5rem); }
-.wa-sm  { font-size:clamp(1rem,2vw,2rem); }
-.wa-xs  { font-size:clamp(.75rem,1.3vw,1.3rem); }
+.wa-stage { display:flex; flex-wrap:wrap; align-items:center; gap:.15rem .6rem; line-height:1; }
+.wa-word { font-family:'Syne',sans-serif; font-weight:800; letter-spacing:-.03em; display:inline-block; will-change:transform,opacity; }
+.wa-xl  { font-size:clamp(3rem,9.5vw,9.5rem); }
+.wa-lg  { font-size:clamp(2rem,5.5vw,5.5rem); }
+.wa-md  { font-size:clamp(1.4rem,3vw,3rem); }
+.wa-sm  { font-size:clamp(1rem,1.8vw,1.8rem); }
+.wa-xs  { font-size:clamp(.8rem,1.2vw,1.2rem); }
 .wa-white  { color:#fff; }
 .wa-muted  { color:var(--muted); }
 .wa-dim    { color:var(--dim); }
 .wa-accent { color:var(--accent); }
 @media(max-width:768px){ #wordart{ padding:4rem 1.5rem; } }
 
-/* ── SHARED SECTION ─────────────── */
+/* ── SHARED ───────────────────────── */
 section { padding:8rem 4rem; }
 .eyebrow { font-family:'Syne Mono',monospace; font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; color:var(--accent); margin-bottom:2rem; display:block; }
 .reveal { opacity:0; transform:translateY(34px); }
-@media(max-width:768px){ section{ padding:5rem 1.5rem; } }
+.rule { height:1px; background:var(--border); margin:0 4rem; }
+@media(max-width:768px){ section{ padding:5rem 1.5rem; } .rule{ margin:0 1.5rem; } }
 
-/* ── NUMBERS ────────────────────── */
+/* ── NUMBERS ──────────────────────── */
 #numbers { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
 .n-stats { display:flex; flex-direction:column; gap:2.5rem; }
 .stat { padding-left:1.5rem; border-left:1px solid var(--border); display:flex; flex-direction:column; gap:.35rem; }
-.stat-val { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(2.4rem,5vw,4.5rem); letter-spacing:-.03em; color:#fff; line-height:1; }
+.stat-val { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(2.2rem,5vw,4.5rem); letter-spacing:-.03em; color:#fff; line-height:1; }
 .stat-val em { font-style:normal; color:var(--accent); }
 .stat-lbl { font-family:'Syne Mono',monospace; font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
-.n-txt h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(1.9rem,3.2vw,2.9rem); line-height:1.15; letter-spacing:-.025em; margin-bottom:1.4rem; }
+.n-txt h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(1.8rem,3.2vw,2.9rem); line-height:1.15; letter-spacing:-.025em; margin-bottom:1.4rem; }
 .n-txt p  { font-size:.93rem; line-height:1.85; color:var(--muted); max-width:40ch; }
 @media(max-width:768px){ #numbers{ grid-template-columns:1fr; gap:3.5rem; } }
 
-/* ── RULE ───────────────────────── */
-.rule { height:1px; background:var(--border); margin:0 4rem; }
-@media(max-width:768px){ .rule{ margin:0 1.5rem; } }
-
-/* ── PRODUCT ────────────────────── */
+/* ── PRODUCT ──────────────────────── */
 #product { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
 .p-img { position:relative; overflow:hidden; aspect-ratio:4/5; clip-path:inset(0 100% 0 0); }
 .p-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.58) saturate(.65); display:block; transition:transform .7s; }
 .p-img:hover img { transform:scale(1.04); }
 .p-img::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(4,170,109,.08) 0%,transparent 55%); }
-.p-txt h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(1.9rem,3.2vw,3rem); line-height:1.1; letter-spacing:-.025em; margin-bottom:1.4rem; }
+.p-txt h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(1.8rem,3.2vw,3rem); line-height:1.1; letter-spacing:-.025em; margin-bottom:1.4rem; }
 .p-txt h2 em { font-style:normal; color:var(--accent); }
 .p-txt .psub { font-size:.93rem; line-height:1.85; color:var(--muted); margin-bottom:2.5rem; }
 .feats { list-style:none; display:flex; flex-direction:column; gap:.9rem; margin-bottom:2.5rem; }
@@ -140,39 +150,41 @@ section { padding:8rem 4rem; }
 .feats li:hover { color:#fff; }
 @media(max-width:768px){ #product{ grid-template-columns:1fr; gap:2.5rem; } }
 
-/* ── GALLERY ────────────────────── */
-#gallery { padding:0; overflow:hidden; border-top:1px solid var(--border); position:relative; }
+/* ── GALLERY ──────────────────────── */
+#gallery { padding:0; overflow:hidden; border-top:1px solid var(--border); }
 .gal-label { font-family:'Syne Mono',monospace; font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; color:var(--accent); padding:2.5rem 4rem 1.5rem; display:block; }
-.gal-track { display:flex; gap:1.5rem; padding:0 4rem 3rem; width:max-content; will-change:transform; }
-.gal-img { flex-shrink:0; width:clamp(260px,30vw,420px); aspect-ratio:3/4; overflow:hidden; position:relative; }
+.gal-outer { overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+.gal-outer::-webkit-scrollbar { display:none; }
+.gal-track { display:flex; gap:1.5rem; padding:0 4rem 3rem; width:max-content; }
+.gal-img { flex-shrink:0; width:clamp(220px,28vw,400px); aspect-ratio:3/4; overflow:hidden; position:relative; }
 .gal-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.55) saturate(.6); display:block; transition:transform .6s,filter .4s; }
-.gal-img:hover img { transform:scale(1.06); filter:brightness(.7) saturate(.8); }
-.gal-img .gal-cap { position:absolute; bottom:1.5rem; left:1.5rem; font-family:'Syne Mono',monospace; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.45); }
+.gal-img:hover img { transform:scale(1.06); filter:brightness(.7) saturate(.85); }
+.gal-cap { position:absolute; bottom:1.2rem; left:1.2rem; font-family:'Syne Mono',monospace; font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.4); }
 @media(max-width:768px){ .gal-track{ gap:1rem; padding:0 1.5rem 2.5rem; } .gal-label{ padding:2rem 1.5rem 1rem; } }
 
-/* ── INSTITUTIONS ───────────────── */
+/* ── INSTITUTIONS ─────────────────── */
 #institutions { padding:5rem 0; border-top:1px solid var(--border); overflow:hidden; }
 .inst-head { padding:0 4rem 3rem; }
 .inst-head span { font-family:'Syne Mono',monospace; font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:.7rem; }
 .inst-head p { font-family:'Syne',sans-serif; font-weight:700; font-size:clamp(1.3rem,2.5vw,2rem); letter-spacing:-.015em; color:#fff; }
-.inst-row { display:flex; width:max-content; margin-bottom:1rem; }
-.inst-row.r1 { animation:tickfwd 40s linear infinite; }
+.inst-row { display:flex; width:max-content; margin-bottom:.6rem; }
+.inst-row.r1 { animation:tickfwd 42s linear infinite; }
 .inst-row.r2 { animation:tickrev 38s linear infinite; }
 .inst-item { display:flex; align-items:center; gap:.6rem; padding:0 2.5rem; white-space:nowrap; }
-.inst-name { font-family:'Syne',sans-serif; font-weight:600; font-size:clamp(.9rem,1.5vw,1.1rem); color:var(--muted); transition:color .2s; }
-.inst-country { font-family:'Syne Mono',monospace; font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:var(--dim); }
+.inst-name { font-family:'Syne',sans-serif; font-weight:600; font-size:clamp(.88rem,1.4vw,1.05rem); color:var(--muted); }
+.inst-country { font-family:'Syne Mono',monospace; font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; color:var(--dim); }
 .inst-dot { width:4px; height:4px; border-radius:50%; background:var(--border); flex-shrink:0; }
 @media(max-width:768px){ .inst-head{ padding:0 1.5rem 2.5rem; } }
 
-/* ── BANNER ─────────────────────── */
-.banner { position:relative; height:52vh; min-height:300px; overflow:hidden; }
+/* ── BANNER ───────────────────────── */
+.banner { position:relative; height:52vh; min-height:280px; overflow:hidden; }
 .banner img { width:100%; height:115%; object-fit:cover; filter:brightness(.25) saturate(.45); display:block; }
 .banner-over { position:absolute; inset:0; background:linear-gradient(to right,rgba(7,7,15,.94) 0%,rgba(7,7,15,.1) 100%); display:flex; align-items:center; padding:0 4rem; }
 .banner-txt { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(1.5rem,4vw,3.8rem); line-height:1.15; letter-spacing:-.022em; max-width:18ch; }
 .banner-txt em { font-style:normal; color:var(--accent); }
 @media(max-width:768px){ .banner-over{ padding:0 1.5rem; } }
 
-/* ── PROCESS ────────────────────── */
+/* ── PROCESS ──────────────────────── */
 .proc-top { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:2rem; margin-bottom:4rem; }
 .proc-top h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(1.8rem,3vw,2.6rem); letter-spacing:-.025em; }
 .proc-grid { display:grid; grid-template-columns:repeat(3,1fr); }
@@ -189,23 +201,55 @@ section { padding:8rem 4rem; }
   .step:not(:first-child) { padding-left:0; }
 }
 
-/* ── QUOTE ──────────────────────── */
-#quote { text-align:center; background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-.qmark { font-family:'Syne',sans-serif; font-size:7rem; line-height:.35; color:var(--accent); opacity:.2; display:block; margin-bottom:1.5rem; }
-blockquote { font-family:'Syne',sans-serif; font-weight:700; font-size:clamp(1.35rem,2.8vw,2.4rem); line-height:1.35; letter-spacing:-.015em; max-width:22ch; margin:0 auto 1.8rem; }
-.q-attr { font-family:'Syne Mono',monospace; font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+/* ── REVIEWS ──────────────────────── */
+#reviews { padding:8rem 0; border-top:1px solid var(--border); overflow:hidden; }
+.rev-head { padding:0 4rem 3rem; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+.rev-head h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(1.8rem,3vw,2.6rem); letter-spacing:-.025em; }
+.rev-outer { overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; cursor:grab; }
+.rev-outer::-webkit-scrollbar { display:none; }
+.rev-outer.dragging { cursor:grabbing; }
+.rev-track { display:flex; gap:1.5rem; padding:0 4rem 1.5rem; width:max-content; }
+.r-card {
+  flex-shrink:0; width:clamp(260px,30vw,340px);
+  background:var(--surface); border:1px solid var(--border);
+  padding:2rem; display:flex; flex-direction:column; gap:1.2rem;
+  transition:border-color .3s;
+}
+.r-card:hover { border-color:rgba(4,170,109,.25); }
+.r-stars { color:var(--accent); font-size:.85rem; letter-spacing:.08em; }
+.r-text { font-size:.93rem; line-height:1.75; color:var(--text); flex:1; font-weight:300; }
+.r-text::before { content:'\201C'; }
+.r-text::after  { content:'\201D'; }
+.r-meta { display:flex; flex-direction:column; gap:.25rem; padding-top:1rem; border-top:1px solid var(--border); }
+.r-name { font-family:'Syne',sans-serif; font-weight:700; font-size:.85rem; }
+.r-inst { font-family:'Syne Mono',monospace; font-size:.6rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); }
+@media(max-width:768px){ .rev-head{ padding:0 1.5rem 2.5rem; } .rev-track{ padding:0 1.5rem 1.5rem; } }
 
-/* ── CTA ────────────────────────── */
+/* ── WHATSAPP SECTION ─────────────── */
+#whatsapp { padding:5rem 4rem; border-top:1px solid var(--border); display:flex; align-items:center; gap:3rem; flex-wrap:wrap; }
+.wa-text h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(1.6rem,2.8vw,2.4rem); letter-spacing:-.02em; margin-bottom:.7rem; }
+.wa-text p { font-size:.93rem; line-height:1.8; color:var(--muted); max-width:44ch; }
+.wa-btn {
+  display:inline-flex; align-items:center; gap:.75rem; flex-shrink:0;
+  font-family:'Syne Mono',monospace; font-size:.7rem; letter-spacing:.13em; text-transform:uppercase;
+  color:#fff; background:#1a1a2e; border:1px solid var(--wa);
+  padding:1rem 1.8rem; text-decoration:none; transition:background .2s; min-height:52px;
+}
+.wa-btn:hover { background:rgba(37,211,102,.1); }
+.wa-btn svg { width:20px; height:20px; fill:var(--wa); flex-shrink:0; }
+@media(max-width:768px){ #whatsapp{ padding:4rem 1.5rem; flex-direction:column; align-items:flex-start; } }
+
+/* ── CTA ──────────────────────────── */
 #cta { text-align:center; position:relative; overflow:hidden; padding:10rem 4rem; }
-.cta-orb { position:absolute; top:50%; left:50%; width:70vw; height:70vw; background:radial-gradient(circle,rgba(4,170,109,.058) 0%,transparent 65%); border-radius:50%; pointer-events:none; transform:translate(-50%,-50%); animation:porb 5s ease-in-out infinite; }
+.cta-orb { position:absolute; top:50%; left:50%; width:70vw; height:70vw; background:radial-gradient(circle,rgba(4,170,109,.055) 0%,transparent 65%); border-radius:50%; pointer-events:none; transform:translate(-50%,-50%); animation:porb 5s ease-in-out infinite; }
 @keyframes porb { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5} 50%{transform:translate(-50%,-50%) scale(1.1);opacity:1} }
 #cta h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(2.8rem,8.5vw,8.5rem); line-height:.92; letter-spacing:-.04em; margin-bottom:2rem; position:relative; }
 #cta h2 em { font-style:normal; color:var(--accent); }
-#cta p { font-size:.93rem; color:var(--muted); margin-bottom:3rem; position:relative; }
-.cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+#cta .cta-sub { font-size:.93rem; color:var(--muted); margin-bottom:3rem; position:relative; }
+.cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative; }
 @media(max-width:768px){ #cta{ padding:6rem 1.5rem; } }
 
-/* ── FOOTER ─────────────────────── */
+/* ── FOOTER ───────────────────────── */
 footer { padding:2.2rem 4rem; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
 .f-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:.9rem; }
 .f-logo em { font-style:normal; color:var(--accent); }
@@ -219,6 +263,11 @@ footer a:hover { color:var(--accent); }
 
 <div id="cur"></div>
 <div id="cur-ring"></div>
+
+<!-- WhatsApp FAB -->
+<a id="wa-fab" href="https://wa.me/254770329788?text=What%20is%20Lacefi%20Autofill%20and%20how%20does%20it%20work%3F" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <!-- NAV -->
 <nav id="nav">
@@ -236,27 +285,23 @@ footer a:hover { color:var(--accent); }
   <div class="h-grid"></div>
   <div class="h-orb"></div>
   <div class="h-inner">
-
-    <span class="h-eye"><span>— Lacefi · Nairobi, Kenya —</span></span>
-
+    <span class="h-eye"><span class="h-eye-inner">- Lacefi - Nairobi, Kenya -</span></span>
     <h1 class="h-title">
-      <span class="ln"><span id="w0">Intelligence,</span></span>
-      <span class="ln"><span id="w1">automated</span></span>
-      <span class="ln acc"><span id="w2">for you.</span></span>
+      <span class="h-ln"><span id="w0">Intelligence,</span></span>
+      <span class="h-ln"><span id="w1">automated</span></span>
+      <span class="h-ln h-acc"><span id="w2">for you.</span></span>
     </h1>
-
     <div class="h-bot">
-      <p class="h-sub" id="hsub">We engineer digital tools that operate at the intersection of technology and academic performance — fast, precise, invisible.</p>
+      <p class="h-sub" id="hsub">We engineer digital tools that operate at the intersection of technology and academic performance. Fast, precise, invisible.</p>
       <div class="h-right">
-        <a href="https://guide.lacefi.co.ke" class="btn-fill" id="hcta" target="_blank" rel="noopener">Get started →</a>
+        <a href="https://guide.lacefi.co.ke" class="btn-fill" id="hcta" target="_blank" rel="noopener">Get started</a>
         <span class="h-scroll-hint" id="hscroll">Scroll</span>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- TICKER row 1 -->
+<!-- TICKER 1 -->
 <div class="ticker-outer">
   <div class="ticker-row fwd">
     <span class="ta">Intelligence</span><span>·</span><span>Academic Precision</span><span>·</span>
@@ -291,7 +336,7 @@ footer a:hover { color:var(--accent); }
   </div>
 </section>
 
-<!-- TICKER row 2 (reverse) -->
+<!-- TICKER 2 (reverse) -->
 <div class="ticker-outer">
   <div class="ticker-row rev">
     <span class="ta">Precision</span><span>·</span><span>Edge</span><span>·</span>
@@ -325,7 +370,7 @@ footer a:hover { color:var(--accent); }
   <div class="n-txt">
     <span class="eyebrow">What we believe</span>
     <h2 class="reveal">Not every tool<br>is created equal.</h2>
-    <p class="reveal">We design with intent. We build with precision. Every product we ship gives you an edge — quietly, efficiently, and at scale.</p>
+    <p class="reveal">We design with intent. We build with precision. Every product we ship gives you an edge quietly, efficiently, and at scale.</p>
   </div>
 </section>
 
@@ -334,53 +379,55 @@ footer a:hover { color:var(--accent); }
 <!-- PRODUCT -->
 <section id="product">
   <div class="p-img" id="pimg">
-    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80" alt="Study" loading="lazy" />
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Focused work" loading="lazy" />
   </div>
   <div class="p-txt">
     <span class="eyebrow">The product</span>
     <h2 class="reveal">A tool so seamless,<br>it feels like <em>thinking.</em></h2>
-    <p class="psub reveal">An intelligent browser extension that integrates into your academic workflow. It reads. It reasons. It delivers — before you even finish the question.</p>
+    <p class="psub reveal">An intelligent browser extension that integrates into your academic workflow. It reads. It reasons. It delivers before you even finish the question.</p>
     <ul class="feats">
       <li class="reveal">Installs in under 60 seconds</li>
       <li class="reveal">Works across major learning platforms</li>
       <li class="reveal">AI-powered with context retrieval</li>
       <li class="reveal">Engineered for speed and accuracy</li>
     </ul>
-    <a href="https://guide.lacefi.co.ke" class="btn-fill reveal" target="_blank" rel="noopener">Read the guide →</a>
+    <a href="https://guide.lacefi.co.ke" class="btn-fill reveal" target="_blank" rel="noopener">Read the guide</a>
   </div>
 </section>
 
-<!-- IMAGE GALLERY (horizontal scroll) -->
+<!-- IMAGE GALLERY -->
 <div id="gallery">
-  <span class="gal-label">— Academic minds, worldwide —</span>
-  <div class="gal-track" id="gtrak">
-    <div class="gal-img">
-      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
-      <span class="gal-cap">Focus</span>
-    </div>
-    <div class="gal-img">
-      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
-      <span class="gal-cap">Collaboration</span>
-    </div>
-    <div class="gal-img">
-      <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
-      <span class="gal-cap">Precision</span>
-    </div>
-    <div class="gal-img">
-      <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
-      <span class="gal-cap">Depth</span>
-    </div>
-    <div class="gal-img">
-      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
-      <span class="gal-cap">Speed</span>
-    </div>
-    <div class="gal-img">
-      <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
-      <span class="gal-cap">Intelligence</span>
-    </div>
-    <div class="gal-img">
-      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
-      <span class="gal-cap">Together</span>
+  <span class="gal-label">- Academic minds, worldwide -</span>
+  <div class="gal-outer">
+    <div class="gal-track" id="gtrak">
+      <div class="gal-img">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
+        <span class="gal-cap">Discussion</span>
+      </div>
+      <div class="gal-img">
+        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
+        <span class="gal-cap">Collaboration</span>
+      </div>
+      <div class="gal-img">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
+        <span class="gal-cap">Strategy</span>
+      </div>
+      <div class="gal-img">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
+        <span class="gal-cap">Focus</span>
+      </div>
+      <div class="gal-img">
+        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
+        <span class="gal-cap">Clarity</span>
+      </div>
+      <div class="gal-img">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
+        <span class="gal-cap">Precision</span>
+      </div>
+      <div class="gal-img">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" />
+        <span class="gal-cap">Together</span>
+      </div>
     </div>
   </div>
 </div>
@@ -389,37 +436,35 @@ footer a:hover { color:var(--accent); }
 <section id="institutions">
   <div class="inst-head">
     <span class="eyebrow">Trusted globally</span>
-    <p>Curious minds at these institutions<br>have chosen Lacefi.</p>
+    <p class="reveal">Curious minds at these institutions<br>already use Lacefi.</p>
   </div>
   <div class="inst-row r1">
     <div class="inst-item"><span class="inst-name">Monash University</span><span class="inst-country">Australia</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">IIIT Nagpur</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Université de Reims</span><span class="inst-country">France</span><span class="inst-dot"></span></div>
+    <div class="inst-item"><span class="inst-name">Universite de Reims</span><span class="inst-country">France</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Voronezh State University</span><span class="inst-country">Russia</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">AUIS Sulaimani</span><span class="inst-country">Iraq</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Mount Kenya University</span><span class="inst-country">Kenya</span><span class="inst-dot"></span></div>
-    <!-- duplicate for seamless loop -->
     <div class="inst-item"><span class="inst-name">Monash University</span><span class="inst-country">Australia</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">IIIT Nagpur</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Université de Reims</span><span class="inst-country">France</span><span class="inst-dot"></span></div>
+    <div class="inst-item"><span class="inst-name">Universite de Reims</span><span class="inst-country">France</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Voronezh State University</span><span class="inst-country">Russia</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">AUIS Sulaimani</span><span class="inst-country">Iraq</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Mount Kenya University</span><span class="inst-country">Kenya</span><span class="inst-dot"></span></div>
   </div>
   <div class="inst-row r2">
-    <div class="inst-item"><span class="inst-name">Kalinga Institute of Technology</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
+    <div class="inst-item"><span class="inst-name">KIIT University</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">IFRS</span><span class="inst-country">Brazil</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Universidad Nacional de San Luis</span><span class="inst-country">Argentina</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Dedan Kimathi University</span><span class="inst-country">Kenya</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Medical Doctor International Academy</span><span class="inst-country">Israel · Czech Republic</span><span class="inst-dot"></span></div>
+    <div class="inst-item"><span class="inst-name">Medical Doctor Int. Academy</span><span class="inst-country">Israel / Czech Republic</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Saveetha Engineering College</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Universidad Iberoamericana</span><span class="inst-country">Ecuador</span><span class="inst-dot"></span></div>
-    <!-- duplicate -->
-    <div class="inst-item"><span class="inst-name">Kalinga Institute of Technology</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
+    <div class="inst-item"><span class="inst-name">KIIT University</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">IFRS</span><span class="inst-country">Brazil</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Universidad Nacional de San Luis</span><span class="inst-country">Argentina</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Dedan Kimathi University</span><span class="inst-country">Kenya</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Medical Doctor International Academy</span><span class="inst-country">Israel · Czech Republic</span><span class="inst-dot"></span></div>
+    <div class="inst-item"><span class="inst-name">Medical Doctor Int. Academy</span><span class="inst-country">Israel / Czech Republic</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Saveetha Engineering College</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
     <div class="inst-item"><span class="inst-name">Universidad Iberoamericana</span><span class="inst-country">Ecuador</span><span class="inst-dot"></span></div>
   </div>
@@ -427,7 +472,7 @@ footer a:hover { color:var(--accent); }
 
 <!-- BANNER -->
 <div class="banner">
-  <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy" id="bimg" />
+  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy" id="bimg" />
   <div class="banner-over">
     <p class="banner-txt reveal">Built for the generation that <em>refuses to fall behind.</em></p>
   </div>
@@ -443,7 +488,7 @@ footer a:hover { color:var(--accent); }
     <div class="step">
       <span class="sn">01 /</span>
       <p class="st">Arrives quietly</p>
-      <p class="sd">Install in under a minute. No configuration, no wizards. It's simply there, ready when you are.</p>
+      <p class="sd">Install in under a minute. No configuration, no wizards. It is simply there, ready when you are.</p>
     </div>
     <div class="step">
       <span class="sn">02 /</span>
@@ -453,25 +498,109 @@ footer a:hover { color:var(--accent); }
     <div class="step">
       <span class="sn">03 /</span>
       <p class="st">Delivers precision</p>
-      <p class="sd">Watch it work. Accurate, fast, invisible. It operates at the speed of thought — yours included.</p>
+      <p class="sd">Watch it work. Accurate, fast, invisible. It operates at the speed of thought, yours included.</p>
     </div>
   </div>
 </section>
 
-<!-- QUOTE -->
-<section id="quote">
-  <span class="qmark">"</span>
-  <blockquote class="reveal">The smartest academic tool I've used in three years of university.</blockquote>
-  <p class="q-attr">— Final Year Student, Kenya</p>
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="rev-head">
+    <div>
+      <span class="eyebrow">What they say</span>
+      <h2 class="reveal">Voices from the field.</h2>
+    </div>
+  </div>
+  <div class="rev-outer" id="rev-outer">
+    <div class="rev-track" id="rtrak">
+      <div class="r-card">
+        <div class="r-stars">★★★★★</div>
+        <p class="r-text">Been using it for three weeks. The accuracy is honestly unreal.</p>
+        <div class="r-meta">
+          <span class="r-name">Final Year Student</span>
+          <span class="r-inst">Kenya</span>
+        </div>
+      </div>
+      <div class="r-card">
+        <div class="r-stars">★★★★★</div>
+        <p class="r-text">Ghost mode saved me during my mid-terms. I didn't even have to think twice.</p>
+        <div class="r-meta">
+          <span class="r-name">Engineering Student</span>
+          <span class="r-inst">India</span>
+        </div>
+      </div>
+      <div class="r-card">
+        <div class="r-stars">★★★★★</div>
+        <p class="r-text">I didn't believe it would work this well. Then it did. Nothing else to say.</p>
+        <div class="r-meta">
+          <span class="r-name">Postgraduate Researcher</span>
+          <span class="r-inst">Australia</span>
+        </div>
+      </div>
+      <div class="r-card">
+        <div class="r-stars">★★★★☆</div>
+        <p class="r-text">Clean interface, fast answers. It just works. No fuss.</p>
+        <div class="r-meta">
+          <span class="r-name">CS Student</span>
+          <span class="r-inst">Iraq</span>
+        </div>
+      </div>
+      <div class="r-card">
+        <div class="r-stars">★★★★★</div>
+        <p class="r-text">I told my entire study group about it. We all use it now. Every exam season.</p>
+        <div class="r-meta">
+          <span class="r-name">Undergraduate</span>
+          <span class="r-inst">France</span>
+        </div>
+      </div>
+      <div class="r-card">
+        <div class="r-stars">★★★★★</div>
+        <p class="r-text">The fastest academic tool I have ever installed. It was ready before I finished reading the question.</p>
+        <div class="r-meta">
+          <span class="r-name">Student</span>
+          <span class="r-inst">Russia</span>
+        </div>
+      </div>
+      <div class="r-card">
+        <div class="r-stars">★★★★☆</div>
+        <p class="r-text">Expected it to be complicated. It is the opposite. Remarkably simple to use.</p>
+        <div class="r-meta">
+          <span class="r-name">Undergraduate</span>
+          <span class="r-inst">Brazil</span>
+        </div>
+      </div>
+      <div class="r-card">
+        <div class="r-stars">★★★★★</div>
+        <p class="r-text">Lacefi completely changed how I approach my coursework. I operate differently now.</p>
+        <div class="r-meta">
+          <span class="r-name">Second Year Student</span>
+          <span class="r-inst">Kenya</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP -->
+<section id="whatsapp">
+  <div class="wa-text">
+    <span class="eyebrow">Got questions?</span>
+    <h2 class="reveal">Ask us directly.<br>We are right here.</h2>
+    <p class="reveal">Not sure how Lacefi Autofill works? Curious about ghost mode? Reach out on WhatsApp and we will walk you through everything.</p>
+  </div>
+  <a class="wa-btn" href="https://wa.me/254770329788?text=Hi%2C%20what%20is%20Lacefi%20Autofill%20and%20how%20does%20it%20work%3F" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Chat on WhatsApp
+  </a>
 </section>
 
 <!-- CTA -->
 <section id="cta">
   <div class="cta-orb"></div>
   <h2 class="reveal">Ready to<br><em>perform?</em></h2>
-  <p class="reveal">Join students across 20+ countries who already operate at a different level.</p>
+  <p class="cta-sub reveal">Join students across 20+ countries who already operate at a different level.</p>
   <div class="cta-btns">
-    <a href="https://guide.lacefi.co.ke" class="btn-fill" target="_blank" rel="noopener">Read the guide →</a>
+    <a href="https://guide.lacefi.co.ke" class="btn-fill" target="_blank" rel="noopener">Read the guide</a>
     <a href="mailto:hello@lacefi.co.ke" class="btn-ghost">Say hello</a>
   </div>
 </section>
@@ -479,7 +608,7 @@ footer a:hover { color:var(--accent); }
 <!-- FOOTER -->
 <footer>
   <span class="f-logo"><em>Lace</em>fi</span>
-  <small>© 2026 Lacefi · Nairobi, Kenya</small>
+  <small>2026 Lacefi - Nairobi, Kenya</small>
   <a href="mailto:hello@lacefi.co.ke">hello@lacefi.co.ke</a>
 </footer>
 
@@ -488,7 +617,7 @@ footer a:hover { color:var(--accent); }
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* ── CURSOR ────────────────────────────────── */
+/* ── CURSOR ─────────────────────────────── */
 const cur = document.getElementById('cur');
 const ring = document.getElementById('cur-ring');
 let mx=-100,my=-100,rx=-100,ry=-100;
@@ -503,73 +632,60 @@ document.querySelectorAll('a').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.width='11px';cur.style.height='11px';ring.style.width='48px';ring.style.height='48px';});
   el.addEventListener('mouseleave',()=>{cur.style.width='7px';cur.style.height='7px';ring.style.width='34px';ring.style.height='34px';});
 });
-if('ontouchstart'in window){ document.body.style.cursor='auto'; }
 
-/* ── NAV ───────────────────────────────────── */
+/* ── NAV ────────────────────────────────── */
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50),{passive:true});
 
-/* ── HERO ENTRANCE ─────────────────────────── */
-const tl = gsap.timeline({defaults:{ease:'power3.out'},delay:.1});
-tl.to('.h-eye span',   {y:0, duration:.85})
-  .from('#w0', {y:'112%', duration:1.05}, '-=.25')
-  .from('#w1', {y:'112%', duration:1.05}, '-=.72')
-  .from('#w2', {y:'112%', duration:1.05}, '-=.72')
-  .to('#hsub',    {y:0, opacity:1, duration:.85}, '-=.45')
-  .from('#hcta',  {y:20, opacity:0, duration:.75}, '-=.6')
-  .to('#hscroll', {opacity:1, duration:.7}, '-=.4');
+/* ── HERO ENTRANCE ──────────────────────── */
+// Set initial states via GSAP (no CSS transform conflict)
+gsap.set('.h-eye-inner', { y:'110%' });
+gsap.set('#w0,#w1,#w2',  { y:'115%' });
+gsap.set('#hsub',        { opacity:0, y:20 });
+gsap.set('#hcta',        { opacity:0, y:18 });
+gsap.set('#hscroll',     { opacity:0 });
 
-/* ── SCROLL REVEALS ────────────────────────── */
+const tl = gsap.timeline({ defaults:{ ease:'power3.out' }, delay:.2 });
+tl.to('.h-eye-inner', { y:0, duration:.85 })
+  .to('#w0',   { y:0, duration:1.05 }, '-=.3')
+  .to('#w1',   { y:0, duration:1.05 }, '-=.72')
+  .to('#w2',   { y:0, duration:1.05 }, '-=.72')
+  .to('#hsub', { opacity:1, y:0, duration:.85 }, '-=.45')
+  .to('#hcta', { opacity:1, y:0, duration:.75 }, '-=.6')
+  .to('#hscroll', { opacity:1, duration:.7 }, '-=.4');
+
+/* ── SCROLL REVEALS ─────────────────────── */
 gsap.utils.toArray('.reveal').forEach(el=>{
   gsap.to(el,{
-    scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},
+    scrollTrigger:{ trigger:el, start:'top 88%', toggleActions:'play none none none' },
     y:0, opacity:1, duration:.85, ease:'power2.out',
   });
 });
 
-/* ── WORD ART scatter entrance ─────────────── */
+/* ── WORD ART scatter ───────────────────── */
 gsap.from('.wa-word',{
-  scrollTrigger:{trigger:'#wordart',start:'top 75%',toggleActions:'play none none none'},
+  scrollTrigger:{ trigger:'#wordart', start:'top 75%', toggleActions:'play none none none' },
   opacity:0,
-  y:()=>gsap.utils.random(-60,60),
-  x:()=>gsap.utils.random(-40,40),
-  rotation:()=>gsap.utils.random(-12,12),
-  duration:.7,
-  stagger:{amount:.9, from:'random'},
+  y:()=>gsap.utils.random(-55,55),
+  x:()=>gsap.utils.random(-35,35),
+  rotation:()=>gsap.utils.random(-10,10),
+  duration:.65,
+  stagger:{ amount:.85, from:'random' },
   ease:'power2.out',
 });
 
-/* ── PRODUCT image reveal ──────────────────── */
+/* ── PRODUCT image clip-path reveal ──────── */
 gsap.to('#pimg',{
-  scrollTrigger:{trigger:'#pimg',start:'top 78%'},
+  scrollTrigger:{ trigger:'#pimg', start:'top 78%' },
   clipPath:'inset(0 0% 0 0)', duration:1.3, ease:'power3.inOut',
 });
 
-/* ── HORIZONTAL GALLERY ────────────────────── */
-const track = document.getElementById('gtrak');
-const galleryEl = document.getElementById('gallery');
-
-// Only animate on non-touch devices with enough width
-if(window.innerWidth > 768){
-  const maxX = -(track.scrollWidth - window.innerWidth * .9);
-  gsap.to(track,{
-    scrollTrigger:{
-      trigger: galleryEl,
-      start:'top 60%',
-      end:'bottom 0%',
-      scrub:1.5,
-    },
-    x: maxX,
-    ease:'none',
-  });
-}
-
-/* ── PROCESS steps ─────────────────────────── */
+/* ── PROCESS stagger ────────────────────── */
 gsap.to('.step',{
-  scrollTrigger:{trigger:'.proc-grid',start:'top 78%'},
+  scrollTrigger:{ trigger:'.proc-grid', start:'top 78%' },
   y:0, opacity:1, duration:.75, stagger:.18, ease:'power2.out',
 });
 
-/* ── COUNTERS ──────────────────────────────── */
+/* ── COUNTERS ───────────────────────────── */
 document.querySelectorAll('.cnt').forEach(el=>{
   const target=+el.dataset.to;
   ScrollTrigger.create({
@@ -577,16 +693,42 @@ document.querySelectorAll('.cnt').forEach(el=>{
     onEnter(){
       gsap.to({v:0},{
         v:target, duration:1.9, ease:'power2.out',
-        onUpdate(){el.textContent=Math.round(this.targets()[0].v).toLocaleString();}
+        onUpdate(){ el.textContent=Math.round(this.targets()[0].v).toLocaleString(); },
       });
     },
   });
 });
 
-/* ── BANNER PARALLAX ───────────────────────── */
+/* ── BANNER PARALLAX ────────────────────── */
 gsap.to('#bimg',{
-  scrollTrigger:{trigger:'.banner',start:'top bottom',end:'bottom top',scrub:true},
+  scrollTrigger:{ trigger:'.banner', start:'top bottom', end:'bottom top', scrub:true },
   y:'-18%', ease:'none',
+});
+
+/* ── GALLERY scroll-driven (desktop) ─────── */
+if(window.innerWidth>768){
+  const gtrack = document.getElementById('gtrak');
+  const gouter = gtrack.parentElement;
+  gsap.to(gtrack,{
+    scrollTrigger:{ trigger:'#gallery', start:'top 55%', end:'bottom 0%', scrub:1.5 },
+    x:()=>-(gtrack.scrollWidth - window.innerWidth * .85),
+    ease:'none',
+  });
+}
+
+/* ── REVIEWS drag scroll ────────────────── */
+const ro = document.getElementById('rev-outer');
+let isDown=false, startX, scrollLeft;
+ro.addEventListener('mousedown',e=>{
+  isDown=true; ro.classList.add('dragging');
+  startX=e.pageX-ro.offsetLeft; scrollLeft=ro.scrollLeft;
+});
+ro.addEventListener('mouseleave',()=>{ isDown=false; ro.classList.remove('dragging'); });
+ro.addEventListener('mouseup',()=>{ isDown=false; ro.classList.remove('dragging'); });
+ro.addEventListener('mousemove',e=>{
+  if(!isDown) return; e.preventDefault();
+  const x=e.pageX-ro.offsetLeft;
+  ro.scrollLeft=scrollLeft-(x-startX)*1.5;
 });
 </script>
 </body>
