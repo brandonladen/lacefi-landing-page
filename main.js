@@ -87,11 +87,6 @@ gsap.to('#bimg',{
   y:'-18%', ease:'none',
 });
 
-/* ── REVIEWS stagger reveal ─────────── */
-gsap.to('.r-card',{
-  scrollTrigger:{ trigger:'.rev-grid', start:'top 82%', toggleActions:'play none none none' },
-  y:0, opacity:1, duration:.7, stagger:.08, ease:'power2.out',
-});
 
 /* ── MANIFESTO parallax ─────────────────── */
 (function(){
