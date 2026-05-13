@@ -123,7 +123,7 @@ section { padding:8rem 4rem; }
 
 /* ── PRODUCT ──────────────────────── */
 #product { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
-.p-img { position:relative; overflow:hidden; aspect-ratio:4/5; clip-path:inset(0 100% 0 0); }
+.p-img { position:relative; overflow:hidden; height:clamp(380px,52vh,500px); clip-path:inset(0 100% 0 0); }
 .p-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.58) saturate(.65); display:block; transition:transform .7s; }
 .p-img:hover img { transform:scale(1.04); }
 .p-img .demo-shell { width:100%; height:100%; border-radius:0; box-shadow:none; }
@@ -345,7 +345,7 @@ footer a:hover { color:var(--accent); }
 .cq-caption { font-family:'Syne Mono',monospace; font-size:.62rem; letter-spacing:.22em; text-transform:uppercase; text-align:center; position:relative; z-index:2; }
 .cq-caption-light { color:rgba(255,255,255,.38); }
 .cq-caption-dark { position:absolute; inset:0; color:#7a7a85; clip-path:inset(0 0 0 50%); }
-@media(max-width:768px){ #contrast-quote{ height:auto; min-height:100vh; flex-direction:column; align-items:stretch; } .cq-half-dark{ right:0; bottom:50%; top:0; } .cq-half-light{ left:0; top:50%; bottom:0; } .cq-text-dark{ clip-path:inset(0 0 50% 0); } .cq-caption-dark{ clip-path:inset(0 0 50% 0); } .cq-inner{ padding:5rem 1.5rem; min-height:100vh; justify-content:center; } }
+@media(max-width:768px){ #contrast-quote{ height:auto; min-height:100vh; flex-direction:column; align-items:stretch; } .cq-half-dark{ right:0; bottom:50%; top:0; } .cq-half-light{ left:0; top:50%; bottom:0; } .cq-text-dark{ clip-path:inset(50% 0 0 0); } .cq-caption-dark{ clip-path:inset(50% 0 0 0); } .cq-inner{ padding:5rem 1.5rem; min-height:100vh; justify-content:center; } }
 
 /* ── BRIEF 2: PROCESS STEP ICONS ─────── */
 .s1{width:200px;height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:'Syne Mono',ui-monospace,monospace;margin-bottom:1.5rem;}

@@ -175,11 +175,11 @@ gsap.to('#bimg',{
   } else {
     gsap.set(darkHalf,{scaleY:0});
     gsap.set(lightHalf,{scaleY:0});
-    gsap.set(darkText,{clipPath:'inset(0 0 100% 0)'});
-    gsap.set(darkCap,{clipPath:'inset(0 0 100% 0)'});
+    gsap.set(darkText,{clipPath:'inset(100% 0 0 0)'});
+    gsap.set(darkCap,{clipPath:'inset(100% 0 0 0)'});
     var tlm=gsap.timeline({ scrollTrigger:{ trigger:section, start:'top 80%', toggleActions:'play none none none' } });
     tlm.to(darkHalf,{scaleY:1,duration:.7,ease:'power3.out',transformOrigin:'center bottom'},0)
        .to(lightHalf,{scaleY:1,duration:.7,ease:'power3.out',transformOrigin:'center top'},0)
-       .to([darkText,darkCap],{clipPath:'inset(0% 0 50% 0)',duration:.88,ease:'power2.inOut'},.1);
+       .to([darkText,darkCap],{clipPath:'inset(50% 0 0 0)',duration:.88,ease:'power2.inOut'},.1);
   }
 })();
