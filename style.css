@@ -55,15 +55,12 @@ body::after { content:''; position:fixed; inset:0; z-index:9998; pointer-events:
   mask-image:radial-gradient(ellipse 90% 90% at 50% 108%,#000 5%,transparent 68%);
   opacity:.4; }
 .h-orb { position:absolute; top:-10%; right:-20%; z-index:0; width:60vw; height:60vw; background:radial-gradient(circle,rgba(4,170,109,.1) 0%,transparent 65%); border-radius:50%; pointer-events:none; }
-.h-inner { position:relative; z-index:1; display:grid; grid-template-columns:1fr auto; gap:2.5rem; align-items:flex-end; }
-.h-text { min-width:0; overflow:hidden; }
-.h-demo { display:flex; align-items:flex-end; padding-bottom:.5rem; flex-shrink:0; }
-@media(max-width:1100px){ .h-inner{ grid-template-columns:1fr; } .h-demo{ display:none; } }
+.h-inner { position:relative; z-index:1; }
 
 .h-eye { font-family:'Syne Mono',monospace; font-size:.62rem; letter-spacing:.32em; text-transform:uppercase; color:var(--accent); margin-bottom:2rem; display:block; overflow:hidden; }
 .h-eye-inner { display:block; }
 
-.h-title { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(2.8rem,5.8vw,7rem); line-height:.92; letter-spacing:-.04em; margin-bottom:3.5rem; }
+.h-title { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(3rem,9.5vw,9.5rem); line-height:.92; letter-spacing:-.04em; margin-bottom:3.5rem; max-width:14ch; }
 .h-ln { overflow:hidden; display:block; }
 .h-ln > span { display:block; }
 .h-acc { color:var(--accent); }
@@ -128,6 +125,7 @@ section { padding:8rem 4rem; }
 .p-img { position:relative; overflow:hidden; aspect-ratio:4/5; clip-path:inset(0 100% 0 0); }
 .p-img img { width:100%; height:100%; object-fit:cover; filter:brightness(.58) saturate(.65); display:block; transition:transform .7s; }
 .p-img:hover img { transform:scale(1.04); }
+.p-img .demo-shell { width:100%; height:100%; border-radius:0; box-shadow:none; }
 .p-img::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(4,170,109,.1) 0%,transparent 55%); }
 .p-txt h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(1.8rem,3.2vw,3rem); line-height:1.1; letter-spacing:-.025em; margin-bottom:1.4rem; }
 .p-txt h2 em { font-style:normal; color:var(--accent); }
