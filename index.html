@@ -3,576 +3,379 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lacefi - Intelligence Engineered for the Academic Field</title>
-<meta name="description" content="Digital tools precision-crafted for the academic world. Built in Nairobi.">
+<title>LaceFi: software for students, made in Nairobi</title>
+<meta name="description" content="LaceFi builds software for students. Autofill answers Moodle and Google Forms quizzes from Chrome, used at 45 schools in 21 countries. Academy, Sleuthbox and Number Duel teach by doing.">
 <link rel="canonical" href="https://lacefi.co.ke/" />
 <meta name="google-site-verification" content="0caBqUpGTrCRnl18_9s6ijyTphaZDAA6n0xJyyWCiLU" />
-
+<meta property="og:title" content="LaceFi: software for students, made in Nairobi">
+<meta property="og:description" content="Autofill for Moodle and Google Forms, LaceFi Academy, Sleuthbox and Number Duel.">
+<meta property="og:image" content="https://lacefi.co.ke/assets/shots/autofill-widget.webp">
+<meta property="og:url" content="https://lacefi.co.ke/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Syne+Mono&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-ring"></div>
-
-<!-- WhatsApp FAB -->
-<a id="wa-fab" href="https://wa.me/254770329788?text=What%20is%20Lacefi%20Autofill%20and%20how%20does%20it%20work%3F" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
-<!-- NAV -->
-<nav id="nav">
-  <a class="n-logo" href="/"><em>Lace</em>fi</a>
-  <ul class="n-links">
-    <li><a href="#numbers">About</a></li>
-    <li><a href="#product">Product</a></li>
-    <li><a href="mailto:hello@lacefi.co.ke">Contact</a></li>
-  </ul>
-  <a href="https://guide.lacefi.co.ke" class="n-pill" target="_blank" rel="noopener">Get Started</a>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="h-grid"></div>
-  <div class="h-orb"></div>
-  <div class="h-inner">
-    <span class="h-eye"><span class="h-eye-inner">Autofill</span></span>
-    <h1 class="h-title">
-      <span class="h-ln"><span id="w0">Intelligence,</span></span>
-      <span class="h-ln"><span id="w1">automated</span></span>
-      <span class="h-ln h-acc"><span id="w2">for you.</span></span>
-    </h1>
-    <div class="h-bot">
-      <p class="h-sub" id="hsub">We engineer digital tools that operate at the intersection of technology and academic performance. Fast, precise, invisible.</p>
-      <div class="h-right">
-        <a href="https://guide.lacefi.co.ke" class="btn-fill" id="hcta" target="_blank" rel="noopener">Get started</a>
-        <span class="h-scroll-hint" id="hscroll">Scroll</span>
-      </div>
-    </div>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="LaceFi home">Lace<span>Fi</span></a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="#autofill">Autofill</a>
+      <a href="#academy">Academy</a>
+      <a href="#sleuthbox">Sleuthbox</a>
+      <a href="#numberduel">Number Duel</a>
+      <a href="#schools">Schools</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-dark nav-cta" href="https://chromewebstore.google.com/detail/kmjifemkagjedmdmondefpdblpppdihj"><svg class="ic ic-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M21.17 8H12"/><path d="M3.95 6.06 8.54 14"/><path d="M10.88 21.94 15.46 14"/></svg>Add to Chrome</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
-</section>
+</header>
 
-<!-- TICKER 1 -->
-<div class="ticker-outer">
-  <div class="ticker-row fwd">
-    <span class="ta">Intelligence</span><span>·</span><span>Academic Precision</span><span>·</span>
-    <span>Speed</span><span>·</span><span>Automation</span><span>·</span>
-    <span class="ta">Performance</span><span>·</span><span>Digital Tools</span><span>·</span>
-    <span>Built in Nairobi</span><span>·</span><span>Accuracy</span><span>·</span>
-    <span class="ta">Intelligence</span><span>·</span><span>Academic Precision</span><span>·</span>
-    <span>Speed</span><span>·</span><span>Automation</span><span>·</span>
-    <span class="ta">Performance</span><span>·</span><span>Digital Tools</span><span>·</span>
-    <span>Built in Nairobi</span><span>·</span><span>Accuracy</span><span>·</span>
-  </div>
-</div>
+<main id="top">
 
-<!-- WORD ART -->
-<section id="wordart">
-  <div class="wa-stage">
-    <span class="wa-word wa-xs wa-dim">think</span>
-    <span class="wa-word wa-xl wa-white">INTELLIGENCE</span>
-    <span class="wa-word wa-md wa-muted">precision</span>
-    <span class="wa-word wa-lg wa-accent">SPEED</span>
-    <span class="wa-word wa-sm wa-dim">academic</span>
-    <span class="wa-word wa-xl wa-muted">automated</span>
-    <span class="wa-word wa-xs wa-white">EDGE</span>
-    <span class="wa-word wa-lg wa-white">FOCUS</span>
-    <span class="wa-word wa-md wa-dim">seamless</span>
-    <span class="wa-word wa-xl wa-accent">PERFORM</span>
-    <span class="wa-word wa-sm wa-muted">invisible</span>
-    <span class="wa-word wa-xs wa-dim">faster</span>
-    <span class="wa-word wa-lg wa-white">PRECISION</span>
-    <span class="wa-word wa-md wa-muted">knowledge</span>
-    <span class="wa-word wa-sm wa-dim">engineered</span>
-  </div>
-</section>
-
-<!-- MANIFESTO -->
-<section id="manifesto" aria-label="Manifesto">
-  <div class="mf-inner">
-    <div class="mf-line" id="mf-think">
-      <span class="mf-word mf-image-clip" aria-label="Think.">THINK.</span>
-    </div>
-    <div class="mf-line" id="mf-learn">
-      <span class="mf-word mf-stroke" aria-label="Learn.">LEARN.</span>
-    </div>
-    <div class="mf-line" id="mf-perform">
-      <span class="mf-word mf-solid" aria-label="Perform.">PERFORM.</span>
-    </div>
-  </div>
-</section>
-
-<!-- TICKER 2 (reverse) -->
-<div class="ticker-outer">
-  <div class="ticker-row rev">
-    <span class="ta">Precision</span><span>·</span><span>Edge</span><span>·</span>
-    <span>Knowledge</span><span>·</span><span class="ta">Focus</span><span>·</span>
-    <span>Engineered</span><span>·</span><span>Academic Tools</span><span>·</span>
-    <span class="ta">Seamless</span><span>·</span><span>Next Generation</span><span>·</span>
-    <span class="ta">Precision</span><span>·</span><span>Edge</span><span>·</span>
-    <span>Knowledge</span><span>·</span><span class="ta">Focus</span><span>·</span>
-    <span>Engineered</span><span>·</span><span>Academic Tools</span><span>·</span>
-    <span class="ta">Seamless</span><span>·</span><span>Next Generation</span><span>·</span>
-  </div>
-</div>
-
-<!-- NUMBERS -->
-<section id="numbers">
-  <div class="n-stats">
-    <span class="eyebrow">In numbers</span>
-    <div class="stat reveal">
-      <span class="stat-val"><span class="cnt" data-to="800">0</span><em>+</em></span>
-      <span class="stat-lbl">Students powered</span>
-    </div>
-    <div class="stat reveal">
-      <span class="stat-val"><span class="cnt" data-to="98">0</span><em>%</em></span>
-      <span class="stat-lbl">Answer accuracy</span>
-    </div>
-    <div class="stat reveal">
-      <span class="stat-val"><span class="cnt" data-to="20">0</span><em>+</em></span>
-      <span class="stat-lbl">Universities worldwide</span>
-    </div>
-  </div>
-  <div class="n-txt">
-    <span class="eyebrow">What we believe</span>
-    <h2 class="reveal">Not every tool<br>is created equal.</h2>
-    <p class="reveal">We design with intent. We build with precision. Every product we ship gives you an edge quietly, efficiently, and at scale.</p>
-  </div>
-</section>
-
-<!-- LETTER HERO -->
-<section id="letter-hero">
-  <span class="la-ghost" id="la-ghost" aria-hidden="true">L</span>
-  <div class="la-content">
-    <span class="la-eyebrow" id="la-eyebrow">The Edge</span>
-    <h2 class="la-headline" id="la-headline">
-      <span class="la-word"><span class="la-word-inner">One&nbsp;tool.</span></span>
-      <span class="la-word"><span class="la-word-inner">&nbsp;Every&nbsp;question.</span></span>
-      <br>
-      <em><span class="la-word"><span class="la-word-inner">Zero&nbsp;compromise.</span></span></em>
-    </h2>
-    <p class="la-body" id="la-body">Lacefi is not a shortcut. It is an edge, engineered with precision, deployed invisibly, and built to perform wherever the question is hardest.</p>
-  </div>
-</section>
-
-<!-- PRODUCT -->
-<section id="product">
-  <div class="p-img" id="pimg">
-    <div class="demo-shell">
-      <div class="demo-chrome">
-        <div class="demo-chrome-dots"><span></span><span></span><span></span></div>
-        <div class="demo-url-bar"><span class="demo-url-bar-lock">&#9679;</span>lms.university.ac.ke/quiz/attempt.php</div>
-      </div>
-      <div class="demo-page">
-        <div class="demo-breadcrumb"><span>BIOL 301</span> &rsaquo; Quiz 4 &rsaquo; Attempt 1</div>
-        <div class="demo-qtitle">
-          <div class="demo-qtitle-label">Question 1 of 4</div>
-          <div class="demo-textbar" style="width:100%"></div>
-          <div class="demo-textbar" style="width:85%"></div>
-          <div class="demo-textbar" style="width:62%"></div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <h1>Software for students, made in Nairobi.</h1>
+        <p class="lede"><strong>Autofill</strong> answers Moodle and Google Forms quizzes in Chrome. <strong>Academy</strong> teaches web development, <strong>Sleuthbox</strong> teaches SQL, and <strong>Number Duel</strong> is a two-player game.</p>
+        <div class="hero-cta">
+          <a class="btn btn-green" href="https://chromewebstore.google.com/detail/kmjifemkagjedmdmondefpdblpppdihj">
+            <svg class="ic ic-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M21.17 8H12"/><path d="M3.95 6.06 8.54 14"/><path d="M10.88 21.94 15.46 14"/></svg>Add Autofill to Chrome
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#products">See all products</a>
         </div>
-        <div class="demo-opts">
-          <div class="demo-opt demo-a">
-            <div class="demo-opt-letter">A</div>
-            <div class="demo-opt-text"><div class="demo-opt-textbar"></div></div>
-            <div class="demo-answer-banner"><span class="demo-answer-text">Answer: C</span><span class="demo-answer-conf">97%</span></div>
-            <div class="demo-spinner-wrap"><div class="demo-spinner"></div></div>
-          </div>
-          <div class="demo-opt demo-b">
-            <div class="demo-opt-letter">B</div>
-            <div class="demo-opt-text"><div class="demo-opt-textbar"></div></div>
-            <div class="demo-answer-banner"><span class="demo-answer-text">Answer: A</span><span class="demo-answer-conf">91%</span></div>
-          </div>
-          <div class="demo-opt demo-c">
-            <div class="demo-opt-letter">C</div>
-            <div class="demo-opt-text"><div class="demo-opt-textbar"></div></div>
-            <div class="demo-answer-banner"><span class="demo-answer-text">Answer: D</span><span class="demo-answer-conf">88%</span></div>
-          </div>
-          <div class="demo-opt demo-d">
-            <div class="demo-opt-letter">D</div>
-            <div class="demo-opt-text"><div class="demo-opt-textbar"></div></div>
-            <div class="demo-answer-banner"><span class="demo-answer-text">Answer: B</span><span class="demo-answer-conf">94%</span></div>
+        <p class="rating">
+          <span class="stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          </span>
+          5.0 on the Chrome Web Store
+        </p>
+      </div>
+      <div class="hero-shot">
+        <div class="tilt" id="tilt">
+          <figure class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span>elearning.example.ac.ke/mod/quiz/attempt.php</span></div>
+            <img src="assets/shots/autofill-widget.webp" width="1600" height="1093" alt="The LaceFi Autofill panel open beside a Moodle quiz, ready to fill 8 questions">
+            <img class="after" src="assets/shots/autofill-filled.webp" width="1600" height="1093" alt="" aria-hidden="true">
+          </figure>
+          <div class="status done" id="status" aria-hidden="true">
+            <svg class="ic ic-status" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>
+            <div class="status-body">
+              <div class="status-text"><span class="s-working">Filling answers</span><span class="s-done">8 of 8 questions filled</span></div>
+              <div class="status-bar"><i></i></div>
+            </div>
+            <svg class="status-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-8"/></svg>
           </div>
         </div>
       </div>
-      <div class="demo-lb">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 21h6v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17a1 1 0 001 1h6a1 1 0 001-1v-2.26C17.81 13.47 19 11.38 19 9c0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 017 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>
+    </div>
+  </section>
+
+  <!-- Numbers -->
+  <section class="numbers" aria-label="LaceFi in numbers">
+    <div class="wrap">
+      <dl class="stats">
+        <div><svg class="ic ic-stat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><dt>Students registered</dt><dd data-to="8.87" data-dec="2" data-suffix="K+">8.87K+</dd></div>
+        <div><svg class="ic ic-stat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><dt>Schools</dt><dd>45</dd></div>
+        <div><svg class="ic ic-stat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg><dt>Countries</dt><dd>21</dd></div>
+        <div><svg class="ic ic-stat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg><dt>Questions Answered</dt><dd data-to="25.9" data-dec="1" data-suffix="M+">25.9M+</dd></div>
+      </dl>
+      <p class="source">Autofill usage data, 17 October 2026.</p>
+    </div>
+  </section>
+
+  <!-- School strip -->
+  <section class="strip" aria-label="Schools">
+    <div class="wrap">
+      <div class="wall-head">
+        <p class="wall-title"><svg class="ic ic-wall" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Used by students at 45 schools in 21 countries</p>
+        <a class="link" href="#schools">See all schools <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
       </div>
-      <div class="demo-panel">
-        <div class="demo-panel-header">
-          <span class="demo-panel-title">LaceFi Autofill</span>
-          <span class="demo-panel-badge">ACTIVE</span>
-        </div>
-        <div class="demo-panel-body">
-          <div class="demo-credits-box">
-            <div><div class="demo-credits-label">Credits</div><div class="demo-credits-sub">remaining</div></div>
-            <div class="demo-credits-value">12</div>
+      <ul class="wall" id="wall">
+        <li class="cell"><span class="cell-in"><strong>Maseno University</strong><span class="cell-c"><svg class="ic ic-cell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Kenya</span></span></li>
+        <li class="cell"><span class="cell-in"><strong>Monash University</strong><span class="cell-c"><svg class="ic ic-cell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Australia</span></span></li>
+        <li class="cell"><span class="cell-in"><strong>University of Eastern Africa, Baraton</strong><span class="cell-c"><svg class="ic ic-cell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Kenya</span></span></li>
+        <li class="cell"><span class="cell-in"><strong>IIIT Nagpur</strong><span class="cell-c"><svg class="ic ic-cell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>India</span></span></li>
+        <li class="cell"><span class="cell-in"><strong>Technical University of Mombasa</strong><span class="cell-c"><svg class="ic ic-cell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Kenya</span></span></li>
+        <li class="cell"><span class="cell-in"><strong>Nazarbayev University</strong><span class="cell-c"><svg class="ic ic-cell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Kazakhstan</span></span></li>
+        <li class="cell"><span class="cell-in"><strong>Egerton University</strong><span class="cell-c"><svg class="ic ic-cell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Kenya</span></span></li>
+        <li class="cell"><span class="cell-in"><strong>University of Genoa</strong><span class="cell-c"><svg class="ic ic-cell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Italy</span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="products" id="products">
+    <div class="wrap">
+      <h2 class="h2" data-reveal>Our products</h2>
+      <div class="bento">
+        <a class="tile tile-autofill" data-reveal data-stagger href="#autofill">
+          <div class="tile-copy">
+            <span class="tile-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></span>
+            <h3>Autofill</h3>
+            <p>A Chrome extension that fills in Moodle and Google Forms quizzes.</p>
+            <span class="tile-link">How it works
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            </span>
           </div>
-          <button class="demo-start-btn">Start Autofill &#9654;</button>
+          <div class="tile-img"><img src="assets/shots/autofill-filled.webp" width="1600" height="1093" alt="Moodle questions filled by Autofill, each with its answer shown above the question" loading="lazy"></div>
+        </a>
+        <a class="tile tile-sleuth" data-reveal data-stagger href="#sleuthbox">
+          <div class="tile-copy">
+            <span class="tile-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>
+            </span>
+            <h3>Sleuthbox</h3>
+            <p>Solve crime cases by writing SQL.</p>
+          </div>
+          <div class="tile-img"><img src="assets/shots/sleuthbox-case.webp" width="1600" height="1093" alt="A Sleuthbox case with its briefing, the SQL console and the evidence tables" loading="lazy"></div>
+        </a>
+        <a class="tile tile-academy" data-reveal data-stagger href="#academy">
+          <div class="tile-copy">
+            <span class="tile-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>
+            </span>
+            <h3>Academy</h3>
+            <p>91 lessons on building websites, HTML to JavaScript.</p>
+          </div>
+        </a>
+        <a class="tile tile-duel" data-reveal data-stagger href="#numberduel">
+          <div class="tile-copy">
+            <span class="tile-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M14 5h5v5M5 5l5 5M14 14l5 5M19 14v5h-5"/></svg>
+            </span>
+            <h3>Number Duel</h3>
+            <p>A two-player guessing game.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Autofill -->
+  <section class="autofill" id="autofill">
+    <div class="wrap">
+      <div class="af-head">
+        <div>
+          <h2 class="h2 h2-light" data-reveal>Autofill answers the quiz you have open.</h2>
+        </div>
+        <p class="af-lede" data-reveal>Autofill reads every question on the page, gets an answer from Claude, Gemini or GPT, and fills it in. Each answer appears above its question so you can see it, ask why, and change it before you submit.</p>
+      </div>
+
+      <figure class="frame frame-dark" data-reveal>
+        <div class="frame-bar"><i></i><i></i><i></i><span>elearning.example.ac.ke/mod/quiz/attempt.php</span></div>
+        <img src="assets/shots/autofill-filled.webp" width="1600" height="1093" alt="Filled Moodle questions: Paris selected for question 1 and 2, 7 and 11 ticked for question 2" loading="lazy">
+      </figure>
+
+      <div class="af-grid">
+        <div class="af-item af-wide" data-reveal data-stagger>
+          <svg class="ic ic-feat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg><h3>Every Moodle question type</h3>
+          <ul class="chips">
+            <li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>Multiple choice</li><li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 12 2 2 4-4"/></svg>Select all that apply</li><li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="12" x="2" y="6" rx="6"/><circle cx="8" cy="12" r="2"/></svg>True or false</li><li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>Short answer</li>
+            <li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M16 3l-2 18"/></svg>Numerical</li><li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>Matching</li><li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>Drop-down gaps</li><li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.4 3.6a2.1 2.1 0 0 1 3 3L7.4 18.6a2 2 0 0 1-.9.5l-2.9.9.9-2.9a2 2 0 0 1 .5-.9Z"/></svg>Essays</li>
+            <li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>CodeRunner code</li><li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 7V4H6l6 8-6 8h12v-3"/></svg>STACK maths</li><li><svg class="ic ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>Google Forms</li>
+          </ul>
+        </div>
+        <div class="af-item" data-reveal data-stagger>
+          <svg class="ic ic-feat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg><h3>Code goes into the editor</h3>
+          <p>CodeRunner answers are typed into Moodle's code editor, starting from the code the question already gives you.</p>
+        </div>
+        <div class="af-item" data-reveal data-stagger>
+          <svg class="ic ic-feat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2Z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7Z"/></svg><h3>Answers from your notes</h3>
+          <p>Upload your course notes in the Notes tab. Questions that depend on your lecturer's material are answered from them.</p>
+        </div>
+        <div class="af-item" data-reveal data-stagger>
+          <svg class="ic ic-feat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg><h3>Pay per question</h3>
+          <p>One credit per question in Basic mode, two in Pro for harder questions. Buy credits with Paystack or PayPal.</p>
+        </div>
+        <div class="af-item" data-reveal data-stagger>
+          <svg class="ic ic-feat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1Z"/><path d="M4 22v-7"/></svg><h3>Tell us when it's wrong</h3>
+          <p>Press Bad on a wrong answer and we receive the question to fix it.</p>
         </div>
       </div>
-      <div class="demo-toast">&#10003; 4 answers filled</div>
-      <div class="demo-loop-overlay"></div>
-    </div>
-  </div>
-  <div class="p-txt">
-    <span class="eyebrow">The product</span>
-    <h2 class="reveal">A tool so seamless,<br>it feels like <em>thinking.</em></h2>
-    <p class="psub reveal">An intelligent browser extension that integrates into your academic workflow. It reads. It reasons. It delivers before you even finish the question.</p>
-    <ul class="feats">
-      <li class="reveal">Installs in under 60 seconds</li>
-      <li class="reveal">Works across major learning platforms</li>
-      <li class="reveal">AI-powered with context retrieval</li>
-      <li class="reveal">Engineered for speed and accuracy</li>
-    </ul>
-    <a href="https://guide.lacefi.co.ke" class="btn-fill reveal" target="_blank" rel="noopener">Read the guide</a>
-  </div>
-</section>
 
-<!-- IMAGE GALLERY -->
-<div id="gallery">
-  <div class="gal-header">
-    <span class="gal-label">Academic minds, worldwide</span>
-    <span class="gal-stat">800+ students</span>
-  </div>
-  <div class="gal-columns">
-    <div class="gal-col gal-col-up">
-      <div class="gal-col-inner">
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1580894894513-541e068a3e2b?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1580894894513-541e068a3e2b?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
+      <div class="af-cta">
+        <a class="btn btn-green" href="https://chromewebstore.google.com/detail/kmjifemkagjedmdmondefpdblpppdihj"><svg class="ic ic-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M21.17 8H12"/><path d="M3.95 6.06 8.54 14"/><path d="M10.88 21.94 15.46 14"/></svg>Add to Chrome</a>
+        <a class="btn btn-ghost-light" href="https://guide.lacefi.co.ke/"><svg class="ic ic-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2Z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7Z"/></svg>Read the setup guide</a>
+        <a class="btn btn-ghost-light" href="https://wa.me/254770329788"><svg class="ic ic-btn" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.3.5-.4.5c-.2.2-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.2 1.4 2.5 1.6.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.3Z"/></svg>Setup help on WhatsApp</a>
       </div>
     </div>
-    <div class="gal-col gal-col-down">
-      <div class="gal-col-inner">
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-      </div>
-    </div>
-    <div class="gal-col gal-col-up gal-col-third">
-      <div class="gal-col-inner">
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item"><img src="https://images.unsplash.com/photo-1580894894513-541e068a3e2b?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-        <div class="gal-item" aria-hidden="true"><img src="https://images.unsplash.com/photo-1580894894513-541e068a3e2b?auto=format&fit=crop&w=600&q=75" alt="" loading="lazy" /></div>
-      </div>
-    </div>
-  </div>
-</div>
+  </section>
 
-<!-- WORD WALL -->
-<section id="word-wall">
-  <span class="ww-eyebrow">Every word counts</span>
-  <div class="ww-body">
-    <div class="ww-row ww-row--1 ww-fwd">
-      <div class="ww-track"><span>VELOCITY</span><span>PRECISION</span><span>OUTPUT</span><span>COGNITION</span><span>SYNTHESIZE</span><span>ACADEMIC</span><span>CLARITY</span><span>DOMINANCE</span><span>ACCELERATE</span><span>KNOWLEDGE</span><span>PROCESS</span><span>SYSTEM</span><span>EXECUTE</span><span>ITERATE</span><span>UNDERSTAND</span><span>ANALYSIS</span><span>EFFICIENCY</span><span>ACHIEVE</span></div>
-      <div class="ww-track" aria-hidden="true"><span>VELOCITY</span><span>PRECISION</span><span>OUTPUT</span><span>COGNITION</span><span>SYNTHESIZE</span><span>ACADEMIC</span><span>CLARITY</span><span>DOMINANCE</span><span>ACCELERATE</span><span>KNOWLEDGE</span><span>PROCESS</span><span>SYSTEM</span><span>EXECUTE</span><span>ITERATE</span><span>UNDERSTAND</span><span>ANALYSIS</span><span>EFFICIENCY</span><span>ACHIEVE</span></div>
-    </div>
-    <div class="ww-row ww-row--2 ww-rev">
-      <div class="ww-track"><span>SYNTHESIZE</span><span>DOMINANCE</span><span>ITERATE</span><span>PROCESS</span><span>CLARITY</span><span>VELOCITY</span><span>ACHIEVE</span><span>COGNITION</span><span>OUTPUT</span><span>SYSTEM</span><span>EXECUTE</span><span>EFFICIENCY</span><span>KNOWLEDGE</span><span>ACCELERATE</span><span>PRECISION</span><span>UNDERSTAND</span><span>ACADEMIC</span><span>ANALYSIS</span></div>
-      <div class="ww-track" aria-hidden="true"><span>SYNTHESIZE</span><span>DOMINANCE</span><span>ITERATE</span><span>PROCESS</span><span>CLARITY</span><span>VELOCITY</span><span>ACHIEVE</span><span>COGNITION</span><span>OUTPUT</span><span>SYSTEM</span><span>EXECUTE</span><span>EFFICIENCY</span><span>KNOWLEDGE</span><span>ACCELERATE</span><span>PRECISION</span><span>UNDERSTAND</span><span>ACADEMIC</span><span>ANALYSIS</span></div>
-    </div>
-    <div class="ww-row ww-row--3 ww-fwd">
-      <div class="ww-track"><span>KNOWLEDGE</span><span>EXECUTE</span><span>VELOCITY</span><span>PROCESS</span><span>PRECISION</span><span>ACHIEVE</span><span>COGNITION</span><span>ITERATE</span><span>SYSTEM</span><span>OUTPUT</span><span>CLARITY</span><span>EFFICIENCY</span><span>ACADEMIC</span><span>DOMINANCE</span><span>SYNTHESIZE</span><span>ACCELERATE</span><span>UNDERSTAND</span><span>ANALYSIS</span></div>
-      <div class="ww-track" aria-hidden="true"><span>KNOWLEDGE</span><span>EXECUTE</span><span>VELOCITY</span><span>PROCESS</span><span>PRECISION</span><span>ACHIEVE</span><span>COGNITION</span><span>ITERATE</span><span>SYSTEM</span><span>OUTPUT</span><span>CLARITY</span><span>EFFICIENCY</span><span>ACADEMIC</span><span>DOMINANCE</span><span>SYNTHESIZE</span><span>ACCELERATE</span><span>UNDERSTAND</span><span>ANALYSIS</span></div>
-    </div>
-<div class="ww-row ww-row--7 ww-fwd">
-      <div class="ww-track"><span>PRECISION</span><span>COGNITION</span><span>ACCELERATE</span><span>ACHIEVE</span><span>ITERATE</span><span>EXECUTE</span><span>DOMINANCE</span><span>VELOCITY</span><span>ANALYSIS</span><span>UNDERSTAND</span><span>SYSTEM</span><span>CLARITY</span><span>EFFICIENCY</span><span>PROCESS</span><span>KNOWLEDGE</span><span>OUTPUT</span><span>ACADEMIC</span><span>SYNTHESIZE</span></div>
-      <div class="ww-track" aria-hidden="true"><span>PRECISION</span><span>COGNITION</span><span>ACCELERATE</span><span>ACHIEVE</span><span>ITERATE</span><span>EXECUTE</span><span>DOMINANCE</span><span>VELOCITY</span><span>ANALYSIS</span><span>UNDERSTAND</span><span>SYSTEM</span><span>CLARITY</span><span>EFFICIENCY</span><span>PROCESS</span><span>KNOWLEDGE</span><span>OUTPUT</span><span>ACADEMIC</span><span>SYNTHESIZE</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- INSTITUTIONS -->
-<section id="institutions">
-  <div class="inst-head">
-    <span class="eyebrow">Trusted globally</span>
-    <p class="reveal">Curious minds at these institutions<br>already use Lacefi.</p>
-  </div>
-  <div class="inst-row r1">
-    <div class="inst-item"><span class="inst-name">Monash University</span><span class="inst-country">Australia</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">IIIT Nagpur</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Universite de Reims</span><span class="inst-country">France</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Voronezh State University</span><span class="inst-country">Russia</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">AUIS Sulaimani</span><span class="inst-country">Iraq</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Mount Kenya University</span><span class="inst-country">Kenya</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Monash University</span><span class="inst-country">Australia</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">IIIT Nagpur</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Universite de Reims</span><span class="inst-country">France</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Voronezh State University</span><span class="inst-country">Russia</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">AUIS Sulaimani</span><span class="inst-country">Iraq</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Mount Kenya University</span><span class="inst-country">Kenya</span><span class="inst-dot"></span></div>
-  </div>
-  <div class="inst-row r2">
-    <div class="inst-item"><span class="inst-name">KIIT University</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">IFRS</span><span class="inst-country">Brazil</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Universidad Nacional de San Luis</span><span class="inst-country">Argentina</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Dedan Kimathi University</span><span class="inst-country">Kenya</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Medical Doctor Int. Academy</span><span class="inst-country">Israel / Czech Republic</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Saveetha Engineering College</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Universidad Iberoamericana</span><span class="inst-country">Ecuador</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">KIIT University</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">IFRS</span><span class="inst-country">Brazil</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Universidad Nacional de San Luis</span><span class="inst-country">Argentina</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Dedan Kimathi University</span><span class="inst-country">Kenya</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Medical Doctor Int. Academy</span><span class="inst-country">Israel / Czech Republic</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Saveetha Engineering College</span><span class="inst-country">India</span><span class="inst-dot"></span></div>
-    <div class="inst-item"><span class="inst-name">Universidad Iberoamericana</span><span class="inst-country">Ecuador</span><span class="inst-dot"></span></div>
-  </div>
-</section>
-
-<!-- BANNER -->
-<div class="banner">
-  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy" id="bimg" />
-  <div class="banner-over">
-    <p class="banner-txt reveal">Built for the generation that <em>refuses to fall behind.</em></p>
-  </div>
-</div>
-
-<!-- PHOTO COLLAGE -->
-<section id="photo-collage">
-  <div class="collage-inner">
-    <span class="collage-word-perform" id="cw-perform">PERFORM</span>
-    <div class="collage-photos">
-      <div class="collage-photo" id="cp1">
-        <img src="https://images.unsplash.com/photo-1581726690015-c9861fa5057f?auto=format&fit=crop&w=500&q=80" alt="Focused student" loading="lazy" />
-      </div>
-      <div class="collage-photo" id="cp2">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=500&q=80" alt="Group academic work" loading="lazy" />
-      </div>
-      <div class="collage-photo" id="cp3">
-        <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=500&q=80" alt="Student writing" loading="lazy" />
-      </div>
-      <span class="collage-word-edge" id="cw-edge">EDGE</span>
-    </div>
-    <div class="collage-foot">
-      <span class="collage-caption">Selected minds. Sharper results.</span>
-      <span class="collage-index">Lacefi 2026</span>
-    </div>
-  </div>
-</section>
-
-<!-- CONTRAST QUOTE -->
-<section id="contrast-quote">
-  <div class="cq-half-dark"></div>
-  <div class="cq-half-light"></div>
-  <div class="cq-inner">
-    <div class="cq-quote-wrap">
-      <p class="cq-text-layer cq-text-light">Your mind does the thinking. We handle the rest.</p>
-      <p class="cq-text-layer cq-text-dark" aria-hidden="true">Your mind does the thinking. We handle the rest.</p>
-    </div>
-    <div class="cq-caption-wrap">
-      <span class="cq-caption cq-caption-light">Lacefi Autofill, 2026</span>
-      <span class="cq-caption cq-caption-dark" aria-hidden="true">Lacefi Autofill, 2026</span>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="proc-top">
-    <span class="eyebrow">How it works</span>
-    <h2 class="reveal">Three steps.<br>Everything changes.</h2>
-  </div>
-  <div class="proc-grid">
-    <div class="step">
-      <div class="s1">
-        <svg class="s1-svg" viewBox="0 0 40 40" aria-hidden="true">
-          <path class="s1-pp" d="M 6 10 L 16 10 A 4 4 0 0 0 24 10 L 34 10 L 34 18 A 4 4 0 0 0 34 26 L 34 36 L 6 36 Z"/>
-        </svg>
-        <div class="s1-text">Added to browser</div>
-      </div>
-      <span class="sn">01 /</span>
-      <p class="st">Arrives quietly</p>
-      <p class="sd">Install in under a minute. No configuration, no wizards. It is simply there, ready when you are.</p>
-    </div>
-    <div class="step">
-      <div class="s2">
-        <div class="s2-bar s2-b1"></div>
-        <div class="s2-bar s2-b2"></div>
-        <div class="s2-bar s2-b3"></div>
-        <div class="s2-bar s2-b4"></div>
-        <div class="s2-scan"></div>
-        <div class="s2-arr">›</div>
-      </div>
-      <span class="sn">02 /</span>
-      <p class="st">Reads the room</p>
-      <p class="sd">Open any supported academic platform. The tool detects questions, absorbs context, and prepares its precision.</p>
-    </div>
-    <div class="step">
-      <div class="s3">
-        <div class="s3-cur">▶</div>
-        <div class="s3-opt s3-a"><div class="l">A</div><div class="tx"></div></div>
-        <div class="s3-opt s3-b"><div class="l">B</div><div class="tx"></div></div>
-        <div class="s3-opt s3-c">
-          <div class="s3-cbg"></div>
-          <div class="l">C</div>
-          <div class="tx"></div>
-          <svg class="s3-ck" viewBox="0 0 10 10" width="8" height="8" aria-hidden="true">
-            <path d="M2 5 L4 7 L8 3" fill="none" stroke="#04AA6D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+  <!-- Schools -->
+  <section class="schools" id="schools">
+    <div class="wrap">
+      <h2 class="h2" data-reveal>Autofill is used at 45 schools in 21 countries.</h2>
+      <p class="sub" data-reveal>Every school below has students registered with Autofill.</p>
+      <div class="countries">
+        <div class="country country-ke" data-reveal data-stagger>
+          <h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Kenya <span>12</span></h3>
+          <ul>
+            <li>Maseno University</li>
+            <li>University of Eastern Africa, Baraton</li>
+            <li>Technical University of Mombasa</li>
+            <li>Karatina University</li>
+            <li>Egerton University</li>
+            <li>Mount Kenya University</li>
+            <li>Open University of Kenya</li>
+            <li>Masinde Muliro University of Science and Technology</li>
+            <li>Dedan Kimathi University of Technology</li>
+            <li>Kibabii University</li>
+            <li>Kiriri Women's University of Science and Technology</li>
+            <li>The Nairobi National Polytechnic</li>
+          </ul>
         </div>
-        <div class="s3-opt s3-d"><div class="l">D</div><div class="tx"></div></div>
-        <div class="s3-lbl">98%</div>
+        <div class="country" data-reveal data-stagger>
+          <h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>India <span>5</span></h3>
+          <ul>
+            <li>Saveetha Engineering College</li>
+            <li>IIIT Nagpur</li>
+            <li>Kalinga Institute of Industrial Technology</li>
+            <li>Coimbatore Institute of Technology</li>
+            <li>Anudip Foundation</li>
+          </ul>
+        </div>
+        <div class="country" data-reveal data-stagger>
+          <h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Indonesia <span>4</span></h3>
+          <ul>
+            <li>Gunadarma University</li>
+            <li>Telkom Schools</li>
+            <li>BPK Penabur Jakarta</li>
+            <li>SMP Sains Miftahul Huda</li>
+          </ul>
+        </div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Australia <span>2</span></h3><ul><li>Monash University</li><li>NCA Learner Hub</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Italy <span>2</span></h3><ul><li>University of Genoa</li><li>Ca' Foscari University of Venice</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Portugal <span>2</span></h3><ul><li>Instituto Superior Técnico, University of Lisbon</li><li>Polytechnic University of Setúbal</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Spain <span>2</span></h3><ul><li>International University of La Rioja</li><li>Educastur Aulas Virtuales</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Russia <span>2</span></h3><ul><li>Voronezh State University</li><li>Kemerovo State Medical University</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Israel <span>2</span></h3><ul><li>Bar-Ilan University</li><li>Medical Doctor International Academy</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Kazakhstan</h3><ul><li>Nazarbayev University</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Austria</h3><ul><li>Johannes Kepler University Linz</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Germany</h3><ul><li>Stuttgart University of Applied Sciences (HFT)</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Hungary</h3><ul><li>John von Neumann University</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>France</h3><ul><li>Université de Reims Champagne-Ardenne</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Lithuania</h3><ul><li>SMK College of Applied Sciences</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Iraq</h3><ul><li>American University of Iraq, Sulaimani</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Palestine</h3><ul><li>Islamic University of Gaza</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Taiwan</h3><ul><li>The Primacy Collegiate Academy</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Brazil</h3><ul><li>Instituto Federal do Rio Grande do Sul</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Argentina</h3><ul><li>Universidad Nacional de San Luis</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3><svg class="ic ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Ecuador</h3><ul><li>Universidad Iberoamericana del Ecuador</li></ul></div>
       </div>
-      <span class="sn">03 /</span>
-      <p class="st">Delivers precision</p>
-      <p class="sd">Watch it work. Accurate, fast, invisible. It operates at the speed of thought, yours included.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="rev-head">
-    <span class="eyebrow">What they say</span>
-    <h2 class="reveal">Voices from the field.</h2>
-  </div>
-  <div class="rev-marquee rev-marquee--fwd">
-    <div class="rev-track">
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">Been using it for three weeks. The accuracy is honestly unreal.</p>
-        <div class="r-meta"><span class="r-name">Final Year Student</span><span class="r-inst">Kenya</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">Ghost mode saved me during my mid-terms. I did not even have to think twice.</p>
-        <div class="r-meta"><span class="r-name">Engineering Student</span><span class="r-inst">India</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">I did not believe it would work this well. Then it did. Nothing else to say.</p>
-        <div class="r-meta"><span class="r-name">Postgraduate Researcher</span><span class="r-inst">Australia</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-        <p class="r-text">Clean interface, fast answers. It just works. No fuss.</p>
-        <div class="r-meta"><span class="r-name">CS Student</span><span class="r-inst">Iraq</span></div>
-      </div>
-    </div>
-    <div class="rev-track" aria-hidden="true">
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">Been using it for three weeks. The accuracy is honestly unreal.</p>
-        <div class="r-meta"><span class="r-name">Final Year Student</span><span class="r-inst">Kenya</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">Ghost mode saved me during my mid-terms. I did not even have to think twice.</p>
-        <div class="r-meta"><span class="r-name">Engineering Student</span><span class="r-inst">India</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">I did not believe it would work this well. Then it did. Nothing else to say.</p>
-        <div class="r-meta"><span class="r-name">Postgraduate Researcher</span><span class="r-inst">Australia</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-        <p class="r-text">Clean interface, fast answers. It just works. No fuss.</p>
-        <div class="r-meta"><span class="r-name">CS Student</span><span class="r-inst">Iraq</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="rev-marquee rev-marquee--rev">
-    <div class="rev-track">
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">I told my entire study group about it. We all use it now. Every exam season.</p>
-        <div class="r-meta"><span class="r-name">Undergraduate</span><span class="r-inst">France</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">The fastest academic tool I have ever installed. Ready before I finished reading the question.</p>
-        <div class="r-meta"><span class="r-name">Student</span><span class="r-inst">Russia</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-        <p class="r-text">Expected it to be complicated. It is the opposite. Remarkably simple to use.</p>
-        <div class="r-meta"><span class="r-name">Undergraduate</span><span class="r-inst">Brazil</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">Lacefi completely changed how I approach my coursework. I operate differently now.</p>
-        <div class="r-meta"><span class="r-name">Second Year Student</span><span class="r-inst">Kenya</span></div>
-      </div>
-    </div>
-    <div class="rev-track" aria-hidden="true">
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">I told my entire study group about it. We all use it now. Every exam season.</p>
-        <div class="r-meta"><span class="r-name">Undergraduate</span><span class="r-inst">France</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">The fastest academic tool I have ever installed. Ready before I finished reading the question.</p>
-        <div class="r-meta"><span class="r-name">Student</span><span class="r-inst">Russia</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-        <p class="r-text">Expected it to be complicated. It is the opposite. Remarkably simple to use.</p>
-        <div class="r-meta"><span class="r-name">Undergraduate</span><span class="r-inst">Brazil</span></div>
-      </div>
-      <div class="r-card">
-        <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="r-text">Lacefi completely changed how I approach my coursework. I operate differently now.</p>
-        <div class="r-meta"><span class="r-name">Second Year Student</span><span class="r-inst">Kenya</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- Learning products -->
+  <section class="learn" aria-label="Learning products">
+    <div class="wrap">
+      <h2 class="h2" data-reveal>Learn by doing</h2>
 
-<!-- WHATSAPP -->
-<section id="whatsapp">
-  <div class="wa-text">
-    <span class="eyebrow">Got questions?</span>
-    <h2 class="reveal">Ask us directly.<br>We are right here.</h2>
-    <p class="reveal">Not sure how Lacefi Autofill works? Curious about ghost mode? Reach out on WhatsApp and we will walk you through everything.</p>
-  </div>
-  <a class="wa-btn" href="https://wa.me/254770329788?text=Hi%2C%20what%20is%20Lacefi%20Autofill%20and%20how%20does%20it%20work%3F" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Chat on WhatsApp
-  </a>
-</section>
+      <article class="feature" id="academy">
+        <div class="feature-copy" data-reveal>
+          <span class="tile-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>
+          </span>
+          <h3>LaceFi Academy</h3>
+          <p>A beginner course in building websites, from your first HTML tag to JavaScript. Each lesson explains one idea with a real example, then you answer a short quiz and build it yourself. Assignments are checked automatically as you go.</p>
+          <ul class="facts"><li><svg class="ic ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>91 lessons: HTML, CSS and JavaScript</li><li><svg class="ic ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A quiz and an assignment in every lesson</li><li><svg class="ic ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ends with a portfolio site, graded by a teacher</li></ul>
+          <a class="btn btn-dark" href="https://edu.lacefi.co.ke/"><svg class="ic ic-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Open Academy</a>
+        </div>
+        <figure class="frame" data-reveal data-side>
+          <div class="frame-bar"><i></i><i></i><i></i><span>edu.lacefi.co.ke/webdev/courses/what-is-css</span></div>
+          <img src="assets/shots/academy-lesson.webp" width="1280" height="631" alt="The What is CSS? lesson in LaceFi Academy, with an explanation and a code example" loading="lazy">
+        </figure>
+      </article>
 
-<!-- CTA -->
-<section id="cta">
-  <div class="cta-orb"></div>
-  <h2 class="reveal">Ready to<br><em>perform?</em></h2>
-  <p class="cta-sub reveal">Join students across 20+ countries who already operate at a different level.</p>
-  <div class="cta-btns">
-    <a href="https://guide.lacefi.co.ke" class="btn-fill" target="_blank" rel="noopener">Read the guide</a>
-    <a href="mailto:hello@lacefi.co.ke" class="btn-ghost">Say hello</a>
-  </div>
-</section>
+      <article class="feature feature-flip" id="sleuthbox">
+        <div class="feature-copy" data-reveal>
+          <span class="tile-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>
+          </span>
+          <h3>Sleuthbox</h3>
+          <p>There has been a crime and the database knows who did it. Read the briefing, then query the evidence tables one SELECT at a time until the trail points to a name. More than 22 original cases, from a blackout at an observatory to who broke the living-room TV.</p>
+          <ul class="facts"><li><svg class="ic ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Real SQL in the browser</li><li><svg class="ic ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Easy, medium and hard cases</li><li><svg class="ic ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Walkthrough for first-timers</li></ul>
+          <a class="btn btn-dark" href="https://lacefi-sleuthbox.vercel.app/"><svg class="ic ic-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>Play Sleuthbox</a>
+        </div>
+        <figure class="frame frame-night" data-reveal data-side>
+          <div class="frame-bar"><i></i><i></i><i></i><span>lacefi-sleuthbox.vercel.app</span></div>
+          <img src="assets/shots/sleuthbox-case.webp" width="1600" height="1093" alt="The Blackout at the Observatory case: briefing, SQL console and table list" loading="lazy">
+        </figure>
+      </article>
 
-<!-- FOOTER -->
-<footer>
-  <span class="f-logo"><em>Lace</em>fi</span>
-  <small>2026 Lacefi - Nairobi, Kenya</small>
-  <a href="mailto:hello@lacefi.co.ke">hello@lacefi.co.ke</a>
+      <article class="feature" id="numberduel">
+        <div class="feature-copy" data-reveal>
+          <span class="tile-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M14 5h5v5M5 5l5 5M14 14l5 5M19 14v5h-5"/></svg>
+          </span>
+          <h3>Number Duel</h3>
+          <p>Two players, one room. Each of you locks in a secret number from 0 to 100, then you take turns guessing the other's. Every miss gets a higher or lower hint and costs 10 of your 100 points, so the fewer guesses you need, the more you keep.</p>
+          <ul class="facts"><li><svg class="ic ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Play a friend with a room ID</li><li><svg class="ic ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No sign-up</li><li><svg class="ic ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A hint after every guess</li></ul>
+          <a class="btn btn-dark" href="https://numberduel.lacefi.co.ke/"><svg class="ic ic-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>Start a duel</a>
+        </div>
+        <figure class="frame frame-night" data-reveal data-side>
+          <div class="frame-bar"><i></i><i></i><i></i><span>numberduel.lacefi.co.ke</span></div>
+          <img src="assets/shots/numberduel-home.webp" width="1600" height="1093" alt="The Number Duel start screen asking for your name and a room ID" loading="lazy">
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-in">
+      <div>
+        <h2 class="h2" data-reveal>Contact us</h2>
+      </div>
+      <div class="contact-ways">
+        <a class="way" data-reveal data-stagger href="mailto:support@lacefi.co.ke">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <span><strong>Email</strong>support@lacefi.co.ke</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a class="brand" href="#top">Lace<span>Fi</span></a>
+      <p>Nairobi, Kenya</p>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <h4>Products</h4>
+        <a href="https://chromewebstore.google.com/detail/kmjifemkagjedmdmondefpdblpppdihj">Autofill</a>
+        <a href="https://edu.lacefi.co.ke/">Academy</a>
+        <a href="https://lacefi-sleuthbox.vercel.app/">Sleuthbox</a>
+        <a href="https://numberduel.lacefi.co.ke/">Number Duel</a>
+      </div>
+      <div>
+        <h4>Autofill</h4>
+        <a href="https://guide.lacefi.co.ke/">Setup guide</a>
+        <a href="https://wa.me/254770329788">WhatsApp help</a>
+        <a href="https://autofill.lacefi.co.ke/release-notes.html">Release notes</a>
+        <a href="https://autofill.lacefi.co.ke/privacy.html">Privacy</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:support@lacefi.co.ke">Email</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot-base">© <span id="year">2026</span> LaceFi</div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
