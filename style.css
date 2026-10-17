@@ -64,8 +64,6 @@ section[id], article[id] { scroll-margin-top: 72px; }
 .link:hover svg { transform: translateX(2px); }
 .link svg { transition: transform .15s; }
 
-.eyebrow { font-size: 15px; font-weight: 600; color: var(--green-ink); margin-bottom: 12px; }
-.eyebrow-light { color: #3ddc97; }
 .h2 { font-size: clamp(30px, 4vw, 44px); line-height: 1.12; max-width: 720px; }
 .h2-light { color: #fff; }
 .sub { margin-top: 14px; max-width: 620px; color: var(--text); font-size: 18px; }
