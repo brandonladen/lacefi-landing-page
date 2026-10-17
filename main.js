@@ -83,14 +83,15 @@
       counter.unobserve(entry.target);
       var el = entry.target;
       var text = el.textContent.trim();
-      var target = parseInt(text.replace(/[^0-9]/g, ''), 10);
-      var suffix = text.replace(/[0-9,]/g, '');
+      var dec = parseInt(el.getAttribute('data-dec') || '0', 10);
+      var target = el.hasAttribute('data-to') ? parseFloat(el.getAttribute('data-to')) : parseInt(text.replace(/[^0-9]/g, ''), 10);
+      var suffix = el.hasAttribute('data-suffix') ? el.getAttribute('data-suffix') : text.replace(/[0-9,]/g, '');
       if (!target) return;
       var start = performance.now(), dur = 1400;
       var step = function (now) {
         var t = Math.min(1, (now - start) / dur);
         var eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = fmt(Math.round(target * eased)) + suffix;
+        el.textContent = (dec ? (target * eased).toFixed(dec) : fmt(Math.round(target * eased))) + suffix;
         if (t < 1) requestAnimationFrame(step);
       };
       requestAnimationFrame(step);
