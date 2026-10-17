@@ -75,6 +75,39 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
   document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
 
+  // ---- School wall: swap one cell at a time through every school in the list below.
+  var wall = document.getElementById('wall');
+  if (wall) {
+    var pin = wall.querySelector('.ic-cell').outerHTML;
+    var all = [];
+    document.querySelectorAll('#schools .country').forEach(function (block) {
+      var country = block.querySelector('h3').textContent.replace(/\d+/g, '').trim();
+      block.querySelectorAll('li').forEach(function (li) { all.push([li.textContent.trim(), country]); });
+    });
+    var cellsEls = Array.prototype.slice.call(wall.querySelectorAll('.cell'));
+    var shown = cellsEls.map(function (c) { return c.querySelector('strong').textContent; });
+    var queue = all.filter(function (s) { return shown.indexOf(s[0]) === -1; });
+    var lastCell = -1, wallVisible = false;
+    new IntersectionObserver(function (e) { wallVisible = e[0].isIntersecting; }).observe(wall);
+    setInterval(function () {
+      if (!wallVisible || document.hidden || !queue.length) return;
+      var i; do { i = Math.floor(Math.random() * cellsEls.length); } while (i === lastCell);
+      lastCell = i;
+      var cell = cellsEls[i], old = cell.querySelector('.cell-in');
+      var next = queue.shift();
+      queue.push([old.querySelector('strong').textContent, old.querySelector('.cell-c').textContent.trim()]);
+      var el = document.createElement('span');
+      el.className = 'cell-in enter';
+      el.innerHTML = '<strong></strong><span class="cell-c">' + pin + '</span>';
+      el.querySelector('strong').textContent = next[0];
+      el.querySelector('.cell-c').appendChild(document.createTextNode(next[1]));
+      cell.appendChild(el);
+      old.classList.add('out');
+      requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.remove('enter'); }); });
+      setTimeout(function () { old.remove(); }, 500);
+    }, 1600);
+  }
+
   // ---- Count the numbers up once they are on screen.
   var fmt = function (n) { return n.toLocaleString('en-US'); };
   var counter = new IntersectionObserver(function (entries) {

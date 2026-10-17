@@ -110,12 +110,19 @@ section[id], article[id] { scroll-margin-top: 72px; }
 .stats dd { margin: 6px 0 0; font-size: clamp(28px, 3.4vw, 40px); font-weight: 600; color: var(--ink); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
 .source { margin-top: 18px; font-size: 13px; color: var(--muted); }
 
-/* ---------- School strip */
-.strip { padding: 32px 0; background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.strip .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
-.strip-label { font-size: 14px; color: var(--muted); flex-basis: 100%; }
-.strip-list { display: flex; flex-wrap: wrap; gap: 10px 28px; flex: 1 1 520px; }
-.strip-list li { font-size: 16px; font-weight: 600; color: #5b6b7f; letter-spacing: -0.01em; }
+/* ---------- School wall */
+.strip { padding: 40px 0 8px; }
+.wall-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; margin-bottom: 20px; }
+.wall-title { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; color: var(--ink); }
+.ic-wall { width: 20px; height: 20px; color: var(--green-ink); }
+.wall { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.cell { position: relative; height: 96px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
+.cell-in { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 4px; padding: 0 22px; transition: opacity .45s ease, transform .45s cubic-bezier(.2, .7, .2, 1); }
+.cell-in strong { font-size: 16px; line-height: 1.3; letter-spacing: -0.01em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.cell-c { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; color: var(--muted); }
+.ic-cell { width: 13px; height: 13px; }
+.cell-in.out { opacity: 0; transform: translateY(-12px); }
+.cell-in.enter { opacity: 0; transform: translateY(12px); }
 
 /* ---------- Products bento */
 .products { padding: 112px 0; }
@@ -270,6 +277,7 @@ section[id], article[id] { scroll-margin-top: 72px; }
   .hero-shot { margin-right: 0; }
 }
 @media (max-width: 960px) {
+  .wall { grid-template-columns: repeat(2, 1fr); }
   .nav-links {
     display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0;
     background: #fff; border-bottom: 1px solid var(--line); padding: 8px 24px 16px;
@@ -316,8 +324,10 @@ section[id], article[id] { scroll-margin-top: 72px; }
   .contact { padding: 72px 0; }
   .countries { columns: 2; column-gap: 20px; }
   .country li { font-size: 14px; }
-  .strip-list li:nth-child(n+5) { display: none; }
-  .strip-list li { font-size: 15px; }
+  .wall { grid-template-columns: 1fr 1fr; }
+  .cell { height: 84px; }
+  .cell-in { padding: 0 14px; }
+  .cell-in strong { font-size: 14px; }
   .foot-cols { gap: 40px; }
 }
 @media (prefers-reduced-motion: reduce) {
