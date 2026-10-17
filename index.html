@@ -66,10 +66,21 @@
         </p>
       </div>
       <div class="hero-shot">
-        <figure class="frame">
-          <div class="frame-bar"><i></i><i></i><i></i><span>elearning.example.ac.ke/mod/quiz/attempt.php</span></div>
-          <img src="assets/shots/autofill-widget.webp" width="1600" height="1093" alt="The LaceFi Autofill panel open beside a Moodle quiz, ready to fill 8 questions">
-        </figure>
+        <div class="tilt" id="tilt">
+          <figure class="frame">
+            <div class="frame-bar"><i></i><i></i><i></i><span>elearning.example.ac.ke/mod/quiz/attempt.php</span></div>
+            <img src="assets/shots/autofill-widget.webp" width="1600" height="1093" alt="The LaceFi Autofill panel open beside a Moodle quiz, ready to fill 8 questions">
+            <img class="after" src="assets/shots/autofill-filled.webp" width="1600" height="1093" alt="" aria-hidden="true">
+          </figure>
+          <div class="status" id="status" aria-hidden="true">
+            <img src="assets/autofill-icon.png" width="28" height="28" alt="">
+            <div class="status-body">
+              <div class="status-text"><span class="s-working">Filling answers</span><span class="s-done">8 of 8 questions filled</span></div>
+              <div class="status-bar"><i></i></div>
+            </div>
+            <svg class="status-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-8"/></svg>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -110,10 +121,10 @@
   <!-- Products -->
   <section class="products" id="products">
     <div class="wrap">
-      <p class="eyebrow">Products</p>
-      <h2 class="h2">One paid tool, three ways to learn by doing.</h2>
+      <p class="eyebrow" data-reveal>Products</p>
+      <h2 class="h2" data-reveal>One paid tool, three ways to learn by doing.</h2>
       <div class="bento">
-        <a class="tile tile-autofill" href="#autofill">
+        <a class="tile tile-autofill" data-reveal data-stagger href="#autofill">
           <div class="tile-copy">
             <img class="tile-icon" src="assets/autofill-icon.png" width="40" height="40" alt="">
             <h3>Autofill</h3>
@@ -124,7 +135,7 @@
           </div>
           <div class="tile-img"><img src="assets/shots/autofill-filled.webp" width="1600" height="1093" alt="Moodle questions filled by Autofill, each with its answer shown above the question" loading="lazy"></div>
         </a>
-        <a class="tile tile-sleuth" href="#sleuthbox">
+        <a class="tile tile-sleuth" data-reveal data-stagger href="#sleuthbox">
           <div class="tile-copy">
             <span class="tile-mark mark-sleuth" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>
@@ -134,16 +145,16 @@
           </div>
           <div class="tile-img"><img src="assets/shots/sleuthbox-case.webp" width="1600" height="1093" alt="A Sleuthbox case with its briefing, the SQL console and the evidence tables" loading="lazy"></div>
         </a>
-        <a class="tile tile-academy" href="#academy">
+        <a class="tile tile-academy" data-reveal data-stagger href="#academy">
           <div class="tile-copy">
             <span class="tile-mark mark-academy" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>
             </span>
             <h3>Academy</h3>
-            <p>Build real websites in HTML, CSS and JavaScript.</p>
+            <p>91 lessons on building websites, HTML to JavaScript.</p>
           </div>
         </a>
-        <a class="tile tile-duel" href="#numberduel">
+        <a class="tile tile-duel" data-reveal data-stagger href="#numberduel">
           <div class="tile-copy">
             <span class="tile-mark mark-duel" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M14 5h5v5M5 5l5 5M14 14l5 5M19 14v5h-5"/></svg>
@@ -161,19 +172,19 @@
     <div class="wrap">
       <div class="af-head">
         <div>
-          <p class="eyebrow eyebrow-light">Autofill</p>
-          <h2 class="h2 h2-light">Open the quiz. Press Start. Check the answers.</h2>
+          <p class="eyebrow eyebrow-light" data-reveal>Autofill</p>
+          <h2 class="h2 h2-light" data-reveal>Open the quiz. Press Start. Check the answers.</h2>
         </div>
-        <p class="af-lede">Autofill reads every question on the page, gets an answer from Claude, Gemini or GPT, and fills it in. Each answer appears above its question so you can see it, ask why, and change it before you submit.</p>
+        <p class="af-lede" data-reveal>Autofill reads every question on the page, gets an answer from Claude, Gemini or GPT, and fills it in. Each answer appears above its question so you can see it, ask why, and change it before you submit.</p>
       </div>
 
-      <figure class="frame frame-dark">
+      <figure class="frame frame-dark" data-reveal>
         <div class="frame-bar"><i></i><i></i><i></i><span>elearning.example.ac.ke/mod/quiz/attempt.php</span></div>
         <img src="assets/shots/autofill-filled.webp" width="1600" height="1093" alt="Filled Moodle questions: Paris selected for question 1 and 2, 7 and 11 ticked for question 2" loading="lazy">
       </figure>
 
       <div class="af-grid">
-        <div class="af-item af-wide">
+        <div class="af-item af-wide" data-reveal data-stagger>
           <h3>Every Moodle question type</h3>
           <ul class="chips">
             <li>Multiple choice</li><li>Select all that apply</li><li>True or false</li><li>Short answer</li>
@@ -181,19 +192,19 @@
             <li>CodeRunner code</li><li>STACK maths</li><li>Google Forms</li>
           </ul>
         </div>
-        <div class="af-item">
+        <div class="af-item" data-reveal data-stagger>
           <h3>Code goes into the editor</h3>
           <p>CodeRunner answers are typed into Moodle's code editor, starting from the code the question already gives you.</p>
         </div>
-        <div class="af-item">
+        <div class="af-item" data-reveal data-stagger>
           <h3>Answers from your notes</h3>
           <p>Upload your course notes in the Notes tab. Questions that depend on your lecturer's material are answered from them.</p>
         </div>
-        <div class="af-item">
+        <div class="af-item" data-reveal data-stagger>
           <h3>Pay per question</h3>
           <p>One credit per question in Basic mode, two in Pro for harder questions. Buy credits with Paystack or PayPal.</p>
         </div>
-        <div class="af-item">
+        <div class="af-item" data-reveal data-stagger>
           <h3>Tell us when it's wrong</h3>
           <p>Press Bad on any answer and we get the question, so we can see what went wrong and fix it.</p>
         </div>
@@ -209,11 +220,11 @@
   <!-- Schools -->
   <section class="schools" id="schools">
     <div class="wrap">
-      <p class="eyebrow">Where Autofill is used</p>
-      <h2 class="h2">45 schools in 21 countries.</h2>
-      <p class="sub">Every school below has students registered with Autofill.</p>
+      <p class="eyebrow" data-reveal>Where Autofill is used</p>
+      <h2 class="h2" data-reveal>45 schools in 21 countries.</h2>
+      <p class="sub" data-reveal>Every school below has students registered with Autofill.</p>
       <div class="countries">
-        <div class="country country-ke">
+        <div class="country country-ke" data-reveal data-stagger>
           <h3>Kenya <span>12</span></h3>
           <ul>
             <li>Maseno University</li>
@@ -230,7 +241,7 @@
             <li>The Nairobi National Polytechnic</li>
           </ul>
         </div>
-        <div class="country">
+        <div class="country" data-reveal data-stagger>
           <h3>India <span>5</span></h3>
           <ul>
             <li>Saveetha Engineering College</li>
@@ -240,7 +251,7 @@
             <li>Anudip Foundation</li>
           </ul>
         </div>
-        <div class="country">
+        <div class="country" data-reveal data-stagger>
           <h3>Indonesia <span>4</span></h3>
           <ul>
             <li>Gunadarma University</li>
@@ -249,24 +260,24 @@
             <li>SMP Sains Miftahul Huda</li>
           </ul>
         </div>
-        <div class="country"><h3>Australia <span>2</span></h3><ul><li>Monash University</li><li>NCA Learner Hub</li></ul></div>
-        <div class="country"><h3>Italy <span>2</span></h3><ul><li>University of Genoa</li><li>Ca' Foscari University of Venice</li></ul></div>
-        <div class="country"><h3>Portugal <span>2</span></h3><ul><li>Instituto Superior Técnico, University of Lisbon</li><li>Polytechnic University of Setúbal</li></ul></div>
-        <div class="country"><h3>Spain <span>2</span></h3><ul><li>International University of La Rioja</li><li>Educastur Aulas Virtuales</li></ul></div>
-        <div class="country"><h3>Russia <span>2</span></h3><ul><li>Voronezh State University</li><li>Kemerovo State Medical University</li></ul></div>
-        <div class="country"><h3>Israel <span>2</span></h3><ul><li>Bar-Ilan University</li><li>Medical Doctor International Academy</li></ul></div>
-        <div class="country"><h3>Kazakhstan</h3><ul><li>Nazarbayev University</li></ul></div>
-        <div class="country"><h3>Austria</h3><ul><li>Johannes Kepler University Linz</li></ul></div>
-        <div class="country"><h3>Germany</h3><ul><li>Stuttgart University of Applied Sciences (HFT)</li></ul></div>
-        <div class="country"><h3>Hungary</h3><ul><li>John von Neumann University</li></ul></div>
-        <div class="country"><h3>France</h3><ul><li>Université de Reims Champagne-Ardenne</li></ul></div>
-        <div class="country"><h3>Lithuania</h3><ul><li>SMK College of Applied Sciences</li></ul></div>
-        <div class="country"><h3>Iraq</h3><ul><li>American University of Iraq, Sulaimani</li></ul></div>
-        <div class="country"><h3>Palestine</h3><ul><li>Islamic University of Gaza</li></ul></div>
-        <div class="country"><h3>Taiwan</h3><ul><li>The Primacy Collegiate Academy</li></ul></div>
-        <div class="country"><h3>Brazil</h3><ul><li>Instituto Federal do Rio Grande do Sul</li></ul></div>
-        <div class="country"><h3>Argentina</h3><ul><li>Universidad Nacional de San Luis</li></ul></div>
-        <div class="country"><h3>Ecuador</h3><ul><li>Universidad Iberoamericana del Ecuador</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Australia <span>2</span></h3><ul><li>Monash University</li><li>NCA Learner Hub</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Italy <span>2</span></h3><ul><li>University of Genoa</li><li>Ca' Foscari University of Venice</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Portugal <span>2</span></h3><ul><li>Instituto Superior Técnico, University of Lisbon</li><li>Polytechnic University of Setúbal</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Spain <span>2</span></h3><ul><li>International University of La Rioja</li><li>Educastur Aulas Virtuales</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Russia <span>2</span></h3><ul><li>Voronezh State University</li><li>Kemerovo State Medical University</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Israel <span>2</span></h3><ul><li>Bar-Ilan University</li><li>Medical Doctor International Academy</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Kazakhstan</h3><ul><li>Nazarbayev University</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Austria</h3><ul><li>Johannes Kepler University Linz</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Germany</h3><ul><li>Stuttgart University of Applied Sciences (HFT)</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Hungary</h3><ul><li>John von Neumann University</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>France</h3><ul><li>Université de Reims Champagne-Ardenne</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Lithuania</h3><ul><li>SMK College of Applied Sciences</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Iraq</h3><ul><li>American University of Iraq, Sulaimani</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Palestine</h3><ul><li>Islamic University of Gaza</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Taiwan</h3><ul><li>The Primacy Collegiate Academy</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Brazil</h3><ul><li>Instituto Federal do Rio Grande do Sul</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Argentina</h3><ul><li>Universidad Nacional de San Luis</li></ul></div>
+        <div class="country" data-reveal data-stagger><h3>Ecuador</h3><ul><li>Universidad Iberoamericana del Ecuador</li></ul></div>
       </div>
     </div>
   </section>
@@ -274,27 +285,27 @@
   <!-- Learning products -->
   <section class="learn" aria-label="Learning products">
     <div class="wrap">
-      <p class="eyebrow">Learn by doing</p>
-      <h2 class="h2">Three more things we built.</h2>
+      <p class="eyebrow" data-reveal>Learn by doing</p>
+      <h2 class="h2" data-reveal>Three more things we built.</h2>
 
       <article class="feature" id="academy">
-        <div class="feature-copy">
+        <div class="feature-copy" data-reveal>
           <span class="tile-mark mark-academy" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>
           </span>
           <h3>LaceFi Academy</h3>
-          <p>A beginner course in building websites. You start with plain HTML and finish with JavaScript, writing a real project at every step. Projects are checked automatically as you go, so you know when something works and when it doesn't.</p>
-          <ul class="facts"><li>HTML, CSS and JavaScript</li><li>Projects checked automatically</li><li>Sign in with GitHub</li></ul>
+          <p>A beginner course in building websites, from your first HTML tag to JavaScript. Each lesson explains one idea with a real example, then you answer a short quiz and build it yourself. Assignments are checked automatically as you go.</p>
+          <ul class="facts"><li>91 lessons: HTML, CSS and JavaScript</li><li>A quiz and an assignment in every lesson</li><li>Ends with a portfolio site, graded by a teacher</li></ul>
           <a class="btn btn-dark" href="https://edu.lacefi.co.ke/">Open Academy</a>
         </div>
-        <figure class="frame">
-          <div class="frame-bar"><i></i><i></i><i></i><span>edu.lacefi.co.ke</span></div>
-          <img src="assets/shots/academy-signin.webp" width="1600" height="1093" alt="The LaceFi Academy sign-in card with a Sign in with GitHub button" loading="lazy">
+        <figure class="frame" data-reveal data-side>
+          <div class="frame-bar"><i></i><i></i><i></i><span>edu.lacefi.co.ke/webdev/courses/what-is-css</span></div>
+          <img src="assets/shots/academy-lesson.webp" width="1280" height="631" alt="The What is CSS? lesson in LaceFi Academy, with an explanation and a code example" loading="lazy">
         </figure>
       </article>
 
       <article class="feature feature-flip" id="sleuthbox">
-        <div class="feature-copy">
+        <div class="feature-copy" data-reveal>
           <span class="tile-mark mark-sleuth" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>
           </span>
@@ -303,14 +314,14 @@
           <ul class="facts"><li>Real SQL in the browser</li><li>Easy, medium and hard cases</li><li>Walkthrough for first-timers</li></ul>
           <a class="btn btn-dark" href="https://lacefi-sleuthbox.vercel.app/">Play Sleuthbox</a>
         </div>
-        <figure class="frame frame-night">
+        <figure class="frame frame-night" data-reveal data-side>
           <div class="frame-bar"><i></i><i></i><i></i><span>lacefi-sleuthbox.vercel.app</span></div>
           <img src="assets/shots/sleuthbox-case.webp" width="1600" height="1093" alt="The Blackout at the Observatory case: briefing, SQL console and table list" loading="lazy">
         </figure>
       </article>
 
       <article class="feature" id="numberduel">
-        <div class="feature-copy">
+        <div class="feature-copy" data-reveal>
           <span class="tile-mark mark-duel" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M14 5h5v5M5 5l5 5M14 14l5 5M19 14v5h-5"/></svg>
           </span>
@@ -319,7 +330,7 @@
           <ul class="facts"><li>Play a friend with a room ID</li><li>No sign-up</li><li>A hint after every guess</li></ul>
           <a class="btn btn-dark" href="https://numberduel.lacefi.co.ke/">Start a duel</a>
         </div>
-        <figure class="frame frame-night">
+        <figure class="frame frame-night" data-reveal data-side>
           <div class="frame-bar"><i></i><i></i><i></i><span>numberduel.lacefi.co.ke</span></div>
           <img src="assets/shots/numberduel-home.webp" width="1600" height="1093" alt="The Number Duel start screen asking for your name and a room ID" loading="lazy">
         </figure>
@@ -331,19 +342,19 @@
   <section class="contact" id="contact">
     <div class="wrap contact-in">
       <div>
-        <h2 class="h2">Questions? Talk to a person.</h2>
-        <p class="sub">Message us on WhatsApp or by email. A person in Nairobi reads every message.</p>
+        <h2 class="h2" data-reveal>Questions? Talk to a person.</h2>
+        <p class="sub" data-reveal>Message us on WhatsApp or by email. A person in Nairobi reads every message.</p>
       </div>
       <div class="contact-ways">
-        <a class="way" href="https://wa.me/254770329788">
+        <a class="way" data-reveal data-stagger href="https://wa.me/254770329788">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.3.5-.4.5c-.2.2-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.2 1.4 2.5 1.6.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.3Z"/></svg>
           <span><strong>WhatsApp</strong>+254 770 329 788</span>
         </a>
-        <a class="way" href="mailto:support@lacefi.co.ke">
+        <a class="way" data-reveal data-stagger href="mailto:support@lacefi.co.ke">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
           <span><strong>Email</strong>support@lacefi.co.ke</span>
         </a>
-        <a class="way" href="https://guide.lacefi.co.ke/">
+        <a class="way" data-reveal data-stagger href="https://guide.lacefi.co.ke/">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2V5Z"/><path d="M8 7h6"/></svg>
           <span><strong>Guide</strong>Setup and how-tos</span>
         </a>
