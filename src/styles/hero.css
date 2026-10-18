@@ -1,0 +1,62 @@
+.hero { padding: 72px 0 96px; overflow: hidden; }
+.hero-in > * { min-width: 0; }
+.hero-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(40px, 6vw, 68px); line-height: 1.04; letter-spacing: -0.035em; font-weight: 700; }
+.lede { margin-top: 24px; font-size: 19px; line-height: 1.6; max-width: 520px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.rating { display: flex; align-items: center; gap: 8px; margin-top: 24px; font-size: 14px; color: var(--muted); }
+.stars { display: inline-flex; gap: 2px; }
+.stars svg { width: 15px; height: 15px; fill: #f5a623; }
+.hero-shot { position: relative; margin-right: -120px; }
+
+/* Screenshot that starts tilted and flattens as you scroll; the filled shot fades in over it. */
+.tilt { position: relative; }
+.tilt .frame { position: relative; }
+.tilt .after { position: absolute; left: 0; right: 0; top: 34px; width: 100%; opacity: 0; transition: opacity .7s ease; }
+.motion .tilt.filled .after { opacity: 1; }
+.motion .tilt {
+  transform: perspective(2200px) rotateY(var(--ry, -14deg)) rotateX(var(--rx, 6deg)) translateY(var(--ty, 0));
+  transform-origin: 30% 50%;
+  transition: transform .9s cubic-bezier(.2, .7, .2, 1);
+  will-change: transform;
+}
+.motion .tilt.settle { transition-duration: .15s; transition-timing-function: linear; }
+
+/* "Filling answers" status card */
+.status {
+  position: absolute; left: -28px; bottom: 32px; display: flex; align-items: center; gap: 12px;
+  width: 290px; padding: 12px 14px; border-radius: 10px; background: #fff;
+  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, .3), 0 18px 36px -18px rgba(0, 0, 0, .35);
+  font-size: 14px; color: var(--ink);
+}
+.ic-status { width: 24px; height: 24px; color: var(--green-ink); }
+.status-body { flex: 1; min-width: 0; }
+.status-text { position: relative; height: 20px; font-weight: 600; }
+.status-text span { position: absolute; inset: 0; white-space: nowrap; transition: opacity .3s, transform .3s; }
+.s-done { opacity: 0; transform: translateY(6px); }
+.status-bar { height: 4px; margin-top: 8px; border-radius: 4px; background: var(--bg-soft); overflow: hidden; }
+.status-bar i { display: block; height: 100%; width: 100%; background: var(--green); transform-origin: left; }
+.status-check { width: 22px; height: 22px; padding: 4px; border-radius: 50%; color: #fff; background: var(--green); flex-shrink: 0; }
+.status.done .s-working { opacity: 0; transform: translateY(-6px); }
+.status.done .s-done { opacity: 1; transform: none; }
+.motion .status-bar i { transform: scaleX(0); }
+.motion .status.run .status-bar i { transform: scaleX(1); transition: transform 2.6s cubic-bezier(.4, .1, .3, 1); }
+.motion .status-check { transform: scale(0); transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
+.motion .status.done .status-check { transform: scale(1); }
+.motion .status { opacity: 0; transform: translateY(16px); transition: opacity .5s, transform .5s cubic-bezier(.2, .7, .2, 1); }
+.motion .status.in { opacity: 1; transform: none; }
+
+@media (max-width: 1080px) {
+  .hero-shot { margin-right: 0; }
+}
+@media (max-width: 960px) {
+  .hero { padding: 48px 0 72px; }
+  .hero-in { grid-template-columns: 1fr; gap: 48px; }
+  .status { left: 12px; bottom: -22px; width: 260px; }
+  .motion .tilt { --ry: -6deg; --rx: 4deg; }
+}
+@media (max-width: 560px) {
+  .status { width: auto; right: 12px; padding: 10px 12px; font-size: 13px; }
+  .lede { font-size: 17px; }
+  .hero-cta .btn { flex: 1 1 100%; justify-content: center; }
+}

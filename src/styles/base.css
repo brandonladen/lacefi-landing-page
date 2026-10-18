@@ -1,0 +1,83 @@
+/* Reset, layout, type, buttons, browser frame, icons and the reveal motion shared by every section. */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { color: var(--ink); margin: 0; font-weight: 600; letter-spacing: -0.02em; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+strong { color: var(--ink); font-weight: 600; }
+section[id], article[id] { scroll-margin-top: 72px; }
+
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 40px; padding: 0 16px; border-radius: 999px;
+  font-size: 15px; font-weight: 500; white-space: nowrap;
+  transition: background-color .15s, color .15s, box-shadow .15s, transform .15s;
+}
+.btn svg { transition: transform .15s; }
+.btn:hover svg { transform: translateX(2px); }
+.btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.btn-green { background: var(--green); color: #fff; }
+.btn-green:hover { background: var(--green-ink); }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: #1a3a5c; }
+.btn-ghost { color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); background: #fff; }
+.btn-ghost:hover { box-shadow: inset 0 0 0 1px #c1c9d2; }
+.btn-ghost-light { color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .28); }
+.btn-ghost-light:hover { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .6); }
+
+.link { display: inline-flex; align-items: center; gap: 4px; color: var(--green-ink); font-weight: 500; font-size: 15px; }
+.link:hover svg { transform: translateX(2px); }
+.link svg { transition: transform .15s; }
+
+.h2 { font-size: clamp(30px, 4vw, 44px); line-height: 1.12; max-width: 720px; }
+.h2-light { color: #fff; }
+.sub { margin-top: 14px; max-width: 620px; color: var(--text); font-size: 18px; }
+
+/* ---------- Browser frame */
+.frame { margin: 0; border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); overflow: hidden; }
+.frame-bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; background: #f1f4f8; border-bottom: 1px solid var(--line); }
+.frame-bar i { width: 10px; height: 10px; border-radius: 50%; background: #d5dbe3; }
+.frame-bar span { margin-left: 10px; font-family: var(--mono); font-size: 12px; color: var(--muted); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.frame-dark .frame-bar, .frame-night .frame-bar { background: #1b2433; border-bottom-color: #2a3547; }
+.frame-dark .frame-bar i, .frame-night .frame-bar i { background: #3a4659; }
+.frame-dark .frame-bar span, .frame-night .frame-bar span { color: #8a97ab; }
+
+/* ---------- Product mark (tiles and learning features) */
+.tile-mark { display: inline-flex; width: 40px; height: 40px; align-items: center; color: var(--ink); }
+.tile-mark svg { width: 30px; height: 30px; stroke-width: 1.6; }
+
+/* ---------- Icons (one line style, no backgrounds) */
+.ic { flex-shrink: 0; width: 20px; height: 20px; }
+.ic-btn { width: 17px; height: 17px; }
+
+/* ---------- Reveal on scroll (only when JS is on and the visitor allows motion) */
+.motion [data-reveal] {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: var(--d, 0s);
+}
+.motion [data-reveal][data-side] { transform: translateX(48px); }
+.motion [data-reveal].in { opacity: 1; transform: none; }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}

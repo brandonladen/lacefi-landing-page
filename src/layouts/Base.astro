@@ -1,0 +1,33 @@
+---
+import { site } from '../data/site';
+import { reach } from '../data/schools';
+import '../styles/tokens.css';
+import '../styles/base.css';
+
+const description = `LaceFi builds software for students. Autofill answers Moodle and Google Forms quizzes from Chrome, used at ${reach}. Academy, Sleuthbox and Number Duel teach by doing.`;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{site.title}</title>
+<meta name="description" content={description}>
+<link rel="canonical" href={site.url} />
+<meta name="google-site-verification" content={site.googleVerification} />
+<meta property="og:title" content={site.title}>
+<meta property="og:description" content={site.ogDescription}>
+<meta property="og:image" content={site.ogImage}>
+<meta property="og:url" content={site.url}>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<slot />
+<script>
+  import '../scripts/main';
+</script>
+</body>
+</html>

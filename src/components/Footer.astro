@@ -1,0 +1,43 @@
+---
+import { links } from '../data/site';
+import '../styles/footer.css';
+
+const columns = [
+  {
+    title: 'Products',
+    links: [
+      { href: links.chromeStore, label: 'Autofill' },
+      { href: links.academy, label: 'Academy' },
+      { href: links.sleuthbox, label: 'Sleuthbox' },
+      { href: links.numberDuel, label: 'Number Duel' },
+    ],
+  },
+  {
+    title: 'Autofill',
+    links: [
+      { href: links.guide, label: 'Setup guide' },
+      { href: links.whatsapp, label: 'WhatsApp help' },
+      { href: links.releaseNotes, label: 'Release notes' },
+      { href: links.privacy, label: 'Privacy' },
+    ],
+  },
+  { title: 'Contact', links: [{ href: `mailto:${links.email}`, label: 'Email' }] },
+];
+---
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a class="brand" href="#top">Lace<span>Fi</span></a>
+      <p>Nairobi, Kenya</p>
+    </div>
+    <div class="foot-cols">
+      {columns.map((col) => (
+        <div>
+          <h4>{col.title}</h4>
+          {col.links.map((l) => <a href={l.href}>{l.label}</a>)}
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="wrap foot-base">© <span id="year">{new Date().getFullYear()}</span> LaceFi</div>
+</footer>

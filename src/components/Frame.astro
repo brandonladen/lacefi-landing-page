@@ -1,0 +1,22 @@
+---
+// A screenshot inside a browser window with its address bar.
+interface Props {
+  url: string;
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  variant?: 'dark' | 'night';
+  /** Reveal on scroll; `side` slides it in sideways instead of up. */
+  reveal?: boolean;
+  side?: boolean;
+  lazy?: boolean;
+}
+
+const { url, src, width, height, alt, variant, reveal, side, lazy = true } = Astro.props;
+---
+<figure class:list={['frame', variant && `frame-${variant}`]} data-reveal={reveal ? '' : undefined} data-side={side ? '' : undefined}>
+  <div class="frame-bar"><i></i><i></i><i></i><span>{url}</span></div>
+  <img src={src} width={width} height={height} alt={alt} loading={lazy ? 'lazy' : undefined}>
+  <slot />
+</figure>

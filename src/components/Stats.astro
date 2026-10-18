@@ -1,0 +1,13 @@
+---
+import Icon from './Icon.astro';
+import { asOf, stats } from '../data/stats';
+import '../styles/stats.css';
+---
+<section class="numbers" aria-label="LaceFi in numbers">
+  <div class="wrap">
+    <dl class="stats">
+      {stats.map((s) => <div><Icon name={s.icon} class="ic ic-stat" /><dt>{s.label}</dt><dd>{s.value}</dd></div>)}
+    </dl>
+    <p class="source">Autofill usage data, {asOf}.</p>
+  </div>
+</section>

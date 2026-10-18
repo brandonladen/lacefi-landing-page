@@ -1,0 +1,14 @@
+.schools { padding: 96px 0 112px; }
+.countries { columns: 3 260px; column-gap: 40px; margin-top: 48px; }
+.country { break-inside: avoid; padding: 0 0 24px; }
+.country h3 { display: flex; align-items: baseline; gap: 7px; font-size: 15px; padding-top: 12px; border-top: 1px solid var(--line); }
+.country h3 span { font-family: var(--mono); font-size: 12px; font-weight: 400; color: var(--muted); }
+.country li { font-size: 15px; line-height: 1.5; padding: 3px 0; color: var(--text); }
+.country-home h3 { border-top-color: var(--green); }
+.ic-pin { width: 14px; height: 14px; color: var(--muted); align-self: center; }
+.country-home .ic-pin { color: var(--green-ink); }
+
+@media (max-width: 560px) {
+  .countries { columns: 2; column-gap: 20px; }
+  .country li { font-size: 14px; }
+}

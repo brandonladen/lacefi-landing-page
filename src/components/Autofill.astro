@@ -1,0 +1,40 @@
+---
+import Icon from './Icon.astro';
+import Frame from './Frame.astro';
+import { autofill } from '../data/products';
+import { links } from '../data/site';
+import '../styles/autofill.css';
+---
+<section class="autofill" id="autofill">
+  <div class="wrap">
+    <div class="af-head">
+      <div>
+        <h2 class="h2 h2-light" data-reveal>{autofill.title}</h2>
+      </div>
+      <p class="af-lede" data-reveal>{autofill.lede}</p>
+    </div>
+
+    <Frame {...autofill.shot} variant="dark" reveal />
+
+    <div class="af-grid">
+      <div class="af-item af-wide" data-reveal data-stagger>
+        <Icon name="layers" class="ic ic-feat" /><h3>Every Moodle question type</h3>
+        <ul class="chips">
+          {autofill.questionTypes.map((q) => <li><Icon name={q.icon} class="ic ic-chip" />{q.label}</li>)}
+        </ul>
+      </div>
+      {autofill.features.map((f) => (
+        <div class="af-item" data-reveal data-stagger>
+          <Icon name={f.icon} class="ic ic-feat" /><h3>{f.title}</h3>
+          <p>{f.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="af-cta">
+      <a class="btn btn-green" href={links.chromeStore}><Icon name="chrome" class="ic ic-btn" />Add to Chrome</a>
+      <a class="btn btn-ghost-light" href={links.guide}><Icon name="book" class="ic ic-btn" />Read the setup guide</a>
+      <a class="btn btn-ghost-light" href={links.whatsapp}><Icon name="whatsapp" class="ic ic-btn" />Setup help on WhatsApp</a>
+    </div>
+  </div>
+</section>

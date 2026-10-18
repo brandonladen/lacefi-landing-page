@@ -1,0 +1,19 @@
+.learn { padding: 112px 0; background: var(--bg-soft); border-top: 1px solid var(--line); overflow: hidden; }
+.feature { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; align-items: center; margin-top: 80px; }
+.feature-flip .feature-copy { order: 2; }
+.feature h3 { font-size: 28px; margin-top: 16px; }
+.feature p { margin-top: 12px; }
+.facts { margin: 20px 0 28px; display: grid; gap: 8px; }
+.facts li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--ink); }
+.ic-check { width: 18px; height: 18px; margin-top: 2px; color: var(--green-ink); stroke-width: 2.25; }
+/* Flipped rows slide in from the left */
+.motion .feature-flip [data-reveal][data-side] { transform: translateX(-48px); }
+.motion .feature-flip [data-reveal][data-side].in { transform: none; }
+
+@media (max-width: 960px) {
+  .feature { grid-template-columns: 1fr; gap: 32px; margin-top: 64px; }
+  .feature-flip .feature-copy { order: 0; }
+}
+@media (max-width: 560px) {
+  .learn { padding: 80px 0; }
+}

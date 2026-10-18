@@ -1,0 +1,17 @@
+---
+import Icon from './Icon.astro';
+import { links, nav } from '../data/site';
+import '../styles/nav.css';
+---
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="LaceFi home">Lace<span>Fi</span></a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <a class="btn btn-dark nav-cta" href={links.chromeStore}><Icon name="chrome" class="ic ic-btn" />Add to Chrome</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <Icon name="menu" size={22} strokeWidth={2} />
+    </button>
+  </div>
+</header>

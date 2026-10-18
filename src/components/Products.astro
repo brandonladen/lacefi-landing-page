@@ -1,0 +1,23 @@
+---
+import Icon from './Icon.astro';
+import { tiles } from '../data/products';
+import '../styles/products.css';
+---
+<section class="products" id="products">
+  <div class="wrap">
+    <h2 class="h2" data-reveal>Our products</h2>
+    <div class="bento">
+      {tiles.map((t) => (
+        <a class={`tile tile-${t.variant}`} data-reveal data-stagger href={`#${t.id}`}>
+          <div class="tile-copy">
+            <span class="tile-mark" aria-hidden="true"><Icon name={t.icon} strokeWidth={2} /></span>
+            <h3>{t.title}</h3>
+            <p>{t.text}</p>
+            {t.linkText && <span class="tile-link">{t.linkText} <Icon name="arrow" size={14} strokeWidth={2.5} /></span>}
+          </div>
+          {t.shot && <div class="tile-img"><img src={t.shot.src} width={t.shot.width} height={t.shot.height} alt={t.shot.alt} loading="lazy"></div>}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

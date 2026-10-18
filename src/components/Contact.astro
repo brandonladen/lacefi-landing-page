@@ -1,0 +1,18 @@
+---
+import Icon from './Icon.astro';
+import { links } from '../data/site';
+import '../styles/contact.css';
+---
+<section class="contact" id="contact">
+  <div class="wrap contact-in">
+    <div>
+      <h2 class="h2" data-reveal>Contact us</h2>
+    </div>
+    <div class="contact-ways">
+      <a class="way" data-reveal data-stagger href={`mailto:${links.email}`}>
+        <Icon name="mail" strokeWidth={2} />
+        <span><strong>Email</strong>{links.email}</span>
+      </a>
+    </div>
+  </div>
+</section>

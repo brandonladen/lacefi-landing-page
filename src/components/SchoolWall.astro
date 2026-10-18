@@ -1,0 +1,18 @@
+---
+import Icon from './Icon.astro';
+import { reach, wall } from '../data/schools';
+import '../styles/wall.css';
+---
+<section class="strip" aria-label="Schools">
+  <div class="wrap">
+    <div class="wall-head">
+      <p class="wall-title"><Icon name="cap" class="ic ic-wall" />Used by students at {reach}</p>
+      <a class="link" href="#schools">See all schools <Icon name="arrow" size={14} strokeWidth={2.5} /></a>
+    </div>
+    <ul class="wall" id="wall">
+      {wall.map((s) => (
+        <li class="cell"><span class="cell-in"><strong>{s.name}</strong><span class="cell-c"><Icon name="pin" class="ic ic-cell" />{s.country}</span></span></li>
+      ))}
+    </ul>
+  </div>
+</section>
