@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+import Frame from './Frame.astro';
+import { learning } from '../data/products';
+import '../styles/learn.css';
+---
+<section class="learn" aria-label="Learning products">
+  <div class="wrap">
+    <h2 class="h2" data-reveal>Learn by doing</h2>
+
+    {learning.map((f) => (
+      <article class:list={['feature', f.flip && 'feature-flip']} id={f.id}>
+        <div class="feature-copy" data-reveal>
+          <span class="tile-mark" aria-hidden="true"><Icon name={f.icon} strokeWidth={2} /></span>
+          <h3>{f.title}</h3>
+          <p>{f.body}</p>
+          <ul class="facts">{f.facts.map((fact) => <li><Icon name="check" class="ic ic-check" />{fact}</li>)}</ul>
+          <a class="btn btn-dark" href={f.cta.href}><Icon name={f.cta.icon} class="ic ic-btn" />{f.cta.label}</a>
+        </div>
+        <Frame {...f.frame} variant={f.frame.night ? 'night' : undefined} reveal side />
+      </article>
+    ))}
+  </div>
+</section>

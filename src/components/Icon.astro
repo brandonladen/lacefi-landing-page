@@ -1,0 +1,18 @@
+---
+import { icons, type IconName } from './icons';
+
+interface Props {
+  name: IconName;
+  class?: string;
+  /** Width and height in px, for icons without a sizing class. */
+  size?: number;
+  strokeWidth?: number;
+}
+
+const { name, class: className, size, strokeWidth = 1.75 } = Astro.props;
+const icon: { body: string; fill?: boolean } = icons[name];
+const paint = icon.fill
+  ? ({ fill: 'currentColor' } as const)
+  : ({ fill: 'none', stroke: 'currentColor', 'stroke-width': strokeWidth, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' } as const);
+---
+<svg class={className} width={size} height={size} viewBox="0 0 24 24" {...paint} aria-hidden="true" set:html={icon.body} />

@@ -1,0 +1,21 @@
+/* LaceFi: clean product site. Navy text on white, one green accent, real screenshots. */
+:root {
+  --ink: #0a2540;          /* headings */
+  --text: #425466;         /* body */
+  --muted: #697386;
+  --line: #e3e8ee;
+  --bg: #ffffff;
+  --bg-soft: #f6f9fc;
+  --navy: #0a2540;
+  --navy-2: #12304f;
+  --green: #04aa6d;
+  --green-ink: #03875a;
+  --green-soft: #e6f7f0;
+  --amber: #b7791f;
+  --indigo: #4f5bd5;
+  --radius: 8px;
+  --shadow: 0 50px 100px -20px rgba(50, 50, 93, .25), 0 30px 60px -30px rgba(0, 0, 0, .3);
+  --shadow-sm: 0 2px 5px -1px rgba(50, 50, 93, .25), 0 1px 3px -1px rgba(0, 0, 0, .3);
+  --font: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}

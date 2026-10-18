@@ -1,0 +1,43 @@
+---
+import Icon from './Icon.astro';
+import Frame from './Frame.astro';
+import { links, site } from '../data/site';
+import { heroShot } from '../data/products';
+import '../styles/hero.css';
+---
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <h1>Software for students, made in Nairobi.</h1>
+      <p class="lede"><strong>Autofill</strong> answers Moodle and Google Forms quizzes in Chrome. <strong>Academy</strong> teaches web development, <strong>Sleuthbox</strong> teaches SQL, and <strong>Number Duel</strong> is a two-player game.</p>
+      <div class="hero-cta">
+        <a class="btn btn-green" href={links.chromeStore}>
+          <Icon name="chrome" class="ic ic-btn" />Add Autofill to Chrome
+          <Icon name="arrow" size={14} strokeWidth={2.5} />
+        </a>
+        <a class="btn btn-ghost" href="#products">See all products</a>
+      </div>
+      <p class="rating">
+        <span class="stars" aria-hidden="true">
+          {[1, 2, 3, 4, 5].map(() => <Icon name="star" />)}
+        </span>
+        {site.storeRating} on the Chrome Web Store
+      </p>
+    </div>
+    <div class="hero-shot">
+      <div class="tilt" id="tilt">
+        <Frame url={heroShot.url} {...heroShot.before} lazy={false}>
+          <img class="after" src={heroShot.after.src} width={heroShot.after.width} height={heroShot.after.height} alt="" aria-hidden="true">
+        </Frame>
+        <div class="status done" id="status" aria-hidden="true">
+          <Icon name="checklist" class="ic ic-status" />
+          <div class="status-body">
+            <div class="status-text"><span class="s-working">Filling answers</span><span class="s-done">8 of 8 questions filled</span></div>
+            <div class="status-bar"><i></i></div>
+          </div>
+          <Icon name="done" class="status-check" strokeWidth={3} />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

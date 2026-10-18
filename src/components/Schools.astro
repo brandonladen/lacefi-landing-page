@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import { countries, reach } from '../data/schools';
+import '../styles/schools.css';
+---
+<section class="schools" id="schools">
+  <div class="wrap">
+    <h2 class="h2" data-reveal>Autofill is used at {reach}.</h2>
+    <p class="sub" data-reveal>Every school below has students registered with Autofill.</p>
+    <div class="countries">
+      {countries.map((c) => (
+        <div class:list={['country', c.home && 'country-home']} data-reveal data-stagger>
+          <h3><Icon name="pin" class="ic ic-pin" />{c.name}{c.schools.length > 1 && <> <span>{c.schools.length}</span></>}</h3>
+          <ul>{c.schools.map((s) => <li>{s}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
