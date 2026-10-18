@@ -11,7 +11,7 @@ npm run build     # type check (astro check), then build to dist/
 npm run preview   # serve the built dist/
 ```
 
-Node 22.12 or newer.
+Node 24 (LTS); 22.12 is the minimum.
 
 ## Layout
 
@@ -38,4 +38,4 @@ public/         served as-is: screenshots, favicon, the demo pages
 
 ## Deploy
 
-Cloudflare Pages: build command `npm run build`, output directory `dist`.
+Render (static site): build command `npm run build`, publish directory `dist`. Node version comes from `.nvmrc` (24).
