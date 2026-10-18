@@ -14,7 +14,7 @@ export const links = {
 
 export const site = {
   url: 'https://lacefi.co.ke/',
-  title: 'LaceFi: software for students, made in Nairobi',
+  title: "LaceFi: software you'll actually open",
   ogDescription: 'Autofill for Moodle and Google Forms, LaceFi Academy, Sleuthbox and Number Duel.',
   ogImage: 'https://lacefi.co.ke/assets/shots/autofill-widget.webp',
   googleVerification: '0caBqUpGTrCRnl18_9s6ijyTphaZDAA6n0xJyyWCiLU',
