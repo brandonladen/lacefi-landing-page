@@ -8,10 +8,10 @@ export const links = {
 } as const;
 
 export const site = {
-  url: 'https://lacefi.co.ke/',
+  url: 'https://lacefi-landing-page.onrender.com/',
   title: "LaceFi: software you'll actually open",
   ogDescription: 'LaceFi Academy, Sleuthbox and Number Duel.',
-  ogImage: 'https://lacefi.co.ke/assets/shots/academy-lesson.webp',
+  ogImage: 'https://lacefi-landing-page.onrender.com/assets/shots/academy-lesson.webp',
   googleVerification: '0caBqUpGTrCRnl18_9s6ijyTphaZDAA6n0xJyyWCiLU',
 } as const;
 
