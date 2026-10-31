@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { links, nav } from '../data/site';
+import { nav } from '../data/site';
 import '../styles/nav.css';
 ---
 <header class="nav" id="nav">
@@ -9,7 +9,7 @@ import '../styles/nav.css';
     <nav class="nav-links" id="nav-links" aria-label="Main">
       {nav.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
-    <a class="btn btn-dark nav-cta" href={links.chromeStore}><Icon name="chrome" class="ic ic-btn" />Add to Chrome</a>
+    <a class="btn btn-dark nav-cta" href="#contact">Contact</a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
       <Icon name="menu" size={22} strokeWidth={2} />
     </button>
